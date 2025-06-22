@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    
+    <title>Gerador de QR Code</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Gerador de QR Code",
+      "image": [
+        "/app/imagens/512x512.png"
+       ],
+      "datePublished": "2025-04-26T09:20:00-03:00",
+      "dateModified": "2025-04-26T09:20:00-03:00",
+      "author": [{
+          "@type": "Person",
+          "name": "Ivaldo Fernandes",
+          "url": "https://ivaldofs.com.br/"
+      }]
+    }
+    </script> 
+    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-947PJ1CXF0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-947PJ1CXF0');
+</script>
+ <link rel="icon" href="/app/imagens/512x512.png" type="image/x-icon">
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    
+    <link rel="manifest" href="/app/manifest.json">
+<meta name="theme-color" content="#000000">
+
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 90%;
+        }
+        input {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #qrcode {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .tutorial {
+            text-align: left;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .tutorial h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .tutorial ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gerador de QR Code</h1>
+        <input type="text" id="textInput" placeholder="Digite o texto ou URL para gerar o QR Code">
+        <button onclick="generateQRCode()">Gerar QR Code</button>
+        <div id="qrcode"></div>
+        <div class="tutorial">
+            <h2>Como Usar o Gerador de QR Code</h2>
+            <p>Siga estas etapas para criar seu QR Code:</p>
+            <ul>
+                <li><strong>Digite o conteúdo</strong>: No campo acima, insira uma URL (ex.: https://www.exemplo.com), um texto (ex.: "Bem-vindo!"), um número de telefone, e-mail ou qualquer informação.</li>
+                <li><strong>Gere o QR Code</strong>: Clique no botão "Gerar QR Code". O código aparecerá abaixo do botão.</li>
+                <li><strong>Escaneie ou salve</strong>: Use a câmera do seu celular ou um aplicativo de leitura de QR Code para escanear. Para salvar, clique com o botão direito no QR Code e selecione "Salvar imagem como...".</li>
+            </ul>
+            <p><strong>Dicas</strong>: Certifique-se de que URLs começam com "http://" ou "https://". Teste o QR Code com seu celular para verificar se funciona corretamente.</p>
+        </div>
+    </div>
+
+    <script>
+        function generateQRCode() {
+            const text = document.getElementById('textInput').value;
+            const qrcodeDiv = document.getElementById('qrcode');
+            qrcodeDiv.innerHTML = ''; // Limpa o QR Code anterior
+            if (text) {
+                new QRCode(qrcodeDiv, {
+                    text: text,
+                    width: 200,
+                    height: 200
+                });
+            } else {
+                alert('Por favor, insira um texto ou URL!');
+            }
+        }
+    </script>
+    <br> <center>
+<a href="https://ivaldofs.com.br/">Inicio</a> |
+<a href="https://ivaldofs.com.br/sobre/">Sobre</a> |
+<a href="https://ivaldofs.com.br/contato/">Contato</a> | 
+<a href="https://ivaldofs.com.br/calculadora/2-grau/">2º Grau</a> |
+<a href="https://ivaldofs.com.br/calculadora/booleana/">Mapa Karnaugh</a> |
+<a href="https://ivaldofs.com.br/calculadora/cientifica.html">Cientifica</a> |
+<a href="https://ivaldofs.com.br/calculadora-ip">Sub-rede</a> |
+<a href="https://ivaldofs.com.br/matematica-computacional">Matemática Computacional</a> |
+<a href="https://ivaldofs.com.br/calculadora/lei-de-ohm.html">Lei de Ohm</a> |
+<a href="https://ivaldofs.com.br/calculadora/dividir-sub-rede.html">Dividir Sub-Redes</a> |
+<a href="https://ivaldofs.com.br/calculadora/administradores-de-redes.html">Calculadora Avançada para Redes</a>
+</center>
+<br>
+<br>
+    <center><footer>
+        <p>&copy; Ivaldo Fernandes - Todos os direitos reservados.</p>
+  </footer></center>
+
+<script src="/app/script.js"></script>
+</body>
+</html>

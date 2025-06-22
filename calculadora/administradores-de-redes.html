@@ -1,0 +1,1807 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    
+    
+    <title>Super Calculadora Avançada para Redes de Computadores</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Super Calculadora Avançada para Redes de Computadores",
+      "image": [
+        "/app/imagens/512x512.png"
+       ],
+      "datePublished": "2025-04-23T17:00:00-03:00",
+      "dateModified": "2025-04-23T17:00:00-03:00",
+      "author": [{
+          "@type": "Person",
+          "name": "Ivaldo Fernandes",
+          "url": "https://ivaldofs.com.br/"
+      }]
+    }
+    </script> 
+    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-947PJ1CXF0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-947PJ1CXF0');
+</script>
+
+ <link rel="icon" href="/app/imagens/512x512.png" type="image/x-icon">
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Calculadora Avançada para Redes</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: var(--dark-color);
+            background-color: #f5f7fa;
+        }
+        
+        h1, h2, h3, h4 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+        
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .tool {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .tool:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .tool h3 {
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        input, select, button {
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        button {
+            background-color: var(--secondary-color);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        .ip-input {
+            width: 60px;
+            text-align: center;
+            display: inline-block;
+            margin: 0 2px;
+        }
+        
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #e8f4fc;
+            border-radius: 4px;
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        .error {
+            color: var(--accent-color);
+            font-weight: bold;
+            border-left-color: var(--accent-color);
+        }
+        
+        .success {
+            color: #27ae60;
+        }
+        
+        .info-tabs {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        
+        .tab {
+            padding: 10px 15px;
+            background-color: #ddd;
+            cursor: pointer;
+            margin-right: 5px;
+            border-radius: 4px 4px 0 0;
+        }
+        
+        .tab.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .explanation {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed #ddd;
+        }
+        
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 3px 7px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 3px;
+            font-size: 0.8em;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        
+        <h1>Super Calculadora Avançada para Redes de Computadores</h1>
+        <p>Todas as ferramentas essenciais para técnicos e administradores de rede em um só lugar</p>
+    </div>
+    <br> <center>
+<a href="https://ivaldofs.com.br/">Inicio</a> |
+<a href="https://ivaldofs.com.br/sobre/">Sobre</a> |
+<a href="https://ivaldofs.com.br/contato/">Contato</a> | 
+<a href="https://ivaldofs.com.br/calculadora/2-grau/">2º Grau</a> |
+<a href="https://ivaldofs.com.br/calculadora/binario.html">Binário</a> |
+<a href="https://ivaldofs.com.br/calculadora/booleana/">Mapa Karnaugh</a> |
+<a href="https://ivaldofs.com.br/calculadora/cientifica.html">Cientifica</a> |
+<a href="https://ivaldofs.com.br/calculadora-ip">Sub-rede</a> |
+<a href="https://ivaldofs.com.br/matematica-computacional">Matemática Computacional</a> |
+<a href="https://ivaldofs.com.br/calculadora/lei-de-ohm.html">Lei de Ohm</a> |
+<a href="https://ivaldofs.com.br/calculadora/dividir-sub-rede.html">Dividir Sub-Redes</a>
+</center>
+<br>
+    <div class="info-tabs">
+        <div class="tab active" onclick="switchTab('subnetting')">Sub-redes</div>
+        <div class="tab" onclick="switchTab('addressing')">Endereçamento IP</div>
+        <div class="tab" onclick="switchTab('bandwidth')">Largura de Banda</div>
+        <div class="tab" onclick="switchTab('wireless')">Wireless</div>
+        <div class="tab" onclick="switchTab('advanced')">Avançado</div>
+    </div>
+    
+    <!-- TAB 1: Sub-redes -->
+    <div id="subnetting" class="tab-content active">
+        <div class="container">
+            <!-- Calculadora de Máscara de Sub-rede -->
+            <div class="tool">
+                <h3>Calculadora de Máscara de Sub-rede</h3>
+                <p>Número de hosts necessários: <input type="number" id="hosts-needed" min="2" value="30"></p>
+                <button onclick="calculateSubnetMask()">Calcular Máscara</button>
+                <div class="result" id="subnetMaskResult"></div>
+                <div class="explanation">
+                    Calcula a máscara de sub-rede e o número mágico com base no número de hosts necessários, 
+                    considerando a próxima potência de 2 que acomoda os hosts + 2 (rede e broadcast).
+                </div>
+            </div>
+            
+            <!-- Calculadora de Broadcast -->
+            <div class="tool">
+                <h3>Calculadora de Broadcast</h3>
+                <p>Endereço de Rede: 
+                    <input type="number" class="ip-input" id="net-1" min="0" max="255" value="192">.
+                    <input type="number" class="ip-input" id="net-2" min="0" max="255" value="168">.
+                    <input type="number" class="ip-input" id="net-3" min="0" max="255" value="1">.
+                    <input type="number" class="ip-input" id="net-4" min="0" max="255" value="0">
+                </p>
+                <p>Máscara: 
+                    <input type="number" class="ip-input" id="mask-1" min="0" max="255" value="255">.
+                    <input type="number" class="ip-input" id="mask-2" min="0" max="255" value="255">.
+                    <input type="number" class="ip-input" id="mask-3" min="0" max="255" value="255">.
+                    <input type="number" class="ip-input" id="mask-4" min="0" max="255" value="0">
+                </p>
+                <button onclick="calculateBroadcastFromMask()">Calcular Broadcast</button>
+                <div class="result" id="broadcastResult"></div>
+                <div class="explanation">
+                    Calcula o endereço de broadcast a partir do endereço de rede e máscara, sem necessidade 
+                    de inserir o número mágico manualmente.
+                </div>
+            </div>
+            
+            <!-- Calculadora de Endereço de Rede -->
+            <div class="tool">
+                <h3>Calculadora de Endereço de Rede</h3>
+                <p>Endereço IP: 
+                    <input type="number" class="ip-input" id="ip-1" min="0" max="255" value="192">.
+                    <input type="number" class="ip-input" id="ip-2" min="0" max="255" value="168">.
+                    <input type="number" class="ip-input" id="ip-3" min="0" max="255" value="1">.
+                    <input type="number" class="ip-input" id="ip-4" min="0" max="255" value="15">
+                </p>
+                <p>Máscara: 
+                    <input type="number" class="ip-input" id="mask-net-1" min="0" max="255" value="255">.
+                    <input type="number" class="ip-input" id="mask-net-2" min="0" max="255" value="255">.
+                    <input type="number" class="ip-input" id="mask-net-3" min="0" max="255" value="255">.
+                    <input type="number" class="ip-input" id="mask-net-4" min="0" max="255" value="240">
+                </p>
+                <button onclick="calculateNetworkAddressFromIP()">Calcular Rede</button>
+                <div class="result" id="networkAddressResult"></div>
+                <div class="explanation">
+                    Determina o endereço de rede a partir de um IP e máscara, calculando automaticamente os octetos 
+                    relevantes sem necessidade do número mágico.
+                </div>
+            </div>
+            
+            <!-- Divisor de Rede FLSM -->
+            <div class="tool">
+                <h3>Divisor de Rede (FLSM)</h3>
+                <p>Endereço de Rede: 
+                    <input type="number" class="ip-input" id="flsm-net-1" min="0" max="255" value="192">.
+                    <input type="number" class="ip-input" id="flsm-net-2" min="0" max="255" value="168">.
+                    <input type="number" class="ip-input" id="flsm-net-3" min="0" max="255" value="1">.
+                    <input type="number" class="ip-input" id="flsm-net-4" min="0" max="255" value="0">
+                </p>
+                <p>Máscara: 
+                    <input type="number" class="ip-input" id="flsm-mask-1" min="0" max="255" value="255">.
+                    <input type="number" class="ip-input" id="flsm-mask-2" min="0" max="255" value="255">.
+                    <input type="number" class="ip-input" id="flsm-mask-3" min="0" max="255" value="255">.
+                    <input type="number" class="ip-input" id="flsm-mask-4" min="0" max="255" value="0">
+                </p>
+                <p>Número de sub-redes: <input type="number" id="flsm-count" min="1" value="4"></p>
+                <button onclick="divideNetworkFLSM()">Dividir Rede</button>
+                <div class="result" id="flsmResult"></div>
+                <div class="explanation">
+                    Divide uma rede em sub-redes de tamanho fixo (FLSM) com base no número de sub-redes desejadas, 
+                    calculando automaticamente a nova máscara e os intervalos.
+                </div>
+            </div>
+            
+            <!-- Divisor de Rede VLSM -->
+            <div class="tool">
+                <h3>Divisor de Rede (VLSM)</h3>
+                <p>Endereço de Rede: 
+                    <input type="number" class="ip-input" id="vlsm-net-1" min="0" max="255" value="192">.
+                    <input type="number" class="ip-input" id="vlsm-net-2" min="0" max="255" value="168">.
+                    <input type="number" class="ip-input" id="vlsm-net-3" min="0" max="255" value="1">.
+                    <input type="number" class="ip-input" id="vlsm-net-4" min="0" max="255" value="0">
+                </p>
+                <p>Máscara: 
+                    <input type="number" class="ip-input" id="vlsm-mask-1" min="0" max="255" value="255">.
+                    <input type="number" class="ip-input" id="vlsm-mask-2" min="0" max="255" value="255">.
+                    <input type="number" class="ip-input" id="vlsm-mask-3" min="0" max="255" value="255">.
+                    <input type="number" class="ip-input" id="vlsm-mask-4" min="0" max="255" value="0">
+                </p>
+                <p>Hosts por sub-rede (separados por vírgula): <input type="text" id="vlsm-hosts" value="50,25,10"></p>
+                <button onclick="divideNetworkVLSM()">Dividir Rede</button>
+                <div class="result" id="vlsmResult"></div>
+                <div class="explanation">
+                    Divide uma rede em sub-redes de tamanho variável (VLSM) com base no número de hosts necessários 
+                    para cada sub-rede, otimizando o espaço de endereçamento.
+                </div>
+            </div>
+            
+            <!-- Verificador de Mesma Rede -->
+            <div class="tool">
+                <h3>Verificador de Mesma Rede</h3>
+                <p>IP 1: 
+                    <input type="number" class="ip-input" id="same-ip1-1" min="0" max="255" value="192">.
+                    <input type="number" class="ip-input" id="same-ip1-2" min="0" max="255" value="168">.
+                    <input type="number" class="ip-input" id="same-ip1-3" min="0" max="255" value="1">.
+                    <input type="number" class="ip-input" id="same-ip1-4" min="0" max="255" value="10">
+                </p>
+                <p>IP 2: 
+                    <input type="number" class="ip-input" id="same-ip2-1" min="0" max="255" value="192">.
+                    <input type="number" class="ip-input" id="same-ip2-2" min="0" max="255" value="168">.
+                    <input type="number" class="ip-input" id="same-ip2-3" min="0" max="255" value="1">.
+                    <input type="number" class="ip-input" id="same-ip2-4" min="0" max="255" value="20">
+                </p>
+                <p>Máscara: 
+                    <input type="number" class="ip-input" id="same-mask-1" min="0" max="255" value="255">.
+                    <input type="number" class="ip-input" id="same-mask-2" min="0" max="255" value="255">.
+                    <input type="number" class="ip-input" id="same-mask-3" min="0" max="255" value="255">.
+                    <input type="number" class="ip-input" id="same-mask-4" min="0" max="255" value="0">
+                </p>
+                <button onclick="checkSameNetwork()">Verificar</button>
+                <div class="result" id="sameNetworkResult"></div>
+                <div class="explanation">
+                    Verifica se dois endereços IP estão na mesma rede com base na máscara fornecida, 
+                    mostrando os endereços de rede calculados para cada IP.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- TAB 2: Endereçamento IP -->
+    <div id="addressing" class="tab-content">
+        <div class="container">
+            <!-- Conversor Binário-Decimal -->
+            <div class="tool">
+                <h3>Conversor Binário-Decimal</h3>
+                <p>Endereço IP: 
+                    <input type="number" class="ip-input" id="bin-ip-1" min="0" max="255" value="192">.
+                    <input type="number" class="ip-input" id="bin-ip-2" min="0" max="255" value="168">.
+                    <input type="number" class="ip-input" id="bin-ip-3" min="0" max="255" value="1">.
+                    <input type="number" class="ip-input" id="bin-ip-4" min="0" max="255" value="1">
+                </p>
+                <button onclick="convertIPToBinary()">Converter para Binário</button>
+                <div class="result" id="binaryResult"></div>
+                <div class="explanation">
+                    Converte um endereço IP de notação decimal para binário, mostrando cada octeto em 8 bits.
+                </div>
+            </div>
+            
+            <!-- Identificador de Classe IP -->
+            <div class="tool">
+                <h3>Identificador de Classe IP</h3>
+                <p>Endereço IP: 
+                    <input type="number" class="ip-input" id="class-ip-1" min="0" max="255" value="10">.
+                    <input type="number" class="ip-input" id="class-ip-2" min="0" max="255" value="0">.
+                    <input type="number" class="ip-input" id="class-ip-3" min="0" max="255" value="0">.
+                    <input type="number" class="ip-input" id="class-ip-4" min="0" max="255" value="1">
+                </p>
+                <button onclick="identifyIPClass()">Identificar Classe</button>
+                <div class="result" id="ipClassResult"></div>
+                <div class="explanation">
+                    Identifica a classe do endereço IP (A, B, C, D ou E) e se é público ou privado.
+                </div>
+            </div>
+            
+            <!-- Calculadora de CIDR -->
+            <div class="tool">
+                <h3>Calculadora CIDR</h3>
+                <p>Máscara: 
+                    <input type="number" class="ip-input" id="cidr-mask-1" min="0" max="255" value="255">.
+                    <input type="number" class="ip-input" id="cidr-mask-2" min="0" max="255" value="255">.
+                    <input type="number" class="ip-input" id="cidr-mask-3" min="0" max="255" value="255">.
+                    <input type="number" class="ip-input" id="cidr-mask-4" min="0" max="255" value="0">
+                </p>
+                <button onclick="calculateCIDR()">Calcular Notação CIDR</button>
+                <div class="result" id="cidrResult"></div>
+                <div class="explanation">
+                    Converte uma máscara de sub-rede em notação decimal para notação CIDR (/24, /16, etc.).
+                </div>
+            </div>
+            
+            <!-- Calculadora de Faixa de IPs -->
+            <div class="tool">
+                <h3>Calculadora de Faixa de IPs</h3>
+                <p>Endereço de Rede: 
+                    <input type="number" class="ip-input" id="range-net-1" min="0" max="255" value="192">.
+                    <input type="number" class="ip-input" id="range-net-2" min="0" max="255" value="168">.
+                    <input type="number" class="ip-input" id="range-net-3" min="0" max="255" value="1">.
+                    <input type="number" class="ip-input" id="range-net-4" min="0" max="255" value="0">
+                </p>
+                <p>Máscara: 
+                    <input type="number" class="ip-input" id="range-mask-1" min="0" max="255" value="255">.
+                    <input type="number" class="ip-input" id="range-mask-2" min="0" max="255" value="255">.
+                    <input type="number" class="ip-input" id="range-mask-3" min="0" max="255" value="255">.
+                    <input type="number" class="ip-input" id="range-mask-4" min="0" max="255" value="128">
+                </p>
+                <button onclick="calculateIPRange()">Calcular Faixa</button>
+                <div class="result" id="ipRangeResult"></div>
+                <div class="explanation">
+                    Calcula o primeiro e último endereço IP válido, endereço de rede e broadcast para uma dada rede.
+                </div>
+            </div>
+            
+            <!-- Calculadora de Supernet -->
+            <div class="tool">
+                <h3>Calculadora de Supernet</h3>
+                <p>Endereços IP (um por linha):</p>
+                <textarea id="supernet-ips" rows="4" style="width: 100%;">192.168.1.0
+192.168.2.0
+192.168.3.0
+192.168.4.0</textarea>
+                <button onclick="calculateSupernet()">Calcular Supernet</button>
+                <div class="result" id="supernetResult"></div>
+                <div class="explanation">
+                    Calcula a supernet (agregação de rotas) mais eficiente para uma lista de redes, 
+                    retornando o bloco CIDR que as engloba.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- TAB 3: Largura de Banda -->
+    <div id="bandwidth" class="tab-content">
+        <div class="container">
+            <!-- Calculadora de Consumo de Banda -->
+            <div class="tool">
+                <h3>Calculadora de Consumo de Banda</h3>
+                <p>Número de usuários: <input type="number" id="bandwidth-users" min="1" value="50"></p>
+                <p>Aplicação: 
+                    <select id="bandwidth-app">
+                        <option value="email">E-mail (0.1 Mbps/user)</option>
+                        <option value="web">Navegação Web (0.5 Mbps/user)</option>
+                        <option value="voip">VoIP (0.1 Mbps/call)</option>
+                        <option value="video">Vídeo (2 Mbps/user)</option>
+                        <option value="vpn">VPN (1 Mbps/user)</option>
+                        <option value="custom">Personalizado</option>
+                    </select>
+                </p>
+                <div id="custom-bandwidth" style="display: none;">
+                    <p>Taxa por usuário (Mbps): <input type="number" id="custom-bandwidth-value" min="0.1" step="0.1" value="1"></p>
+                </div>
+                <p>Fator de simultaneidade (%): <input type="number" id="concurrency-factor" min="1" max="100" value="30"></p>
+                <button onclick="calculateBandwidth()">Calcular Banda Necessária</button>
+                <div class="result" id="bandwidthResult"></div>
+                <div class="explanation">
+                    Calcula a largura de banda necessária com base no número de usuários, tipo de aplicação 
+                    e fator de simultaneidade (porcentagem de usuários ativos ao mesmo tempo).
+                </div>
+            </div>
+            
+            <!-- Conversor de Unidades -->
+            <div class="tool">
+                <h3>Conversor de Unidades de Rede</h3>
+                <p>Valor: <input type="number" id="converter-value" min="0" step="0.01" value="100"></p>
+                <p>De: 
+                    <select id="converter-from">
+                        <option value="bps">bps</option>
+                        <option value="kbps">Kbps</option>
+                        <option value="mbps" selected>Mbps</option>
+                        <option value="gbps">Gbps</option>
+                        <option value="tbps">Tbps</option>
+                    </select>
+                </p>
+                <p>Para: 
+                    <select id="converter-to">
+                        <option value="bps">bps</option>
+                        <option value="kbps">Kbps</option>
+                        <option value="mbps">Mbps</option>
+                        <option value="gbps" selected>Gbps</option>
+                        <option value="tbps">Tbps</option>
+                    </select>
+                </p>
+                <button onclick="convertBandwidth()">Converter</button>
+                <div class="result" id="converterResult"></div>
+                <div class="explanation">
+                    Converte entre diferentes unidades de medida de largura de banda (bps, Kbps, Mbps, Gbps, Tbps).
+                </div>
+            </div>
+            
+            <!-- Calculadora de Throughput -->
+            <div class="tool">
+                <h3>Calculadora de Throughput</h3>
+                <p>Largura de banda (Mbps): <input type="number" id="throughput-bandwidth" min="1" value="100"></p>
+                <p>Overhead (%): <input type="number" id="throughput-overhead" min="0" max="100" value="20"></p>
+                <p>Latência (ms): <input type="number" id="throughput-latency" min="0" value="50"></p>
+                <p>Tamanho do pacote (bytes): <input type="number" id="throughput-packet" min="64" value="1500"></p>
+                <button onclick="calculateThroughput()">Calcular Throughput</button>
+                <div class="result" id="throughputResult"></div>
+                <div class="explanation">
+                    Calcula o throughput real considerando overhead de protocolo, latência e tamanho de pacote, 
+                    mostrando a taxa de transferência efetiva.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- TAB 4: Wireless -->
+    <div id="wireless" class="tab-content">
+        <div class="container">
+            <!-- Calculadora de Cobertura Wi-Fi -->
+            <div class="tool">
+                <h3>Calculadora de Cobertura Wi-Fi</h3>
+                <p>Área a cobrir (m²): <input type="number" id="wifi-area" min="10" value="500"></p>
+                <p>Tipo de ambiente: 
+                    <select id="wifi-environment">
+                        <option value="open">Aberto (escritório)</option>
+                        <option value="residential">Residencial</option>
+                        <option value="commercial">Comercial</option>
+                        <option value="industrial">Industrial</option>
+                    </select>
+                </p>
+                <p>Número de usuários: <input type="number" id="wifi-users" min="1" value="50"></p>
+                <p>Taxa de dados por usuário (Mbps): <input type="number" id="wifi-rate" min="1" value="5"></p>
+                <button onclick="calculateWiFiCoverage()">Calcular Cobertura</button>
+                <div class="result" id="wifiCoverageResult"></div>
+                <div class="explanation">
+                    Calcula o número estimado de pontos de acesso necessários para cobrir uma área com Wi-Fi, 
+                    considerando o tipo de ambiente e demanda de usuários.
+                </div>
+            </div>
+            
+            <!-- Calculadora de Potência de Sinal -->
+            <div class="tool">
+                <h3>Calculadora de Potência de Sinal</h3>
+                <p>Potência de transmissão (dBm): <input type="number" id="tx-power" min="0" max="30" value="20"></p>
+                <p>Ganho da antena TX (dBi): <input type="number" id="tx-gain" min="0" max="30" value="5"></p>
+                <p>Ganho da antena RX (dBi): <input type="number" id="rx-gain" min="0" max="30" value="3"></p>
+                <p>Perdas no cabo (dB): <input type="number" id="cable-loss" min="0" max="20" value="3"></p>
+                <p>Distância (metros): <input type="number" id="distance" min="1" value="50"></p>
+                <p>Frequência (GHz): <input type="number" id="frequency" min="2" max="6" step="0.1" value="2.4"></p>
+                <button onclick="calculateSignalStrength()">Calcular Potência de Recepção</button>
+                <div class="result" id="signalStrengthResult"></div>
+                <div class="explanation">
+                    Calcula a potência do sinal recebido (RSSI) usando a equação de Friis, considerando 
+                    parâmetros de transmissão, antenas, perdas e distância.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- TAB 5: Avançado -->
+    <div id="advanced" class="tab-content">
+        <div class="container">
+            <!-- Calculadora de VLANs -->
+            <div class="tool">
+                <h3>Calculadora de VLANs</h3>
+                <p>Número de departamentos: <input type="number" id="vlan-depts" min="1" max="4094" value="5"></p>
+                <p>Hosts por departamento: <input type="number" id="vlan-hosts" min="1" value="20"></p>
+                <p>Crescimento futuro (%): <input type="number" id="vlan-growth" min="0" max="200" value="20"></p>
+                <button onclick="calculateVLANs()">Calcular Esquema de VLANs</button>
+                <div class="result" id="vlanResult"></div>
+                <div class="explanation">
+                    Sugere um esquema de VLANs com base no número de departamentos e hosts, 
+                    considerando crescimento futuro e deixando espaço para expansão.
+                </div>
+            </div>
+            
+            <!-- Calculadora de ACL -->
+            <div class="tool">
+                <h3>Calculadora de ACL</h3>
+                <p>Número de regras necessárias: <input type="number" id="acl-rules" min="1" value="10"></p>
+                <p>Complexidade (1-simples, 5-complexa): <input type="number" id="acl-complexity" min="1" max="5" value="3"></p>
+                <p>Plataforma: 
+                    <select id="acl-platform">
+                        <option value="cisco">Cisco</option>
+                        <option value="junos">Juniper</option>
+                        <option value="linux">Linux</option>
+                        <option value="windows">Windows</option>
+                    </select>
+                </p>
+                <button onclick="calculateACL()">Gerar Modelo de ACL</button>
+                <div class="result" id="aclResult"></div>
+                <div class="explanation">
+                    Gera um modelo básico de Access Control List (ACL) com base no número de regras necessárias 
+                    e complexidade, adaptado para diferentes plataformas.
+                </div>
+            </div>
+            
+            <!-- Calculadora de UPS -->
+            <div class="tool">
+                <h3>Calculadora de Autonomia de UPS</h3>
+                <p>Consumo total (Watts): <input type="number" id="ups-watts" min="1" value="500"></p>
+                <p>Capacidade do UPS (VA): <input type="number" id="ups-va" min="100" value="1000"></p>
+                <p>Fator de potência: <input type="number" id="ups-pf" min="0.5" max="1" step="0.1" value="0.8"></p>
+                <p>Número de baterias: <input type="number" id="ups-batteries" min="1" value="2"></p>
+                <p>Capacidade por bateria (Ah): <input type="number" id="ups-ah" min="1" value="7"></p>
+                <p>Voltagem por bateria (V): <input type="number" id="ups-voltage" min="6" max="48" value="12"></p>
+                <button onclick="calculateUPS()">Calcular Autonomia</button>
+                <div class="result" id="upsResult"></div>
+                <div class="explanation">
+                    Calcula o tempo de autonomia de um UPS (no-break) com base no consumo dos equipamentos, 
+                    capacidade do UPS e configuração das baterias.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Função para alternar entre abas
+        function switchTab(tabId) {
+            // Esconder todas as abas
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Mostrar a aba selecionada
+            document.getElementById(tabId).classList.add('active');
+            
+            // Atualizar a aparência das guias
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+        }
+        
+        // Mostrar/ocultar campo de banda personalizada
+        document.getElementById('bandwidth-app').addEventListener('change', function() {
+            document.getElementById('custom-bandwidth').style.display = 
+                this.value === 'custom' ? 'block' : 'none';
+        });
+        
+        // Função para calcular a máscara de sub-rede com base no número de hosts
+        function calculateSubnetMask() {
+            try {
+                const hostsNeeded = parseInt(document.getElementById('hosts-needed').value);
+                
+                if (isNaN(hostsNeeded) || hostsNeeded < 2) {
+                    throw new Error("Número de hosts deve ser pelo menos 2");
+                }
+                
+                // Calcular tamanho da rede (próxima potência de 2 que acomoda hosts + 2)
+                const networkSize = Math.pow(2, Math.ceil(Math.log2(hostsNeeded + 2)));
+                
+                let magic, mask, cidr;
+                
+                if (networkSize <= 256) {
+                    magic = `0.0.0.${networkSize - 1}`;
+                    const lastOctet = 256 - networkSize;
+                    mask = `255.255.255.${lastOctet}`;
+                    cidr = 32 - Math.log2(networkSize);
+                } else if (networkSize <= 65536) {
+                    const thirdOctet = (networkSize / 256) - 1;
+                    magic = `0.0.${thirdOctet}.255`;
+                    const maskThirdOctet = 256 - (thirdOctet + 1);
+                    mask = `255.255.${maskThirdOctet}.0`;
+                    cidr = 24 - Math.log2(networkSize / 256);
+                } else {
+                    const secondOctet = (networkSize / 65536) - 1;
+                    magic = `0.${secondOctet}.255.255`;
+                    const maskSecondOctet = 256 - (secondOctet + 1);
+                    mask = `255.${maskSecondOctet}.0.0`;
+                    cidr = 16 - Math.log2(networkSize / 65536);
+                }
+                
+                // Exibir resultado
+                document.getElementById('subnetMaskResult').innerHTML = 
+                    `<strong>Hosts necessários:</strong> ${hostsNeeded}<br>
+                     <strong>Tamanho da rede:</strong> ${networkSize} endereços<br>
+                     <strong>Número Mágico:</strong> ${magic}<br>
+                     <strong>Máscara de Sub-rede:</strong> ${mask}<br>
+                     <strong>Notação CIDR:</strong> /${Math.floor(cidr)}<br>
+                     <strong>Hosts válidos:</strong> ${networkSize - 2}`;
+            } catch (error) {
+                document.getElementById('subnetMaskResult').innerHTML = 
+                    `<span class="error">Erro: ${error.message}</span>`;
+            }
+        }
+        
+        // Função para calcular o endereço de broadcast a partir da máscara
+        function calculateBroadcastFromMask() {
+            try {
+                // Obter endereço de rede e máscara
+                const net = [
+                    parseInt(document.getElementById('net-1').value),
+                    parseInt(document.getElementById('net-2').value),
+                    parseInt(document.getElementById('net-3').value),
+                    parseInt(document.getElementById('net-4').value)
+                ];
+                
+                const mask = [
+                    parseInt(document.getElementById('mask-1').value),
+                    parseInt(document.getElementById('mask-2').value),
+                    parseInt(document.getElementById('mask-3').value),
+                    parseInt(document.getElementById('mask-4').value)
+                ];
+                
+                // Validar entradas
+                if (net.concat(mask).some(isNaN)) {
+                    throw new Error("Todos os campos devem ser números válidos entre 0 e 255");
+                }
+                
+                // Calcular número mágico a partir da máscara
+                const magic = mask.map(octet => 255 - octet);
+                
+                // Calcular broadcast
+                const broadcast = net.map((octet, i) => octet + magic[i]);
+                
+                // Validar resultados
+                if (broadcast.some(octet => octet > 255)) {
+                    throw new Error("Endereço de broadcast inválido - verifique os valores de entrada");
+                }
+                
+                // Exibir resultado
+                document.getElementById('broadcastResult').innerHTML = 
+                    `<strong>Endereço de Rede:</strong> ${net.join('.')}<br>
+                     <strong>Máscara:</strong> ${mask.join('.')}<br>
+                     <strong>Número Mágico:</strong> ${magic.join('.')}<br>
+                     <strong>Endereço de Broadcast:</strong> ${broadcast.join('.')}<br>
+                     <strong>Faixa de IPs válidos:</strong> ${net.join('.')} - ${broadcast.join('.')}`;
+            } catch (error) {
+                document.getElementById('broadcastResult').innerHTML = 
+                    `<span class="error">Erro: ${error.message}</span>`;
+            }
+        }
+        
+        // Função para calcular o endereço de rede a partir de um IP e máscara
+        function calculateNetworkAddressFromIP() {
+            try {
+                // Obter IP e máscara
+                const ip = [
+                    parseInt(document.getElementById('ip-1').value),
+                    parseInt(document.getElementById('ip-2').value),
+                    parseInt(document.getElementById('ip-3').value),
+                    parseInt(document.getElementById('ip-4').value)
+                ];
+                
+                const mask = [
+                    parseInt(document.getElementById('mask-net-1').value),
+                    parseInt(document.getElementById('mask-net-2').value),
+                    parseInt(document.getElementById('mask-net-3').value),
+                    parseInt(document.getElementById('mask-net-4').value)
+                ];
+                
+                // Validar entradas
+                if (ip.concat(mask).some(isNaN)) {
+                    throw new Error("Todos os campos devem ser números válidos entre 0 e 255");
+                }
+                
+                // Calcular endereço de rede (AND lógico entre IP e máscara)
+                const network = ip.map((octet, i) => octet & mask[i]);
+                
+                // Calcular número mágico e broadcast
+                const magic = mask.map(octet => 255 - octet);
+                const broadcast = network.map((octet, i) => octet + magic[i]);
+                
+                // Exibir resultado
+                document.getElementById('networkAddressResult').innerHTML = 
+                    `<strong>Endereço IP:</strong> ${ip.join('.')}<br>
+                     <strong>Máscara:</strong> ${mask.join('.')}<br>
+                     <strong>Endereço de Rede:</strong> ${network.join('.')}<br>
+                     <strong>Número Mágico:</strong> ${magic.join('.')}<br>
+                     <strong>Endereço de Broadcast:</strong> ${broadcast.join('.')}<br>
+                     <strong>Hosts válidos:</strong> ${network.join('.')} - ${broadcast.join('.')}`;
+            } catch (error) {
+                document.getElementById('networkAddressResult').innerHTML = 
+                    `<span class="error">Erro: ${error.message}</span>`;
+            }
+        }
+        
+        // Função para dividir rede em sub-redes de tamanho fixo (FLSM)
+        function divideNetworkFLSM() {
+            try {
+                // Obter endereço de rede e máscara
+                const net = [
+                    parseInt(document.getElementById('flsm-net-1').value),
+                    parseInt(document.getElementById('flsm-net-2').value),
+                    parseInt(document.getElementById('flsm-net-3').value),
+                    parseInt(document.getElementById('flsm-net-4').value)
+                ];
+                
+                const mask = [
+                    parseInt(document.getElementById('flsm-mask-1').value),
+                    parseInt(document.getElementById('flsm-mask-2').value),
+                    parseInt(document.getElementById('flsm-mask-3').value),
+                    parseInt(document.getElementById('flsm-mask-4').value)
+                ];
+                
+                const subnetCount = parseInt(document.getElementById('flsm-count').value);
+                
+                // Validar entradas
+                if (net.concat(mask, [subnetCount]).some(isNaN)) {
+                    throw new Error("Todos os campos devem ser números válidos");
+                }
+                
+                // Calcular número mágico e tamanho da rede original
+                const magic = mask.map(octet => 255 - octet);
+                const originalSize = (magic[0]+1) * (magic[1]+1) * (magic[2]+1) * (magic[3]+1);
+                
+                // Verificar se a divisão é possível
+                const subnetSize = originalSize / subnetCount;
+                if (!Number.isInteger(subnetSize) || subnetSize < 4) {
+                    throw new Error(`Não é possível dividir essa rede em ${subnetCount} sub-redes iguais`);
+                }
+                
+                // Determinar o novo mágico para as sub-redes
+                let newMagic, newMagicParts, newMask;
+                if (subnetSize <= 256) {
+                    newMagicParts = [0, 0, 0, subnetSize - 1];
+                    newMagic = newMagicParts.join('.');
+                    const lastOctet = 256 - subnetSize;
+                    newMask = `255.255.255.${lastOctet}`;
+                } else if (subnetSize <= 65536) {
+                    const thirdOctet = (subnetSize / 256) - 1;
+                    newMagicParts = [0, 0, thirdOctet, 255];
+                    newMagic = newMagicParts.join('.');
+                    const maskThirdOctet = 256 - (thirdOctet + 1);
+                    newMask = `255.255.${maskThirdOctet}.0`;
+                } else {
+                    const secondOctet = (subnetSize / 65536) - 1;
+                    newMagicParts = [0, secondOctet, 255, 255];
+                    newMagic = newMagicParts.join('.');
+                    const maskSecondOctet = 256 - (secondOctet + 1);
+                    newMask = `255.${maskSecondOctet}.0.0`;
+                }
+                
+                // Gerar informações das sub-redes
+                let resultHTML = `<strong>Rede original:</strong> ${net.join('.')}/${mask.join('.')}<br>
+                                 <strong>Tamanho original:</strong> ${originalSize} endereços<br>
+                                 <strong>Sub-redes:</strong> ${subnetCount} de ${subnetSize} endereços cada<br>
+                                 <strong>Nova máscara:</strong> ${newMask}<br>
+                                 <strong>Novo número mágico:</strong> ${newMagic}<br><br>
+                                 <strong>Detalhes das sub-redes:</strong><br><br>`;
+                
+                let currentNet = [...net];
+                
+                for (let i = 0; i < subnetCount; i++) {
+                    // Calcular broadcast da sub-rede
+                    const broadcast = [
+                        currentNet[0] + newMagicParts[0],
+                        currentNet[1] + newMagicParts[1],
+                        currentNet[2] + newMagicParts[2],
+                        currentNet[3] + newMagicParts[3]
+                    ];
+                    
+                    resultHTML += `Sub-rede ${i+1}:<br>
+                                  - Rede: ${currentNet.join('.')}<br>
+                                  - Broadcast: ${broadcast.join('.')}<br>
+                                  - Primeiro IP: ${currentNet[0]}.${currentNet[1]}.${currentNet[2]}.${currentNet[3]+1}<br>
+                                  - Último IP: ${broadcast[0]}.${broadcast[1]}.${broadcast[2]}.${broadcast[3]-1}<br>
+                                  - Hosts válidos: ${subnetSize - 2}<br><br>`;
+                    
+                    // Calcular próxima rede (incrementar o octeto apropriado)
+                    if (newMagicParts[3] < 255) {
+                        currentNet[3] = broadcast[3] + 1;
+                        if (currentNet[3] > 255) {
+                            currentNet[3] = 0;
+                            currentNet[2]++;
+                        }
+                    } else if (newMagicParts[2] < 255) {
+                        currentNet[2] = broadcast[2] + 1;
+                        if (currentNet[2] > 255) {
+                            currentNet[2] = 0;
+                            currentNet[1]++;
+                        }
+                        currentNet[3] = 0;
+                    } else {
+                        currentNet[1] = broadcast[1] + 1;
+                        currentNet[2] = 0;
+                        currentNet[3] = 0;
+                    }
+                }
+                
+                document.getElementById('flsmResult').innerHTML = resultHTML;
+            } catch (error) {
+                document.getElementById('flsmResult').innerHTML = 
+                    `<span class="error">Erro: ${error.message}</span>`;
+            }
+        }
+        
+        // Função para dividir rede em sub-redes de tamanho variável (VLSM)
+        function divideNetworkVLSM() {
+            try {
+                // Obter endereço de rede e máscara
+                const net = [
+                    parseInt(document.getElementById('vlsm-net-1').value),
+                    parseInt(document.getElementById('vlsm-net-2').value),
+                    parseInt(document.getElementById('vlsm-net-3').value),
+                    parseInt(document.getElementById('vlsm-net-4').value)
+                ];
+                
+                const mask = [
+                    parseInt(document.getElementById('vlsm-mask-1').value),
+                    parseInt(document.getElementById('vlsm-mask-2').value),
+                    parseInt(document.getElementById('vlsm-mask-3').value),
+                    parseInt(document.getElementById('vlsm-mask-4').value)
+                ];
+                
+                const hostsInput = document.getElementById('vlsm-hosts').value;
+                const hostsList = hostsInput.split(',').map(item => parseInt(item.trim())).filter(item => !isNaN(item));
+                
+                if (hostsList.length === 0) {
+                    throw new Error("Informe pelo menos um número válido de hosts");
+                }
+                
+                // Validar entradas
+                if (net.concat(mask).some(isNaN)) {
+                    throw new Error("Todos os campos de IP e máscara devem ser números válidos");
+                }
+                
+                // Ordenar hosts em ordem decrescente para alocação VLSM
+                const sortedHosts = [...hostsList].sort((a, b) => b - a);
+                
+                // Calcular número mágico e tamanho da rede original
+                const magic = mask.map(octet => 255 - octet);
+                const originalSize = (magic[0]+1) * (magic[1]+1) * (magic[2]+1) * (magic[3]+1);
+                
+                // Calcular sub-redes necessárias para cada grupo de hosts
+                const subnets = [];
+                let currentNet = [...net];
+                let remainingSize = originalSize;
+                
+                for (const hosts of sortedHosts) {
+                    // Calcular tamanho necessário (próxima potência de 2 que acomoda hosts + 2)
+                    const neededSize = Math.pow(2, Math.ceil(Math.log2(hosts + 2)));
+                    
+                    if (neededSize > remainingSize) {
+                        throw new Error(`Não há espaço suficiente para alocar uma sub-rede de ${hosts} hosts`);
+                    }
+                    
+                    // Determinar o mágico para esta sub-rede
+                    let subnetMagic, subnetMask;
+                    if (neededSize <= 256) {
+                        subnetMagic = [0, 0, 0, neededSize - 1];
+                        const lastOctet = 256 - neededSize;
+                        subnetMask = `255.255.255.${lastOctet}`;
+                    } else if (neededSize <= 65536) {
+                        const thirdOctet = (neededSize / 256) - 1;
+                        subnetMagic = [0, 0, thirdOctet, 255];
+                        const maskThirdOctet = 256 - (thirdOctet + 1);
+                        subnetMask = `255.255.${maskThirdOctet}.0`;
+                    } else {
+                        const secondOctet = (neededSize / 65536) - 1;
+                        subnetMagic = [0, secondOctet, 255, 255];
+                        const maskSecondOctet = 256 - (secondOctet + 1);
+                        subnetMask = `255.${maskSecondOctet}.0.0`;
+                    }
+                    
+                    // Calcular broadcast
+                    const broadcast = [
+                        currentNet[0] + subnetMagic[0],
+                        currentNet[1] + subnetMagic[1],
+                        currentNet[2] + subnetMagic[2],
+                        currentNet[3] + subnetMagic[3]
+                    ];
+                    
+                    // Adicionar sub-rede à lista
+                    subnets.push({
+                        hostsNeeded: hosts,
+                        network: [...currentNet],
+                        broadcast: [...broadcast],
+                        mask: subnetMask,
+                        magic: subnetMagic.join('.'),
+                        size: neededSize,
+                        firstHost: `${currentNet[0]}.${currentNet[1]}.${currentNet[2]}.${currentNet[3]+1}`,
+                        lastHost: `${broadcast[0]}.${broadcast[1]}.${broadcast[2]}.${broadcast[3]-1}`
+                    });
+                    
+                    // Calcular próxima rede
+                    if (subnetMagic[3] < 255) {
+                        currentNet[3] = broadcast[3] + 1;
+                        if (currentNet[3] > 255) {
+                            currentNet[3] = 0;
+                            currentNet[2]++;
+                        }
+                    } else if (subnetMagic[2] < 255) {
+                        currentNet[2] = broadcast[2] + 1;
+                        if (currentNet[2] > 255) {
+                            currentNet[2] = 0;
+                            currentNet[1]++;
+                        }
+                        currentNet[3] = 0;
+                    } else {
+                        currentNet[1] = broadcast[1] + 1;
+                        currentNet[2] = 0;
+                        currentNet[3] = 0;
+                    }
+                    
+                    remainingSize -= neededSize;
+                }
+                
+                // Gerar resultado
+                let resultHTML = `<strong>Rede original:</strong> ${net.join('.')}/${mask.join('.')}<br>
+                                 <strong>Tamanho original:</strong> ${originalSize} endereços<br>
+                                 <strong>Hosts solicitados:</strong> ${hostsList.join(', ')}<br>
+                                 <strong>Sub-redes criadas:</strong> ${subnets.length}<br>
+                                 <strong>Espaço utilizado:</strong> ${originalSize - remainingSize}/${originalSize}<br><br>
+                                 <strong>Detalhes das sub-redes:</strong><br><br>`;
+                
+                subnets.forEach((subnet, index) => {
+                    resultHTML += `Sub-rede ${index+1} (${subnet.hostsNeeded} hosts):<br>
+                                  - Rede: ${subnet.network.join('.')}<br>
+                                  - Máscara: ${subnet.mask}<br>
+                                  - Número mágico: ${subnet.magic}<br>
+                                  - Broadcast: ${subnet.broadcast.join('.')}<br>
+                                  - Primeiro IP: ${subnet.firstHost}<br>
+                                  - Último IP: ${subnet.lastHost}<br>
+                                  - Tamanho: ${subnet.size} endereços (${subnet.size-2} hosts válidos)<br><br>`;
+                });
+                
+                if (remainingSize > 0) {
+                    resultHTML += `<strong>Espaço livre restante:</strong> ${remainingSize} endereços`;
+                }
+                
+                document.getElementById('vlsmResult').innerHTML = resultHTML;
+            } catch (error) {
+                document.getElementById('vlsmResult').innerHTML = 
+                    `<span class="error">Erro: ${error.message}</span>`;
+            }
+        }
+        
+        // Função para verificar se dois IPs estão na mesma rede
+        function checkSameNetwork() {
+            try {
+                // Obter IPs e máscara
+                const ip1 = [
+                    parseInt(document.getElementById('same-ip1-1').value),
+                    parseInt(document.getElementById('same-ip1-2').value),
+                    parseInt(document.getElementById('same-ip1-3').value),
+                    parseInt(document.getElementById('same-ip1-4').value)
+                ];
+                
+                const ip2 = [
+                    parseInt(document.getElementById('same-ip2-1').value),
+                    parseInt(document.getElementById('same-ip2-2').value),
+                    parseInt(document.getElementById('same-ip2-3').value),
+                    parseInt(document.getElementById('same-ip2-4').value)
+                ];
+                
+                const mask = [
+                    parseInt(document.getElementById('same-mask-1').value),
+                    parseInt(document.getElementById('same-mask-2').value),
+                    parseInt(document.getElementById('same-mask-3').value),
+                    parseInt(document.getElementById('same-mask-4').value)
+                ];
+                
+                // Validar entradas
+                if (ip1.concat(ip2, mask).some(isNaN)) {
+                    throw new Error("Todos os campos devem ser números válidos entre 0 e 255");
+                }
+                
+                // Calcular endereços de rede (AND lógico entre IP e máscara)
+                const net1 = ip1.map((octet, i) => octet & mask[i]);
+                const net2 = ip2.map((octet, i) => octet & mask[i]);
+                
+                // Verificar se estão na mesma rede
+                const sameNetwork = net1.every((octet, i) => octet === net2[i]);
+                
+                // Exibir resultado
+                document.getElementById('sameNetworkResult').innerHTML = 
+                    `<strong>Endereço de Rede do IP 1:</strong> ${net1.join('.')}<br>
+                     <strong>Endereço de Rede do IP 2:</strong> ${net2.join('.')}<br>
+                     <strong>Resultado:</strong> ${sameNetwork ? 
+                        '<span class="success">Os IPs estão na mesma rede</span>' : 
+                        '<span class="error">Os IPs estão em redes diferentes</span>'}`;
+            } catch (error) {
+                document.getElementById('sameNetworkResult').innerHTML = 
+                    `<span class="error">Erro: ${error.message}</span>`;
+            }
+        }
+        
+        // Função para converter IP para binário
+        function convertIPToBinary() {
+            try {
+                const ip = [
+                    parseInt(document.getElementById('bin-ip-1').value),
+                    parseInt(document.getElementById('bin-ip-2').value),
+                    parseInt(document.getElementById('bin-ip-3').value),
+                    parseInt(document.getElementById('bin-ip-4').value)
+                ];
+                
+                if (ip.some(isNaN)) {
+                    throw new Error("Todos os campos devem ser números válidos entre 0 e 255");
+                }
+                
+                const binary = ip.map(octet => {
+                    const binStr = octet.toString(2);
+                    return '0'.repeat(8 - binStr.length) + binStr;
+                });
+                
+                document.getElementById('binaryResult').innerHTML = 
+                    `<strong>Decimal:</strong> ${ip.join('.')}<br>
+                     <strong>Binário:</strong> ${binary.join('.')}`;
+            } catch (error) {
+                document.getElementById('binaryResult').innerHTML = 
+                    `<span class="error">Erro: ${error.message}</span>`;
+            }
+        }
+        
+        // Função para identificar classe do IP
+        function identifyIPClass() {
+            try {
+                const ip = [
+                    parseInt(document.getElementById('class-ip-1').value),
+                    parseInt(document.getElementById('class-ip-2').value),
+                    parseInt(document.getElementById('class-ip-3').value),
+                    parseInt(document.getElementById('class-ip-4').value)
+                ];
+                
+                if (ip.some(isNaN)) {
+                    throw new Error("Todos os campos devem ser números válidos entre 0 e 255");
+                }
+                
+                let ipClass, ipType;
+                const firstOctet = ip[0];
+                
+                // Determinar classe
+                if (firstOctet >= 1 && firstOctet <= 126) {
+                    ipClass = 'A';
+                } else if (firstOctet >= 128 && firstOctet <= 191) {
+                    ipClass = 'B';
+                } else if (firstOctet >= 192 && firstOctet <= 223) {
+                    ipClass = 'C';
+                } else if (firstOctet >= 224 && firstOctet <= 239) {
+                    ipClass = 'D (Multicast)';
+                } else if (firstOctet >= 240 && firstOctet <= 255) {
+                    ipClass = 'E (Experimental)';
+                } else {
+                    ipClass = 'Inválido';
+                }
+                
+                // Determinar se é público ou privado
+                if (firstOctet === 10 || 
+                    (firstOctet === 172 && ip[1] >= 16 && ip[1] <= 31) || 
+                    (firstOctet === 192 && ip[1] === 168)) {
+                    ipType = 'Privado';
+                } else if (firstOctet === 127) {
+                    ipType = 'Loopback';
+                } else if (firstOctet === 169 && ip[1] === 254) {
+                    ipType = 'Link-local';
+                } else {
+                    ipType = 'Público';
+                }
+                
+                document.getElementById('ipClassResult').innerHTML = 
+                    `<strong>Endereço IP:</strong> ${ip.join('.')}<br>
+                     <strong>Classe:</strong> ${ipClass}<br>
+                     <strong>Tipo:</strong> ${ipType}`;
+            } catch (error) {
+                document.getElementById('ipClassResult').innerHTML = 
+                    `<span class="error">Erro: ${error.message}</span>`;
+            }
+        }
+        
+        // Função para calcular notação CIDR
+        function calculateCIDR() {
+            try {
+                const mask = [
+                    parseInt(document.getElementById('cidr-mask-1').value),
+                    parseInt(document.getElementById('cidr-mask-2').value),
+                    parseInt(document.getElementById('cidr-mask-3').value),
+                    parseInt(document.getElementById('cidr-mask-4').value)
+                ];
+                
+                if (mask.some(isNaN)) {
+                    throw new Error("Todos os campos devem ser números válidos entre 0 e 255");
+                }
+                
+                // Converter máscara para binário e contar os 1s
+                const binaryMask = mask.map(octet => {
+                    const binStr = octet.toString(2);
+                    return '0'.repeat(8 - binStr.length) + binStr;
+                }).join('');
+                
+                const cidr = binaryMask.split('1').length - 1;
+                
+                document.getElementById('cidrResult').innerHTML = 
+                    `<strong>Máscara:</strong> ${mask.join('.')}<br>
+                     <strong>Notação CIDR:</strong> /${cidr}`;
+            } catch (error) {
+                document.getElementById('cidrResult').innerHTML = 
+                    `<span class="error">Erro: ${error.message}</span>`;
+            }
+        }
+        
+        // Função para calcular faixa de IPs
+        function calculateIPRange() {
+            try {
+                const net = [
+                    parseInt(document.getElementById('range-net-1').value),
+                    parseInt(document.getElementById('range-net-2').value),
+                    parseInt(document.getElementById('range-net-3').value),
+                    parseInt(document.getElementById('range-net-4').value)
+                ];
+                
+                const mask = [
+                    parseInt(document.getElementById('range-mask-1').value),
+                    parseInt(document.getElementById('range-mask-2').value),
+                    parseInt(document.getElementById('range-mask-3').value),
+                    parseInt(document.getElementById('range-mask-4').value)
+                ];
+                
+                if (net.concat(mask).some(isNaN)) {
+                    throw new Error("Todos os campos devem ser números válidos entre 0 e 255");
+                }
+                
+                // Calcular número mágico e broadcast
+                const magic = mask.map(octet => 255 - octet);
+                const broadcast = net.map((octet, i) => octet + magic[i]);
+                
+                // Calcular primeiro e último IP válido
+                const firstHost = [...net];
+                firstHost[3] += 1; // Primeiro IP é rede + 1
+                
+                const lastHost = [...broadcast];
+                lastHost[3] -= 1; // Último IP é broadcast - 1
+                
+                // Calcular tamanho da rede
+                const networkSize = (magic[0]+1) * (magic[1]+1) * (magic[2]+1) * (magic[3]+1);
+                
+                document.getElementById('ipRangeResult').innerHTML = 
+                    `<strong>Endereço de Rede:</strong> ${net.join('.')}<br>
+                     <strong>Máscara:</strong> ${mask.join('.')}<br>
+                     <strong>Endereço de Broadcast:</strong> ${broadcast.join('.')}<br>
+                     <strong>Primeiro IP válido:</strong> ${firstHost.join('.')}<br>
+                     <strong>Último IP válido:</strong> ${lastHost.join('.')}<br>
+                     <strong>Tamanho da rede:</strong> ${networkSize} endereços<br>
+                     <strong>Hosts válidos:</strong> ${networkSize - 2}`;
+            } catch (error) {
+                document.getElementById('ipRangeResult').innerHTML = 
+                    `<span class="error">Erro: ${error.message}</span>`;
+            }
+        }
+        
+        // Função para calcular supernet
+        function calculateSupernet() {
+            try {
+                const ipsText = document.getElementById('supernet-ips').value;
+                const ips = ipsText.split('\n').filter(line => line.trim() !== '');
+                
+                if (ips.length < 2) {
+                    throw new Error("Informe pelo menos dois endereços IP");
+                }
+                
+                // Validar e converter IPs
+                const ipArrays = [];
+                for (const ip of ips) {
+                    const octets = ip.trim().split('.');
+                    if (octets.length !== 4) {
+                        throw new Error(`Formato inválido para IP: ${ip}`);
+                    }
+                    
+                    const ipArray = octets.map(octet => {
+                        const num = parseInt(octet);
+                        if (isNaN(num) || num < 0 || num > 255) {
+                            throw new Error(`Octeto inválido no IP: ${ip}`);
+                        }
+                        return num;
+                    });
+                    
+                    ipArrays.push(ipArray);
+                }
+                
+                // Encontrar prefixo comum mais longo
+                let commonBits = 0;
+                let done = false;
+                
+                for (let bit = 0; bit < 32 && !done; bit++) {
+                    const octetIndex = Math.floor(bit / 8);
+                    const bitInOctet = 7 - (bit % 8);
+                    const mask = 1 << bitInOctet;
+                    
+                    const reference = ipArrays[0][octetIndex] & mask;
+                    
+                    for (let i = 1; i < ipArrays.length; i++) {
+                        if ((ipArrays[i][octetIndex] & mask) !== reference) {
+                            done = true;
+                            break;
+                        }
+                    }
+                    
+                    if (!done) {
+                        commonBits++;
+                    }
+                }
+                
+                // Calcular endereço de supernet e máscara
+                const supernet = [0, 0, 0, 0];
+                const mask = [0, 0, 0, 0];
+                
+                for (let i = 0; i < 4; i++) {
+                    const bitsInOctet = Math.min(8, commonBits - i * 8);
+                    if (bitsInOctet <= 0) break;
+                    
+                    mask[i] = 256 - Math.pow(2, 8 - bitsInOctet);
+                    supernet[i] = ipArrays[0][i] & mask[i];
+                }
+                
+                document.getElementById('supernetResult').innerHTML = 
+                    `<strong>Endereços informados:</strong> ${ips.length}<br>
+                     <strong>Supernet:</strong> ${supernet.join('.')}/${commonBits}<br>
+                     <strong>Máscara:</strong> ${mask.join('.')}<br>
+                     <strong>Faixa:</strong> ${supernet.join('.')} - ${
+                        supernet.map((octet, i) => octet + (255 - mask[i])).join('.')}`;
+            } catch (error) {
+                document.getElementById('supernetResult').innerHTML = 
+                    `<span class="error">Erro: ${error.message}</span>`;
+            }
+        }
+        
+        // Função para calcular consumo de banda
+        function calculateBandwidth() {
+            try {
+                const users = parseInt(document.getElementById('bandwidth-users').value);
+                const app = document.getElementById('bandwidth-app').value;
+                const concurrency = parseInt(document.getElementById('concurrency-factor').value);
+                
+                if (isNaN(users) || users < 1) {
+                    throw new Error("Número de usuários inválido");
+                }
+                
+                if (isNaN(concurrency) || concurrency < 1 || concurrency > 100) {
+                    throw new Error("Fator de simultaneidade deve estar entre 1 e 100");
+                }
+                
+                // Determinar taxa por usuário
+                let ratePerUser;
+                switch (app) {
+                    case 'email': ratePerUser = 0.1; break;
+                    case 'web': ratePerUser = 0.5; break;
+                    case 'voip': ratePerUser = 0.1; break;
+                    case 'video': ratePerUser = 2; break;
+                    case 'vpn': ratePerUser = 1; break;
+                    case 'custom': 
+                        ratePerUser = parseFloat(document.getElementById('custom-bandwidth-value').value);
+                        if (isNaN(ratePerUser) || ratePerUser <= 0) {
+                            throw new Error("Taxa por usuário inválida");
+                        }
+                        break;
+                    default: ratePerUser = 0.5;
+                }
+                
+                // Calcular banda necessária
+                const activeUsers = Math.ceil(users * concurrency / 100);
+                const bandwidth = activeUsers * ratePerUser;
+                
+                // Sugerir link comercial
+                let suggestedLink = "Menos de 1 Mbps";
+                if (bandwidth >= 1000) suggestedLink = "1 Gbps ou mais";
+                else if (bandwidth >= 100) suggestedLink = "100 Mbps";
+                else if (bandwidth >= 10) suggestedLink = "10 Mbps";
+                else if (bandwidth >= 1) suggestedLink = "1 Mbps";
+                
+                document.getElementById('bandwidthResult').innerHTML = 
+                    `<strong>Usuários:</strong> ${users}<br>
+                     <strong>Usuários simultâneos (${concurrency}%):</strong> ${activeUsers}<br>
+                     <strong>Taxa por usuário:</strong> ${ratePerUser} Mbps<br>
+                     <strong>Largura de banda necessária:</strong> ${bandwidth.toFixed(2)} Mbps<br>
+                     <strong>Sugestão de link:</strong> ${suggestedLink}`;
+            } catch (error) {
+                document.getElementById('bandwidthResult').innerHTML = 
+                    `<span class="error">Erro: ${error.message}</span>`;
+            }
+        }
+        
+        // Função para converter unidades de banda
+        function convertBandwidth() {
+            try {
+                const value = parseFloat(document.getElementById('converter-value').value);
+                const from = document.getElementById('converter-from').value;
+                const to = document.getElementById('converter-to').value;
+                
+                if (isNaN(value) || value < 0) {
+                    throw new Error("Valor deve ser um número positivo");
+                }
+                
+                // Converter para bps (unidade base)
+                let bps;
+                switch (from) {
+                    case 'bps': bps = value; break;
+                    case 'kbps': bps = value * 1000; break;
+                    case 'mbps': bps = value * 1000000; break;
+                    case 'gbps': bps = value * 1000000000; break;
+                    case 'tbps': bps = value * 1000000000000; break;
+                    default: bps = value;
+                }
+                
+                // Converter de bps para unidade desejada
+                let result;
+                switch (to) {
+                    case 'bps': result = bps; break;
+                    case 'kbps': result = bps / 1000; break;
+                    case 'mbps': result = bps / 1000000; break;
+                    case 'gbps': result = bps / 1000000000; break;
+                    case 'tbps': result = bps / 1000000000000; break;
+                    default: result = bps;
+                }
+                
+                document.getElementById('converterResult').innerHTML = 
+                    `<strong>${value} ${from}</strong> = <strong>${result.toFixed(6)} ${to}</strong>`;
+            } catch (error) {
+                document.getElementById('converterResult').innerHTML = 
+                    `<span class="error">Erro: ${error.message}</span>`;
+            }
+        }
+        
+        // Função para calcular throughput
+        function calculateThroughput() {
+            try {
+                const bandwidth = parseFloat(document.getElementById('throughput-bandwidth').value);
+                const overhead = parseFloat(document.getElementById('throughput-overhead').value);
+                const latency = parseFloat(document.getElementById('throughput-latency').value);
+                const packetSize = parseFloat(document.getElementById('throughput-packet').value);
+                
+                if (isNaN(bandwidth) || bandwidth <= 0) {
+                    throw new Error("Largura de banda inválida");
+                }
+                
+                if (isNaN(overhead) || overhead < 0 || overhead > 100) {
+                    throw new Error("Overhead deve estar entre 0 e 100");
+                }
+                
+                if (isNaN(latency) || latency < 0) {
+                    throw new Error("Latência inválida");
+                }
+                
+                if (isNaN(packetSize) || packetSize < 64) {
+                    throw new Error("Tamanho de pacote inválido (mínimo 64 bytes)");
+                }
+                
+                // Calcular throughput considerando overhead
+                const effectiveBandwidth = bandwidth * (100 - overhead) / 100;
+                
+                // Calcular throughput considerando latência (usando fórmula simplificada)
+                const packetsPerSecond = (effectiveBandwidth * 1000000) / (packetSize * 8);
+                const effectiveThroughput = packetsPerSecond * packetSize * 8 / 
+                    (1 + packetsPerSecond * latency / 1000);
+                
+                document.getElementById('throughputResult').innerHTML = 
+                    `<strong>Largura de banda nominal:</strong> ${bandwidth} Mbps<br>
+                     <strong>Banda efetiva (${overhead}% overhead):</strong> ${effectiveBandwidth.toFixed(2)} Mbps<br>
+                     <strong>Throughput estimado:</strong> ${(effectiveThroughput / 1000000).toFixed(2)} Mbps<br>
+                     <strong>Pacotes/segundo:</strong> ${packetsPerSecond.toFixed(2)}`;
+            } catch (error) {
+                document.getElementById('throughputResult').innerHTML = 
+                    `<span class="error">Erro: ${error.message}</span>`;
+            }
+        }
+        
+        // Função para calcular cobertura Wi-Fi
+        function calculateWiFiCoverage() {
+            try {
+                const area = parseFloat(document.getElementById('wifi-area').value);
+                const environment = document.getElementById('wifi-environment').value;
+                const users = parseInt(document.getElementById('wifi-users').value);
+                const rate = parseFloat(document.getElementById('wifi-rate').value);
+                
+                if (isNaN(area) || area <= 0) {
+                    throw new Error("Área inválida");
+                }
+                
+                if (isNaN(users) || users <= 0) {
+                    throw new Error("Número de usuários inválido");
+                }
+                
+                if (isNaN(rate) || rate <= 0) {
+                    throw new Error("Taxa de dados inválida");
+                }
+                
+                // Determinar cobertura por AP com base no ambiente
+                let coveragePerAP;
+                switch (environment) {
+                    case 'open': coveragePerAP = 150; break; // Escritório aberto
+                    case 'residential': coveragePerAP = 100; break;
+                    case 'commercial': coveragePerAP = 80; break;
+                    case 'industrial': coveragePerAP = 50; break;
+                    default: coveragePerAP = 100;
+                }
+                
+                // Calcular número de APs para cobertura
+                const apsForCoverage = Math.ceil(area / coveragePerAP);
+                
+                // Calcular número de APs para capacidade (baseado em usuários)
+                // Assumindo ~25-50 usuários por AP dependendo da taxa de dados
+                const usersPerAP = Math.max(10, Math.min(50, Math.floor(50 / (rate / 5))));
+                const apsForCapacity = Math.ceil(users / usersPerAP);
+                
+                // O número necessário é o maior entre cobertura e capacidade
+                const apsNeeded = Math.max(apsForCoverage, apsForCapacity);
+                
+                document.getElementById('wifiCoverageResult').innerHTML = 
+                    `<strong>Área a cobrir:</strong> ${area} m²<br>
+                     <strong>Tipo de ambiente:</strong> ${document.getElementById('wifi-environment').options[
+                        document.getElementById('wifi-environment').selectedIndex].text}<br>
+                     <strong>APs para cobertura:</strong> ${apsForCoverage} (${coveragePerAP} m²/AP)<br>
+                     <strong>APs para capacidade:</strong> ${apsForCapacity} (~${usersPerAP} usuários/AP)<br>
+                     <strong>APs necessários:</strong> ${apsNeeded}<br>
+                     <strong>Banda total necessária:</strong> ${(users * rate).toFixed(2)} Mbps`;
+            } catch (error) {
+                document.getElementById('wifiCoverageResult').innerHTML = 
+                    `<span class="error">Erro: ${error.message}</span>`;
+            }
+        }
+        
+        // Função para calcular potência de sinal
+        function calculateSignalStrength() {
+            try {
+                const txPower = parseFloat(document.getElementById('tx-power').value);
+                const txGain = parseFloat(document.getElementById('tx-gain').value);
+                const rxGain = parseFloat(document.getElementById('rx-gain').value);
+                const cableLoss = parseFloat(document.getElementById('cable-loss').value);
+                const distance = parseFloat(document.getElementById('distance').value);
+                const frequency = parseFloat(document.getElementById('frequency').value);
+                
+                if (isNaN(txPower) || txPower < 0 || txPower > 30) {
+                    throw new Error("Potência de transmissão inválida (0-30 dBm)");
+                }
+                
+                if (isNaN(txGain) || txGain < 0 || txGain > 30) {
+                    throw new Error("Ganho da antena TX inválido (0-30 dBi)");
+                }
+                
+                if (isNaN(rxGain) || rxGain < 0 || rxGain > 30) {
+                    throw new Error("Ganho da antena RX inválido (0-30 dBi)");
+                }
+                
+                if (isNaN(cableLoss) || cableLoss < 0 || cableLoss > 20) {
+                    throw new Error("Perdas no cabo inválidas (0-20 dB)");
+                }
+                
+                if (isNaN(distance) || distance <= 0) {
+                    throw new Error("Distância inválida");
+                }
+                
+                if (isNaN(frequency) || frequency < 2 || frequency > 6) {
+                    throw new Error("Frequência inválida (2-6 GHz)");
+                }
+                
+                // Calcular perda no espaço livre (FSPL)
+                const fspl = 20 * Math.log10(distance) + 20 * Math.log10(frequency) + 20 * Math.log10(4 * Math.PI / 299792458);
+                
+                // Calcular potência recebida (RSSI)
+                const rssi = txPower + txGain + rxGain - cableLoss - fspl;
+                
+                // Interpretar o RSSI
+                let quality;
+                if (rssi >= -50) quality = "Excelente";
+                else if (rssi >= -60) quality = "Muito bom";
+                else if (rssi >= -70) quality = "Bom";
+                else if (rssi >= -80) quality = "Fraco";
+                else quality = "Muito fraco";
+                
+                document.getElementById('signalStrengthResult').innerHTML = 
+                    `<strong>Potência de transmissão:</strong> ${txPower} dBm<br>
+                     <strong>Ganho total:</strong> ${txGain + rxGain} dBi (TX: ${txGain} dBi, RX: ${rxGain} dBi)<br>
+                     <strong>Perdas totais:</strong> ${(cableLoss + fspl).toFixed(2)} dB (Cabo: ${cableLoss} dB, FSPL: ${fspl.toFixed(2)} dB)<br>
+                     <strong>Potência recebida (RSSI):</strong> ${rssi.toFixed(2)} dBm<br>
+                     <strong>Qualidade do sinal:</strong> ${quality}`;
+            } catch (error) {
+                document.getElementById('signalStrengthResult').innerHTML = 
+                    `<span class="error">Erro: ${error.message}</span>`;
+            }
+        }
+        
+        // Função para calcular esquema de VLANs
+        function calculateVLANs() {
+            try {
+                const depts = parseInt(document.getElementById('vlan-depts').value);
+                const hosts = parseInt(document.getElementById('vlan-hosts').value);
+                const growth = parseInt(document.getElementById('vlan-growth').value);
+                
+                if (isNaN(depts) || depts < 1 || depts > 4094) {
+                    throw new Error("Número de departamentos inválido (1-4094)");
+                }
+                
+                if (isNaN(hosts) || hosts < 1) {
+                    throw new Error("Número de hosts inválido");
+                }
+                
+                if (isNaN(growth) || growth < 0 || growth > 200) {
+                    throw new Error("Crescimento futuro inválido (0-200%)");
+                }
+                
+                // Calcular hosts com crescimento
+                const futureHosts = Math.ceil(hosts * (1 + growth / 100));
+                
+                // Calcular tamanho de VLAN necessário
+                const vlanSize = Math.pow(2, Math.ceil(Math.log2(futureHosts + 2)));
+                
+                // Sugerir esquema de VLANs
+                let resultHTML = `<strong>Departamentos:</strong> ${depts}<br>
+                                 <strong>Hosts por departamento:</strong> ${hosts}<br>
+                                 <strong>Crescimento futuro:</strong> ${growth}%<br>
+                                 <strong>Hosts futuros por departamento:</strong> ${futureHosts}<br>
+                                 <strong>Tamanho de VLAN sugerido:</strong> ${vlanSize} endereços (/${32 - Math.log2(vlanSize)})<br><br>
+                                 <strong>Esquema sugerido:</strong><br>`;
+                
+                // Sugerir IDs de VLAN (a partir de 100 para deixar espaço para VLANs padrão)
+                for (let i = 0; i < depts; i++) {
+                    const vlanId = 100 + i;
+                    const subnet = `10.${Math.floor(i / 256)}.${i % 256}.0`;
+                    const mask = `255.255.255.${256 - vlanSize}`;
+                    
+                    resultHTML += `VLAN ${vlanId}: Sub-rede ${subnet}/${32 - Math.log2(vlanSize)} (Máscara: ${mask})<br>`;
+                }
+                
+                // Adicionar recomendações
+                resultHTML += `<br><strong>Recomendações:</strong><br>
+                              - Utilize um switch gerenciável que suporte VLANs<br>
+                              - Configure um roteador ou switch layer 3 para roteamento entre VLANs<br>
+                              - Considere utilizar DHCP com escopos diferentes para cada VLAN`;
+                
+                document.getElementById('vlanResult').innerHTML = resultHTML;
+            } catch (error) {
+                document.getElementById('vlanResult').innerHTML = 
+                    `<span class="error">Erro: ${error.message}</span>`;
+            }
+        }
+        
+        // Função para gerar modelo de ACL
+        function calculateACL() {
+            try {
+                const rules = parseInt(document.getElementById('acl-rules').value);
+                const complexity = parseInt(document.getElementById('acl-complexity').value);
+                const platform = document.getElementById('acl-platform').value;
+                
+                if (isNaN(rules) || rules < 1) {
+                    throw new Error("Número de regras inválido");
+                }
+                
+                if (isNaN(complexity) || complexity < 1 || complexity > 5) {
+                    throw new Error("Complexidade inválida (1-5)");
+                }
+                
+                // Gerar modelo básico de ACL
+                let aclTemplate = "";
+                
+                switch (platform) {
+                    case 'cisco':
+                        aclTemplate = `access-list ${complexity >= 3 ? '100' : '1'} permit ip any any\n`;
+                        for (let i = 1; i < rules; i++) {
+                            aclTemplate += `access-list ${complexity >= 3 ? '100' : '1'} ${i % 2 === 0 ? 'permit' : 'deny'} ${complexity >= 4 ? 'tcp' : 'ip'} ${complexity >= 2 ? 'host 192.168.1.'+(i+1) : 'any'} ${complexity >= 2 ? 'host 10.0.0.'+(i+1) : 'any'}\n`;
+                        }
+                        aclTemplate += `interface ${complexity >= 3 ? 'GigabitEthernet0/1' : 'FastEthernet0/0'}\n`;
+                        aclTemplate += `ip access-group ${complexity >= 3 ? '100' : '1'} ${complexity >= 3 ? 'in' : 'out'}`;
+                        break;
+                        
+                    case 'junos':
+                        aclTemplate = `firewall {\n    family inet {\n        filter ACL {\n`;
+                        for (let i = 0; i < rules; i++) {
+                            aclTemplate += `            term ${i+1} {\n`;
+                            aclTemplate += `                from {\n`;
+                            if (complexity >= 2) aclTemplate += `                    source-address 192.168.1.${i+1}/32;\n`;
+                            if (complexity >= 4) aclTemplate += `                    protocol tcp;\n                    destination-port ${1000+i};\n`;
+                            aclTemplate += `                }\n`;
+                            aclTemplate += `                then ${i % 2 === 0 ? 'accept' : 'discard'};\n            }\n`;
+                        }
+                        aclTemplate += `        }\n    }\n}\n\napply to interface ${complexity >= 3 ? 'ge-0/0/0' : 'fe-0/0/0'}`;
+                        break;
+                        
+                    case 'linux':
+                        aclTemplate = `# iptables rules\n`;
+                        for (let i = 0; i < rules; i++) {
+                            aclTemplate += `iptables -A ${complexity >= 3 ? 'FORWARD' : 'INPUT'} ${complexity >= 2 ? '-s 192.168.1.'+(i+1) : ''} ${complexity >= 4 ? '-p tcp --dport '+(1000+i) : ''} -j ${i % 2 === 0 ? 'ACCEPT' : 'DROP'}\n`;
+                        }
+                        break;
+                        
+                    case 'windows':
+                        aclTemplate = `# Windows Firewall rules (PowerShell)\n`;
+                        for (let i = 0; i < rules; i++) {
+                            aclTemplate += `New-NetFirewallRule -DisplayName "Rule ${i+1}" -Direction Inbound ${complexity >= 2 ? '-RemoteAddress 192.168.1.'+(i+1) : ''} ${complexity >= 4 ? '-Protocol TCP -LocalPort '+(1000+i) : ''} -Action ${i % 2 === 0 ? 'Allow' : 'Block'}\n`;
+                        }
+                        break;
+                        
+                    default:
+                        aclTemplate = "Plataforma não suportada";
+                }
+                
+                document.getElementById('aclResult').innerHTML = 
+                    `<strong>Plataforma:</strong> ${document.getElementById('acl-platform').options[
+                        document.getElementById('acl-platform').selectedIndex].text}<br>
+                     <strong>Regras:</strong> ${rules}<br>
+                     <strong>Complexidade:</strong> ${complexity}/5<br><br>
+                     <strong>Modelo de ACL:</strong><br>
+                     <pre style="background: #f0f0f0; padding: 10px; border-radius: 5px; overflow-x: auto;">${aclTemplate}</pre>`;
+            } catch (error) {
+                document.getElementById('aclResult').innerHTML = 
+                    `<span class="error">Erro: ${error.message}</span>`;
+            }
+        }
+        
+        // Função para calcular autonomia de UPS
+        function calculateUPS() {
+            try {
+                const watts = parseFloat(document.getElementById('ups-watts').value);
+                const va = parseFloat(document.getElementById('ups-va').value);
+                const pf = parseFloat(document.getElementById('ups-pf').value);
+                const batteries = parseInt(document.getElementById('ups-batteries').value);
+                const ah = parseFloat(document.getElementById('ups-ah').value);
+                const voltage = parseFloat(document.getElementById('ups-voltage').value);
+                
+                if (isNaN(watts) || watts <= 0) {
+                    throw new Error("Consumo inválido");
+                }
+                
+                if (isNaN(va) || va <= 0) {
+                    throw new Error("Capacidade do UPS inválida");
+                }
+                
+                if (isNaN(pf) || pf < 0.5 || pf > 1) {
+                    throw new Error("Fator de potência inválido (0.5-1)");
+                }
+                
+                if (isNaN(batteries) || batteries <= 0) {
+                    throw new Error("Número de baterias inválido");
+                }
+                
+                if (isNaN(ah) || ah <= 0) {
+                    throw new Error("Capacidade da bateria inválida");
+                }
+                
+                if (isNaN(voltage) || voltage < 6 || voltage > 48) {
+                    throw new Error("Voltagem da bateria inválida");
+                }
+                
+                // Calcular capacidade total em Wh
+                const totalWh = batteries * ah * voltage;
+                
+                // Calcular autonomia em minutos
+                const runtime = (totalWh / watts) * 60;
+                
+                // Verificar se o UPS suporta a carga
+                const maxWatts = va * pf;
+                const loadPercentage = (watts / maxWatts) * 100;
+                
+                let loadStatus;
+                if (loadPercentage > 100) loadStatus = "Sobrecarga!";
+                else if (loadPercentage > 80) loadStatus = "Alta carga";
+                else if (loadPercentage > 50) loadStatus = "Carga moderada";
+                else loadStatus = "Carga leve";
+                
+                document.getElementById('upsResult').innerHTML = 
+                    `<strong>Consumo:</strong> ${watts} W<br>
+                     <strong>Capacidade do UPS:</strong> ${va} VA (${maxWatts.toFixed(0)} W)<br>
+                     <strong>Carga atual:</strong> ${loadPercentage.toFixed(1)}% (${loadStatus})<br>
+                     <strong>Configuração das baterias:</strong> ${batteries}x ${ah}Ah ${voltage}V<br>
+                     <strong>Capacidade total:</strong> ${totalWh.toFixed(0)} Wh<br>
+                     <strong>Autonomia estimada:</strong> ${Math.floor(runtime / 60)} horas e ${Math.floor(runtime % 60)} minutos`;
+            } catch (error) {
+                document.getElementById('upsResult').innerHTML = 
+                    `<span class="error">Erro: ${error.message}</span>`;
+            }
+        }
+        
+        
+        document.addEventListener('keydown', function(event) {
+    // Verifica se Ctrl (ou Cmd no Mac) e U estão pressionados simultaneamente
+    if ((event.ctrlKey || event.metaKey) && event.keyCode === 85) {
+        event.preventDefault(); // Impede a ação padrão
+        alert('A visualização do código fonte está desativada.');
+        // Você pode substituir o alert por outra ação se preferir
+    }
+});
+    </script>
+    
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/mKw2TjGw_F4?si=ZDvL6rfzPsUf5r0e" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    
+    <br>
+ <center><footer>
+        <p>&copy; Ivaldo Fernandes - Todos os direitos reservados.</p>
+  </footer></center>
+
+</body>
+</html>

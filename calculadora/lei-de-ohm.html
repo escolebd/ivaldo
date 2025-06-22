@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+    <title>Calculadora de Lei de Ohm</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Calculadora de Lei de Ohm",
+      "image": [
+        "/app/imagens/512x512.png"
+       ],
+      "datePublished": "2025-03-11T09:20:00-03:00",
+      "dateModified": "2025-03-11T09:20:00-03:00",
+      "author": [{
+          "@type": "Person",
+          "name": "Ivaldo Fernandes",
+          "url": "https://ivaldofs.com.br/"
+      }]
+    }
+    </script> 
+    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-947PJ1CXF0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-947PJ1CXF0');
+</script>
+
+<link rel="manifest" href="/app/manifest.json">
+<meta name="theme-color" content="#000000">
+
+ <link rel="icon" href="/app/imagens/512x512.png" type="image/x-icon">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Lei de Ohm</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #000080;
+        }
+        .warning {
+            background-color: #ffebee;
+            border-left: 4px solid #ff0000;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .warning p {
+            margin: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+        table td:first-child {
+            font-weight: bold;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        input[type="button"], input[type="reset"] {
+            background-color: #000080;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        input[type="button"]:hover, input[type="reset"]:hover {
+            background-color: #0000cc;
+        }
+        .examples {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .examples h2 {
+            color: #000080;
+            margin-top: 0;
+        }
+        .examples p {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <noscript>
+            <div class="warning">
+                <p><strong>Você não tem JavaScript habilitado.</strong></p>
+                <p>As conversões neste site requerem o uso de JavaScript. Ative antes de continuar.</p>
+            </div>
+        </noscript>
+
+        <h1>Calculadora de Lei de Ohm</h1>
+        <p class="instruction">A lei de Ohm diz que a corrente que flui em um circuito é proporcional à tensão aplicada entre ambos os pontos.
+Esta calculadora da lei de Ohm é utilizada para calcular potência, corrente, tensão ou resistência.</p>
+        <form name="ohmslaw">
+            <table>
+                <tr>
+                    <td>Voltagem</td>
+                    <td><input type="text" name="volts" size="10"></td>
+                    <td>
+                        <select name="unit_volts">
+                            <option value="0.001">milivolts</option>
+                            <option value="1" selected>volts</option>
+                            <option value="1000">kilovolts</option>
+                            <option value="1000000">megavolts</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Corrente</td>
+                    <td><input type="text" name="amps" size="10"></td>
+                    <td>
+                        <select name="unit_amps">
+                            <option value="0.001">miliamps</option>
+                            <option value="1" selected>amps</option>
+                            <option value="1000">kiloamps</option>
+                            <option value="1000000">megaamps</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Resistência</td>
+                    <td><input type="text" name="ohms" size="10"></td>
+                    <td>
+                        <select name="unit_ohms">
+                            <option value="0.001">miliohms</option>
+                            <option value="1" selected>ohms</option>
+                            <option value="1000">kilohms</option>
+                            <option value="1000000">megaohms</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Potência</td>
+                    <td><input type="text" name="watts" size="10"></td>
+                    <td>
+                        <select name="unit_watts">
+                            <option value="0.001">miliwatts</option>
+                            <option value="1" selected>watts</option>
+                            <option value="1000">kilowatts</option>
+                            <option value="1000000">megawatts</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" align="center">
+                        <input type="button" value="Calcular" onclick="calculate()">
+                        <input type="reset" value="Resetar">
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+        <!-- Seção de Exemplos Explicativos -->
+        <div class="examples">
+            <h2>Como Funciona?</h2>
+            <p>A Lei de Ohm é usada para calcular a relação entre tensão (V), corrente (I), resistência (R) e potência (P) em um circuito elétrico. Aqui estão alguns exemplos de como os cálculos são feitos:</p>
+
+            <h3>Exemplo 1: Calculando a Corrente (I)</h3>
+            <p>
+                <strong>Dados:</strong><br>
+                Tensão (V) = 12 volts<br>
+                Resistência (R) = 4 ohms<br>
+                <strong>Fórmula:</strong> I = V / R<br>
+                <strong>Cálculo:</strong> I = 12 / 4 = 3 amps<br>
+                <strong>Resultado:</strong> A corrente é de 3 amps.
+            </p>
+
+            <h3>Exemplo 2: Calculando a Tensão (V)</h3>
+            <p>
+                <strong>Dados:</strong><br>
+                Corrente (I) = 2 amps<br>
+                Resistência (R) = 5 ohms<br>
+                <strong>Fórmula:</strong> V = I * R<br>
+                <strong>Cálculo:</strong> V = 2 * 5 = 10 volts<br>
+                <strong>Resultado:</strong> A tensão é de 10 volts.
+            </p>
+
+            <h3>Exemplo 3: Calculando a Resistência (R)</h3>
+            <p>
+                <strong>Dados:</strong><br>
+                Tensão (V) = 9 volts<br>
+                Corrente (I) = 3 amps<br>
+                <strong>Fórmula:</strong> R = V / I<br>
+                <strong>Cálculo:</strong> R = 9 / 3 = 3 ohms<br>
+                <strong>Resultado:</strong> A resistência é de 3 ohms.
+            </p>
+
+            <h3>Exemplo 4: Calculando a Potência (P)</h3>
+            <p>
+                <strong>Dados:</strong><br>
+                Tensão (V) = 6 volts<br>
+                Corrente (I) = 2 amps<br>
+                <strong>Fórmula:</strong> P = V * I<br>
+                <strong>Cálculo:</strong> P = 6 * 2 = 12 watts<br>
+                <strong>Resultado:</strong> A potência é de 12 watts.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function stripBad(string) {
+            var valid = "eE-0123456789.";
+            var output = '';
+            for (var i = 0; i < string.length; i++) {
+                if (valid.indexOf(string.charAt(i)) !== -1) {
+                    output += string.charAt(i);
+                }
+            }
+            return output;
+        }
+
+        function calculate() {
+            var lvolts, lamps, lwatts, lohms;
+            var mvolts, mamps, mwatts, mohms;
+
+            with (document.ohmslaw) {
+                lvolts = stripBad(volts.value);
+                volts.value = lvolts;
+                lamps = stripBad(amps.value);
+                amps.value = lamps;
+                lwatts = stripBad(watts.value);
+                watts.value = lwatts;
+                lohms = stripBad(ohms.value);
+                ohms.value = lohms;
+
+                mvolts = parseFloat(unit_volts.value);
+                mamps = parseFloat(unit_amps.value);
+                mohms = parseFloat(unit_ohms.value);
+                mwatts = parseFloat(unit_watts.value);
+            }
+
+            var valueCount = 0;
+            if (lvolts === "") valueCount++;
+            if (lamps === "") valueCount++;
+            if (lwatts === "") valueCount++;
+            if (lohms === "") valueCount++;
+
+            if (valueCount !== 2) {
+                alert("Por favor preencha apenas dois valores, deixando os outros dois vazios!");
+                return;
+            }
+
+            if ((lvolts !== "") && (lamps !== "")) {
+                lvolts = parseFloat(lvolts) * mvolts;
+                lamps = parseFloat(lamps) * mamps;
+                lwatts = lvolts * lamps;
+                lohms = lvolts / lamps;
+            } else if ((lvolts !== "") && (lohms !== "")) {
+                lvolts = parseFloat(lvolts) * mvolts;
+                lohms = parseFloat(lohms) * mohms;
+                lwatts = (lvolts * lvolts) / lohms;
+                lamps = (lvolts / lohms);
+            } else if ((lvolts !== "") && (lwatts !== "")) {
+                lvolts = parseFloat(lvolts) * mvolts;
+                lwatts = parseFloat(lwatts) * mwatts;
+                lamps = lwatts / lvolts;
+                lohms = (lvolts * lvolts) / lwatts;
+            } else if ((lamps !== "") && (lohms !== "")) {
+                lamps = parseFloat(lamps) * mamps;
+                lohms = parseFloat(lohms) * mohms;
+                lvolts = lamps * lohms;
+                lwatts = (lamps * lamps) * lohms;
+            } else if ((lamps !== "") && (lwatts !== "")) {
+                lamps = parseFloat(lamps) * mamps;
+                lwatts = parseFloat(lwatts) * mwatts;
+                lvolts = lwatts / lamps;
+                lohms = lwatts / (lamps * lamps);
+            } else if ((lohms !== "") && (lwatts !== "")) {
+                lohms = parseFloat(lohms) * mohms;
+                lwatts = parseFloat(lwatts) * mwatts;
+                lvolts = Math.sqrt(lwatts * lohms);
+                lamps = Math.sqrt(lwatts / lohms);
+            }
+
+            with (document.ohmslaw) {
+                volts.value = lvolts / mvolts;
+                amps.value = lamps / mamps;
+                watts.value = lwatts / mwatts;
+                ohms.value = lohms / mohms;
+            }
+        }
+    </script>
+    <br> <center>
+<a href="https://ivaldofs.com.br/">Inicio</a> |
+<a href="https://ivaldofs.com.br/sobre/">Sobre</a> |
+<a href="https://ivaldofs.com.br/contato/">Contato</a> | 
+<a href="https://ivaldofs.com.br/calculadora/2-grau/">2º Grau</a> |
+<a href="https://ivaldofs.com.br/calculadora/booleana/">Mapa Karnaugh</a> |
+<a href="https://ivaldofs.com.br/calculadora/cientifica.html">Cientifica</a> |
+<a href="https://ivaldofs.com.br/calculadora-ip">Sub-rede</a> |
+<a href="https://ivaldofs.com.br/matematica-computacional">Matemática Computacional</a> |
+<a href="https://ivaldofs.com.br/calculadora/dividir-sub-rede.html">Dividir Sub-Redes</a> |
+<a href="https://ivaldofs.com.br/calculadora/administradores-de-redes.html">Calculadora Avançada para Redes</a>
+</center>
+<br>
+<br>
+    <br>
+    <center><footer>
+        <p>&copy; Ivaldo Fernandes - Todos os direitos reservados.</p>
+  </footer></center>
+
+<script src="/app/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    
+     <title>Calculadora Científica</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Calculadora Científica",
+      "image": [
+        "https://ivaldofs.com.br/wp-content/uploads/2024/03/cropped-ivaldo-512x512-1.png"
+       ],
+      "datePublished": "2025-03-02T22:20:00-03:00",
+      "dateModified": "2025-03-02T22:20:00-03:00",
+      "author": [{
+          "@type": "Person",
+          "name": "Ivaldo Fernandes",
+          "url": "https://ivaldofs.com.br/"
+      }]
+    }
+    </script> 
+    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-947PJ1CXF0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-947PJ1CXF0');
+</script>
+ <link rel="icon" href="https://ivaldofs.com.br/wp-content/uploads/2024/03/cropped-ivaldo-512x512-1.png" type="image/x-icon">
+    
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e2f;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: #2a2a3b;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            margin: auto;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 24px;
+            text-align: right;
+            border: none;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            background: #fff;
+            color: #000;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+        }
+
+        button {
+            padding: 15px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            background: #444;
+            color: white;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #666;
+        }
+
+        .func {
+            background: #ff9800;
+        }
+
+        .equal {
+            background: #4caf50;
+        }
+
+        .clear {
+            background: #c82333;
+        }
+
+        .history {
+            margin-top: 20px;
+            text-align: left;
+            background: #333;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 14px;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <br> <center>
+<a href="https://ivaldofs.com.br/">Inicio</a> |
+<a href="https://ivaldofs.com.br/sobre/">Sobre</a> |
+<a href="https://ivaldofs.com.br/contato/">Contato</a> | 
+<a href="https://ivaldofs.com.br/calculadora/2-grau/">2º Grau</a> |
+<a href="https://ivaldofs.com.br/calculadora/binario.html">Binário</a> |
+<a href="https://ivaldofs.com.br/calculadora/booleana/">Mapa Karnaugh</a> |
+<a href="https://ivaldofs.com.br/calculadora-ip">Sub-rede</a> |
+<a href="https://ivaldofs.com.br/matematica-computacional">Matemática Computacional</a> |
+<a href="https://ivaldofs.com.br/calculadora/lei-de-ohm.html">Lei de Ohm</a>
+<a href="https://ivaldofs.com.br/calculadora/dividir-sub-rede.html">Dividir Sub-Redes</a>
+</center>
+<br>
+        <h2>Calculadora Científica</h2>
+        <input type="text" id="display" disabled>
+
+        <div class="buttons">
+            <button onclick="limpar()" class="clear">C</button>
+            <button onclick="apagar()">⌫</button>
+            <button onclick="adicionar('(')">(</button>
+            <button onclick="adicionar(')')">)</button>
+            <button onclick="adicionar('/')">÷</button>
+
+            <button onclick="adicionar('7')">7</button>
+            <button onclick="adicionar('8')">8</button>
+            <button onclick="adicionar('9')">9</button>
+            <button onclick="adicionar('*')">×</button>
+            <button onclick="adicionar('-')">−</button>
+
+            <button onclick="adicionar('4')">4</button>
+            <button onclick="adicionar('5')">5</button>
+            <button onclick="adicionar('6')">6</button>
+            <button onclick="adicionar('+')">+</button>
+            <button onclick="adicionar('**')">xʸ</button>
+
+            <button onclick="adicionar('1')">1</button>
+            <button onclick="adicionar('2')">2</button>
+            <button onclick="adicionar('3')">3</button>
+            <button onclick="adicionar('%')">%</button>
+            <button onclick="adicionar('Math.sqrt(')">√</button>
+
+            <button onclick="adicionar('0')">0</button>
+            <button onclick="adicionar('.')">.</button>
+            <button onclick="calcular()" class="equal">=</button>
+            <button onclick="adicionar('Math.PI')" class="func">π</button>
+            <button onclick="adicionar('Math.E')" class="func">e</button>
+
+            <button onclick="adicionar('Math.sin(')" class="func">sin</button>
+            <button onclick="adicionar('Math.cos(')" class="func">cos</button>
+            <button onclick="adicionar('Math.tan(')" class="func">tan</button>
+            <button onclick="adicionar('Math.log(')" class="func">log</button>
+            <button onclick="adicionar('Math.exp(')" class="func">exp</button>
+        </div>
+
+        <div class="history">
+            <h3>Histórico</h3>
+            <ul id="historico"></ul>
+        </div>
+    </div>
+
+    <script>
+        let historico = [];
+
+        function adicionar(valor) {
+            document.getElementById("display").value += valor;
+        }
+
+        function limpar() {
+            document.getElementById("display").value = "";
+        }
+
+        function apagar() {
+            let display = document.getElementById("display");
+            display.value = display.value.slice(0, -1);
+        }
+
+        function calcular() {
+            let display = document.getElementById("display");
+            try {
+                let expressao = display.value;
+                let resultado = eval(expressao);
+                display.value = resultado;
+                salvarHistorico(expressao, resultado);
+            } catch (e) {
+                display.value = "Erro!";
+            }
+        }
+
+        function salvarHistorico(expressao, resultado) {
+            historico.unshift(`${expressao} = ${resultado}`);
+            if (historico.length > 5) historico.pop(); // Mantém apenas os 5 últimos cálculos
+            atualizarHistorico();
+        }
+
+        function atualizarHistorico() {
+            let listaHistorico = document.getElementById("historico");
+            listaHistorico.innerHTML = "";
+            historico.forEach(item => {
+                let li = document.createElement("li");
+                li.textContent = item;
+                listaHistorico.appendChild(li);
+            });
+        }
+
+        document.addEventListener("keydown", function(event) {
+            const key = event.key;
+            if (/[\d+\-*/().]/.test(key)) {
+                adicionar(key);
+            } else if (key === "Enter") {
+                calcular();
+            } else if (key === "Backspace") {
+                apagar();
+            } else if (key === "Escape") {
+                limpar();
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<title>Editor Online - HTML, CSS, JS</title>
+ <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Editor Online - HTML, CSS, JS",
+      "image": [
+        "/app/imagens/512x512.png"
+       ],
+      "datePublished": "2025-03-10T15:05:00-03:00",
+      "dateModified": "2025-03-10T15:05:00-03:00",
+      "author": [{
+          "@type": "Person",
+          "name": "Ivaldo Fernandes",
+          "url": "https://ivaldofs.com.br/"
+      }]
+    }
+    </script> 
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-947PJ1CXF0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-947PJ1CXF0');
+    </script>
+    
+    <link rel="manifest" href="/app/manifest.json">
+<meta name="theme-color" content="#000000">
+
+    
+    <link rel="icon" href="/app/imagens/512x512.png" type="image/x-icon">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs/loader.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            flex-direction: column;
+            background: #1e1e1e;
+            color: white;
+        }
+        #toolbar {
+            padding: 10px;
+            background: #252526;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        #editor-container {
+            flex: 1;
+            display: flex;
+        }
+        #editor {
+            width: 50%;
+            height: 100%;
+        }
+        #output-container {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid #333;
+        }
+        #output {
+            flex: 1;
+            border: none;
+            background: white;
+        }
+        #console {
+            height: 150px;
+            background: #1e1e1e;
+            color: white;
+            padding: 10px;
+            overflow-y: auto;
+            border-top: 1px solid #333;
+            font-family: monospace;
+        }
+        button, select {
+            background: #0e639c;
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            cursor: pointer;
+            margin-right: 5px;
+            border-radius: 4px;
+        }
+        button:hover, select:hover {
+            background: #1177bb;
+        }
+
+/* Barra branca para os links */
+        .menu-bar {
+            background: white; /* Fundo branco */
+            padding: 10px 0; /* Espaçamento interno */
+            text-align: center; /* Centraliza os links */
+            width: 100%; /* Ocupa toda a largura */
+        }
+
+
+    </style>
+</head>
+<body>
+<!-- Barra branca com os links -->
+    <div class="menu-bar">
+        <a href="https://ivaldofs.com.br/">Inicio</a> |
+        <a href="https://ivaldofs.com.br/sobre/">Sobre</a> |
+        <a href="https://ivaldofs.com.br/contato/">Contato</a> | 
+        <a href="https://ivaldofs.com.br/calculadora/1-grau.html">1º Grau</a> |
+        <a href="https://ivaldofs.com.br/calculadora/2-grau/">2º Grau</a> |
+        <a href="https://ivaldofs.com.br/calculadora/binario.html">Binário</a> |
+        <a href="https://ivaldofs.com.br/calculadora/booleana/">Mapa Karnaugh</a> |
+        <a href="https://ivaldofs.com.br/calculadora/cientifica.html">Cientifica</a> |
+        <a href="https://ivaldofs.com.br/calculadora-ip">Sub-rede</a> |
+        <a href="https://ivaldofs.com.br/matematica-computacional">Matemática Computacional</a> |
+        <a href="https://ivaldofs.com.br/calculadora/lei-de-ohm.html">Lei de Ohm</a>
+    </div>
+<h1>Editor Online - HTML, CSS, JS</h1>
+    <div id="toolbar">
+        <div>
+            <button onclick="executarCodigo()">▶ Executar</button>
+            <button onclick="salvarCodigo()">💾 Salvar</button>
+            <button onclick="carregarCodigo()">📂 Carregar</button>
+        </div>
+        <div>
+            <select id="themeSelector" onchange="alterarTema()">
+                <option value="vs-dark">🌙 Modo Escuro</option>
+                <option value="vs">☀ Modo Claro</option>
+                <option value="hc-black">🖤 Alto Contraste</option>
+            </select>
+        </div>
+    </div>
+
+    <div id="editor-container">
+        <div id="editor"></div>
+        <div id="output-container">
+            <iframe id="output"></iframe>
+            <div id="console">Console:</div>
+        </div>
+    </div>
+
+    <script>
+        let editor;
+
+        // Configuração do Monaco Editor
+        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs' } });
+
+        require(["vs/editor/editor.main"], function () {
+            editor = monaco.editor.create(document.getElementById("editor"), {
+                value: `<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Site</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+        h1 { color: blue; }
+    </style>
+</head>
+<body>
+    <h1>Olá, Mundo!</h1>
+    <script>
+        console.log("Bem-vindo ao editor avançado!");
+    <\/script>
+</body>
+</html>`,
+                language: "html",
+                theme: "vs-dark",
+                automaticLayout: true
+            });
+        });
+
+        // Função para executar o código
+        function executarCodigo() {
+            const codigo = editor.getValue();
+            const output = document.getElementById("output").contentWindow.document;
+            output.open();
+            output.write(codigo);
+            output.close();
+
+            // Captura logs do console
+            const consoleOutput = document.getElementById("console");
+            consoleOutput.innerHTML = "Console:\n";
+            const iframeWindow = document.getElementById("output").contentWindow;
+            iframeWindow.console.log = function (message) {
+                consoleOutput.innerHTML += `${message}\n`;
+            };
+            iframeWindow.console.error = function (message) {
+                consoleOutput.innerHTML += `<span style="color: red;">${message}</span>\n`;
+            };
+        }
+
+        // Função para alterar o tema do editor
+        function alterarTema() {
+            const tema = document.getElementById("themeSelector").value;
+            monaco.editor.setTheme(tema);
+        }
+
+        // Função para salvar o código
+        function salvarCodigo() {
+            const codigo = editor.getValue();
+            const blob = new Blob([codigo], { type: "text/html" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "codigo.html";
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Função para carregar o código
+        function carregarCodigo() {
+            const input = document.createElement("input");
+            input.type = "file";
+            input.accept = ".html,.css,.js";
+            input.onchange = function (event) {
+                const file = event.target.files[0];
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    editor.setValue(e.target.result);
+                };
+                reader.readAsText(file);
+            };
+            input.click();
+        }
+    </script>
+    
+    <br>
+    <center><footer>
+        <p>&copy; Ivaldo Fernandes - Todos os direitos reservados.</p>
+  </footer></center>
+
+<script src="/app/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Calculadora de Sub-rede IPv6",
+      "image": [
+        "/app/imagens/512x512.png"
+       ],
+      "datePublished": "2025-04-28T10:21:00-03:00",
+      "dateModified": "2025-04-28T10:21:00-03:00",
+      "author": [{
+          "@type": "Person",
+          "name": "Ivaldo Fernandes",
+          "url": "https://ivaldofs.com.br/"
+      }]
+    }
+    </script> 
+    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-947PJ1CXF0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-947PJ1CXF0');
+</script>
+ <link rel="icon" href="/app/imagens/512x512.png" type="image/x-icon">
+
+    <link rel="manifest" href="/app/manifest.json">
+    <meta name="theme-color" content="#000000">
+    
+    
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Sub-rede IPv6</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        a {
+            color: blue;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+        <br> <center>
+<a href="https://ivaldofs.com.br/">Inicio</a> |
+<a href="https://ivaldofs.com.br/sobre/">Sobre</a> |
+<a href="https://ivaldofs.com.br/contato/">Contato</a> | 
+<a href="https://ivaldofs.com.br/calculadora/2-grau/">2º Grau</a> |
+<a href="https://ivaldofs.com.br/calculadora/binario.html">Binário</a> |
+<a href="https://ivaldofs.com.br/calculadora/booleana/">Mapa Karnaugh</a> |
+<a href="https://ivaldofs.com.br/calculadora/cientifica.html">Cientifica</a> |
+<a href="https://ivaldofs.com.br/calculadora-ip">Sub-rede</a> |
+<a href="https://ivaldofs.com.br/matematica-computacional">Matemática Computacional</a> |
+<a href="https://ivaldofs.com.br/calculadora/lei-de-ohm.html">Lei de Ohm</a> |
+<a href="https://ivaldofs.com.br/calculadora/dividir-sub-rede.html">Dividir Sub-Redes</a> |
+<a href="https://ivaldofs.com.br/calculadora/administradores-de-redes.html">Calculadora Avançada para Redes</a>
+</center>
+<br>
+        <h1 class="text-3xl font-bold text-center mb-6">Calculadora de Sub-rede IPv6</h1>
+        
+        <!-- Tabs -->
+        <div class="flex flex-wrap border-b border-gray-200">
+            <button class="tab-btn px-4 py-2 font-semibold text-gray-700 bg-white border-t border-l border-r rounded-t focus:outline-none" onclick="openTab('prefix')">1. Identificar Prefixo</button>
+            <button class="tab-btn px-4 py-2 font-semibold text-gray-700 bg-white border-t border-l border-r rounded-t focus:outline-none" onclick="openTab('range')">2. Intervalo de Endereços</button>
+            <button class="tab-btn px-4 py-2 font-semibold text-gray-700 bg-white border-t border-l border-r rounded-t focus:outline-none" onclick="openTab('network')">3. Endereço de Rede</button>
+            <button class="tab-btn px-4 py-2 font-semibold text-gray-700 bg-white border-t border-l border-r rounded-t focus:outline-none" onclick="openTab('subnets')">4. Quantidade de Sub-redes</button>
+            <button class="tab-btn px-4 py-2 font-semibold text-gray-700 bg-white border-t border-l border-r rounded-t focus:outline-none" onclick="openTab('subnetting')">5. Dividir Sub-redes</button>
+            <button class="tab-btn px-4 py-2 font-semibold text-gray-700 bg-white border-t border-l border-r rounded-t focus:outline-none" onclick="openTab('size')">6. Tamanho da Sub-rede</button>
+            <button class="tab-btn px-4 py-2 font-semibold text-gray-700 bg-white border-t border-l border-r rounded-t focus:outline-none" onclick="openTab('slaac')">7. SLAAC e EUI-64</button>
+            <button class="tab-btn px-4 py-2 font-semibold text-gray-700 bg-white border-t border-l border-r rounded-t focus:outline-none" onclick="openTab('compression')">8. Compressão/Expansão</button>
+            <button class="tab-btn px-4 py-2 font-semibold text-gray-700 bg-white border-t border-l border-r rounded-t focus:outline-none" onclick="openTab('gateway')">9. Gateway/Multicast</button>
+            <button class="tab-btn px-4 py-2 font-semibold text-gray-700 bg-white border-t border-l border-r rounded-t focus:outline-none" onclick="openTab('types')">10. Tipos de Endereço</button>
+            <button class="tab-btn px-4 py-2 font-semibold text-gray-700 bg-white border-t border-l border-r rounded-t focus:outline-none" onclick="openTab('multicast')">11. Multicast</button>
+            <button class="tab-btn px-4 py-2 font-semibold text-gray-700 bg-white border-t border-l border-r rounded-t focus:outline-none" onclick="openTab('solicited')">12. Solicited-Node Multicast</button>
+        </div>
+
+        <!-- Tab Content -->
+        <div id="prefix" class="tab-content p-6 bg-white rounded-b-lg shadow">
+            <h2 class="text-2xl font-semibold mb-4">1. Identificar o Prefixo da Rede</h2>
+            <p class="mb-4">Insira um endereço IPv6 com o prefixo (ex: 2001:db8::/32) para extrair a parte de rede.</p>
+            <input id="prefixInput" type="text" placeholder="2001:db8::/32" class="border p-2 rounded w-full mb-4">
+            <button onclick="identifyPrefix()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Calcular</button>
+            <p id="prefixResult" class="mt-4"></p>
+        </div>
+
+        <div id="range" class="tab-content p-6 bg-white rounded-b-lg shadow">
+            <h2 class="text-2xl font-semibold mb-4">2. Calcular o Intervalo de Endereços</h2>
+            <p class="mb-4">Insira um endereço IPv6 com o prefixo para determinar o primeiro e último endereço.</p>
+            <input id="rangeInput" type="text" placeholder="2001:db8::/32" class="border p-2 rounded w-full mb-4">
+            <button onclick="calculateRange()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Calcular</button>
+            <p id="rangeResult" class="mt-4"></p>
+        </div>
+
+        <div id="network" class="tab-content p-6 bg-white rounded-b-lg shadow">
+            <h2 class="text-2xl font-semibold mb-4">3. Encontrar o Endereço de Rede</h2>
+            <p class="mb-4">Insira um endereço IPv6 com o prefixo para encontrar o endereço de rede.</p>
+            <input id="networkInput" type="text" placeholder="2001:db8::1/32" class="border p-2 rounded w-full mb-4">
+            <button onclick="findNetworkAddress()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Calcular</button>
+            <p id="networkResult" class="mt-4"></p>
+        </div>
+
+        <div id="subnets" class="tab-content p-6 bg-white rounded-b-lg shadow">
+            <h2 class="text-2xl font-semibold mb-4">4. Determinar a Quantidade de Sub-redes</h2>
+            <p class="mb-4">Insira o prefixo original e o novo prefixo desejado.</p>
+            <input id="subnetsInput" type="text" placeholder="/48" class="border p-2 rounded w-full mb-4">
+            <input id="newPrefixInput" type="text" placeholder="/64" class="border p-2 rounded w-full mb-4">
+            <button onclick="calculateSubnets()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Calcular</button>
+            <p id="subnetsResult" class="mt-4"></p>
+        </div>
+
+        <div id="subnetting" class="tab-content p-6 bg-white rounded-b-lg shadow">
+            <h2 class="text-2xl font-semibold mb-4">5. Dividir Sub-redes</h2>
+            <p class="mb-4">Insira um endereço IPv6 com prefixo e o novo prefixo para dividir em sub-redes.</p>
+            <input id="subnettingInput" type="text" placeholder="2001:db8::/48" class="border p-2 rounded w-full mb-4">
+            <input id="newSubnetPrefix" type="text" placeholder="/64" class="border p-2 rounded w-full mb-4">
+            <button onclick="divideSubnets()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Calcular</button>
+            <p id="subnettingResult" class="mt-4"></p>
+        </div>
+
+        <div id="size" class="tab-content p-6 bg-white rounded-b-lg shadow">
+            <h2 class="text-2xl font-semibold mb-4">6. Calcular o Tamanho da Sub-rede</h2>
+            <p class="mb-4">Insira o prefixo para calcular o número de endereços disponíveis.</p>
+            <input id="sizeInput" type="text" placeholder="/64" class="border p-2 rounded w-full mb-4">
+            <button onclick="calculateSubnetSize()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Calcular</button>
+            <p id="sizeResult" class="mt-4"></p>
+        </div>
+
+        <div id="slaac" class="tab-content p-6 bg-white rounded-b-lg shadow">
+            <h2 class="text-2xl font-semibold mb-4">7. Trabalhar com SLAAC e EUI-64</h2>
+            <p class="mb-4">Insira o prefixo e o endereço MAC para gerar o endereço IPv6 com EUI-64.</p>
+            <input id="slaacPrefix" type="text" placeholder="2001:db8::/64" class="border p-2 rounded w-full mb-4">
+            <input id="macInput" type="text" placeholder="00:1A:2B:3C:4D:5E" class="border p-2 rounded w-full mb-4">
+            <button onclick="calculateSLAAC()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue- трудно">Calcular</button>
+            <p id="slaacResult" class="mt-4"></p>
+        </div>
+
+        <div id="compression" class="tab-content p-6 bg-white rounded-b-lg shadow">
+            <h2 class="text-2xl font-semibold mb-4">8. Compressão e Expansão de Endereços</h2>
+            <p class="mb-4">Insira um endereço IPv6 para comprimir ou expandir.</p>
+            <input id="compressionInput" type="text" placeholder="2001:0db8:0000:0000:0000:0000:0000:0001" class="border p-2 rounded w-full mb-4">
+            <button onclick="compressExpand()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Calcular</button>
+            <p id="compressionResult" class="mt-4"></p>
+        </div>
+
+        <div id="gateway" class="tab-content p-6 bg-white rounded-b-lg shadow">
+            <h2 class="text-2xl font-semibold mb-4">9. Definir Endereços de Gateway e Multicast</h2>
+            <p class="mb-4">Insira o prefixo para gerar o endereço link-local e multicast.</p>
+            <input id="gatewayInput" type="text" placeholder="2001:db8::/64" class="border p-2 rounded w-full mb-4">
+            <button onclick="calculateGateway()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Calcular</button>
+            <p id="gatewayResult" class="mt-4"></p>
+        </div>
+
+        <div id="types" class="tab-content p-6 bg-white rounded-b-lg shadow">
+            <h2 class="text-2xl font-semibold mb-4">10. Identificar Tipos de Endereço</h2>
+            <p class="mb-4">Insira um endereço IPv6 para identificar seu tipo.</p>
+            <input id="typesInput" type="text" placeholder="2001:db8::1" class="border p-2 rounded w-full mb-4">
+            <button onclick="identifyAddressType()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Calcular</button>
+            <p id="typesResult" class="mt-4"></p>
+        </div>
+
+        <div id="multicast" class="tab-content p-6 bg-white rounded-b-lg shadow">
+            <h2 class="text-2xl font-semibold mb-4">11. Trabalhar com Multicast</h2>
+            <p class="mb-4">Insira um endereço multicast para análise.</p>
+            <input id="multicastInput" type="text" placeholder="ff02::1" class="border p-2 rounded w-full mb-4">
+            <button onclick="analyzeMulticast()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Calcular</button>
+            <p id="multicastResult" class="mt-4"></p>
+        </div>
+
+        <div id="solicited" class="tab-content p-6 bg-white rounded-b-lg shadow">
+            <h2 class="text-2xl font-semibold mb-4">12. Calcular Endereço de Solicitação (Solicited-Node Multicast)</h2>
+            <p class="mb-4">Insira um endereço IPv6 para calcular o endereço de solicitação multicast.</p>
+            <input id="solicitedInput" type="text" placeholder="2001:db8::1" class="border p-2 rounded w-full mb-4">
+            <button onclick="calculateSolicitedNode()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Calcular</button>
+            <p id="solicitedResult" class="mt-4"></p>
+        </div>
+    </div>
+
+    <script>
+        // Função para abrir abas
+        function openTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('bg-gray-200'));
+            event.currentTarget.classList.add('bg-gray-200');
+        }
+
+        // Função para normalizar endereço IPv6
+        function normalizeIPv6(ip) {
+            let parts = ip.split(':');
+            if (parts.includes('')) {
+                let emptyIndex = parts.indexOf('');
+                let missing = 8 - parts.length + 1;
+                parts.splice(emptyIndex, 1, ...Array(missing).fill('0000'));
+            }
+            return parts.map(part => part.padStart(4, '0')).join(':');
+        }
+
+        // 1. Identificar o Prefixo da Rede
+        function identifyPrefix() {
+            let input = document.getElementById('prefixInput').value;
+            let [ip, prefix] = input.split('/');
+            if (!ip || !prefix) {
+                document.getElementById('prefixResult').innerText = 'Formato inválido. Use: 2001:db8::/32';
+                return;
+            }
+            document.getElementById('prefixResult').innerText = `Prefixo: /${prefix}\nEndereço de Rede: ${ip}`;
+        }
+
+        // 2. Calcular o Intervalo de Endereços
+        function calculateRange() {
+            let input = document.getElementById('rangeInput').value;
+            let [ip, prefix] = input.split('/');
+            prefix = parseInt(prefix);
+            if (!ip || isNaN(prefix)) {
+                document.getElementById('rangeResult').innerText = 'Formato inválido. Use: 2001:db8::/32';
+                return;
+            }
+            let normalized = normalizeIPv6(ip);
+            let first = normalized;
+            let last = normalized;
+            document.getElementById('rangeResult').innerText = `Primeiro Endereço: ${first}\nÚltimo Endereço: ${last}`;
+        }
+
+        // 3. Encontrar o Endereço de Rede
+        function findNetworkAddress() {
+            let input = document.getElementById('networkInput').value;
+            let [ip, prefix] = input.split('/');
+            prefix = parseInt(prefix);
+            if (!ip || isNaN(prefix)) {
+                document.getElementById('networkResult').innerText = 'Formato inválido. Use: 2001:db8::1/32';
+                return;
+            }
+            let normalized = normalizeIPv6(ip);
+            document.getElementById('networkResult').innerText = `Endereço de Rede: ${normalized}`;
+        }
+
+        // 4. Determinar a Quantidade de Sub-redes
+        function calculateSubnets() {
+            let originalPrefix = parseInt(document.getElementById('subnetsInput').value.replace('/', ''));
+            let newPrefix = parseInt(document.getElementById('newPrefixInput').value.replace('/', ''));
+            if (isNaN(originalPrefix) || isNaN(newPrefix) || newPrefix <= originalPrefix) {
+                document.getElementById('subnetsResult').innerText = 'Prefixos inválidos. O novo prefixo deve ser maior.';
+                return;
+            }
+            let subnets = Math.pow(2, newPrefix - originalPrefix);
+            document.getElementById('subnetsResult').innerText = `Quantidade de Sub-redes: ${subnets}`;
+        }
+
+        // 5. Dividir Sub-redes
+        function divideSubnets() {
+            let input = document.getElementById('subnettingInput').value;
+            let newPrefix = parseInt(document.getElementById('newSubnetPrefix').value.replace('/', ''));
+            let [ip, originalPrefix] = input.split('/');
+            originalPrefix = parseInt(originalPrefix);
+            if (!ip || isNaN(originalPrefix) || isNaN(newPrefix)) {
+                document.getElementById('subnettingResult').innerText = 'Formato inválido. Use: 2001:db8::/48 e /64';
+                return;
+            }
+            let subnets = Math.pow(2, newPrefix - originalPrefix);
+            document.getElementById('subnettingResult').innerText = `Sub-redes criadas: ${subnets}\nExemplo: ${ip} com prefixo /${newPrefix}`;
+        }
+
+        // 6. Calcular o Tamanho da Sub-rede
+        function calculateSubnetSize() {
+            let prefix = parseInt(document.getElementById('sizeInput').value.replace('/', ''));
+            if (isNaN(prefix)) {
+                document.getElementById('sizeResult').innerText = 'Prefixo inválido. Use: /64';
+                return;
+            }
+            let addresses = Math.pow(2, 128 - prefix);
+            document.getElementById('sizeResult').innerText = `Tamanho da Sub-rede: ${addresses} endereços`;
+        }
+
+        // 7. Trabalhar com SLAAC e EUI-64
+        function calculateSLAAC() {
+            let prefix = document.getElementById('slaacPrefix').value;
+            let mac = document.getElementById('macInput').value.replace(/:/g, '');
+            if (!prefix || mac.length !== 12) {
+                document.getElementById('slaacResult').innerText = 'Formato inválido. Use: 2001:db8::/64 e 00:1A:2B:3C:4D:5E';
+                return;
+            }
+            let eui64 = mac.slice(0, 6) + 'fffe' + mac.slice(6);
+            let ipv6 = `${prefix.split('/')[0]}${eui64.match(/.{4}/g).join(':')}`;
+            document.getElementById('slaacResult').innerText = `Endereço SLAAC: ${ipv6}`;
+        }
+
+        // 8. Compressão e Expansão de Endereços
+        function compressExpand() {
+            let input = document.getElementById('compressionInput').value;
+            let expanded = normalizeIPv6(input);
+            let compressed = input.replace(/:0+([^:])/g, ':$1').replace(/(:0)+:/, '::');
+            document.getElementById('compressionResult').innerText = `Expandido: ${expanded}\nComprimido: ${compressed}`;
+        }
+
+        // 9. Definir Endereços de Gateway e Multicast
+        function calculateGateway() {
+            let input = document.getElementById('gatewayInput').value;
+            document.getElementById('gatewayResult').innerText = `Link-Local: fe80::1\nMulticast (Todos os Nós): ff02::1`;
+        }
+
+        // 10. Ident  Identificar Tipos de Endereço
+        function identifyAddressType() {
+            let ip = document.getElementById('typesInput').value;
+            let type = 'Desconhecido';
+            if (ip.startsWith('2001:db8')) type = 'Global Unicast';
+            else if (ip.startsWith('fe80')) type = 'Link-Local';
+            else if (ip.startsWith('ff')) type = 'Multicast';
+            else if (ip.startsWith('fc') || ip.startsWith('fd')) type = 'Unique Local Address (ULA)';
+            document.getElementById('typesResult').innerText = `Tipo de Endereço: ${type}`;
+        }
+
+        // 11. Trabalhar com Multicast
+        function analyzeMulticast() {
+            let input = document.getElementById('multicastInput').value;
+            if (input.startsWith('ff02::1')) {
+                document.getElementById('multicastResult').innerText = 'Multicast: Todos os nós no link';
+            } else {
+                document.getElementById('multicastResult').innerText = 'Endereço Multicast desconhecido';
+            }
+        }
+
+        // 12. Calcular Endereço de Solicitação
+        function calculateSolicitedNode() {
+            let ip = document.getElementById('solicitedInput').value;
+            let last24bits = ip.split(':').slice(-2).join('').slice(-6);
+            document.getElementById('solicitedResult').innerText = `Solicited-Node Multicast: ff02::1:ff${last24bits}`;
+        }
+
+        // Abrir a primeira aba por padrão
+        openTab('prefix');
+    </script>
+    
+    
+    <br>
+    <center><footer>
+        <p>&copy; Ivaldo Fernandes - Todos os direitos reservados.</p>
+  </footer></center><br>
+
+<script src="/app/script.js"></script>
+</body>
+</html>

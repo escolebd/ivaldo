@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    
+    <title>Calculadora de Dividir Sub-Redes IP</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Calculadora de Dividir Sub-Redes IP",
+      "image": [
+        "/app/imagens/512x512.png"
+       ],
+      "datePublished": "2025-04-16T17:20:00-03:00",
+      "dateModified": "2025-04-16T17:20:00-03:00",
+      "author": [{
+          "@type": "Person",
+          "name": "Ivaldo Fernandes",
+          "url": "https://ivaldofs.com.br/"
+      }]
+    }
+    </script> 
+    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-947PJ1CXF0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-947PJ1CXF0');
+</script>
+
+<link rel="manifest" href="/app/manifest.json">
+<meta name="theme-color" content="#000000">
+
+ <link rel="icon" href="/app/imagens/512x512.png" type="image/x-icon">
+    
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        .question {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-left: 4px solid #4CAF50;
+            border-radius: 4px;
+        }
+        .solution {
+            background-color: #e9f7ef;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .input-group {
+            margin-bottom: 10px;
+        }
+        label {
+            display: inline-block;
+            width: 150px;
+        }
+        input {
+            padding: 6px;
+            width: 150px;
+        }
+        .custom-solution {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+              <br> <center>
+<a href="https://ivaldofs.com.br/">Inicio</a> |
+<a href="https://ivaldofs.com.br/sobre/">Sobre</a> |
+<a href="https://ivaldofs.com.br/contato/">Contato</a> | 
+<a href="https://ivaldofs.com.br/calculadora/2-grau/">2º Grau</a> |
+<a href="https://ivaldofs.com.br/calculadora/binario.html">Binário</a> |
+<a href="https://ivaldofs.com.br/calculadora/booleana/">Mapa Karnaugh</a> |
+<a href="https://ivaldofs.com.br/calculadora/cientifica.html">Cientifica</a> |
+<a href="https://ivaldofs.com.br/calculadora-ip">Sub-rede</a> |
+<a href="https://ivaldofs.com.br/matematica-computacional">Matemática Computacional</a> |
+<a href="https://ivaldofs.com.br/calculadora/lei-de-ohm.html">Lei de Ohm</a> |
+<a href="https://ivaldofs.com.br/calculadora/administradores-de-redes.html">Calculadora Avançada para Redes</a>
+</center>
+<br>
+        
+        <h1>Calculadora de Dividir Sub-Redes IP</h1>
+        
+       
+ 
+        <div class="question">
+            <h2>Calculadora Personalizada</h2>
+            <div class="input-group">
+                <label for="ipAddress">Endereço IP:</label>
+                <input type="text" id="ipAddress" placeholder="ex: 192.168.1.0">
+            </div>
+            <div class="input-group">
+                <label for="subnetMask">Máscara de Sub-rede:</label>
+                <input type="text" id="subnetMask" placeholder="ex: 255.255.255.0">
+            </div>
+            <div class="input-group">
+                <label for="hostsRequired">Hosts necessários (separados por vírgula):</label>
+                <input type="text" id="hostsRequired" placeholder="ex: 50,25,10">
+            </div>
+            <button onclick="solveCustomProblem()">Calcular</button>
+            <div id="customSolution" class="custom-solution solution"></div>
+        </div>
+    </div>
+
+    <script>
+        // Funções para resolver cada questão
+        function solveQuestion1() {
+            const ip = "130.4.102.1";
+            const mask = "255.255.252.0";
+            
+            // Calcular endereço de rede
+            const network = calculateNetworkAddress(ip, mask);
+            
+            // Calcular endereço de broadcast
+            const broadcast = calculateBroadcastAddress(network, mask);
+            
+            // Último endereço válido (broadcast - 1)
+            const lastValid = decrementIP(broadcast);
+            
+            const solution = `
+                <h3>Solução:</h3>
+                <p>Endereço IP: ${ip}</p>
+                <p>Máscara: ${mask}</p>
+                <p>Endereço de rede: ${network}</p>
+                <p>Endereço de broadcast: ${broadcast}</p>
+                <p>Último endereço válido (atribuído ao roteador): ${lastValid}</p>
+            `;
+            
+            document.getElementById("solution1").innerHTML = solution;
+        }
+        
+        function solveQuestion2() {
+            const network = "130.4.100.0";
+            const mask = "255.255.252.0";
+            const hosts = [100, 50, 2];
+            
+            const solution = divideNetwork(network, mask, hosts);
+            document.getElementById("solution2").innerHTML = solution;
+        }
+        
+        function solveQuestion3() {
+            const network = "192.168.0.0";
+            const mask = "255.255.255.0";
+            const hosts = [50, 25, 10];
+            
+            const solution = divideNetwork(network, mask, hosts);
+            document.getElementById("solution3").innerHTML = solution;
+        }
+        
+        function solveQuestion4() {
+            const network = "172.16.0.0";
+            const mask = "255.255.252.0";
+            
+            // Dividir em 2 sub-redes iguais
+            const newPrefix = getPrefixFromMask(mask) + 1;
+            const newMask = getMaskFromPrefix(newPrefix);
+            
+            const subnet1Network = network;
+            const subnet1Broadcast = calculateBroadcastAddress(subnet1Network, newMask);
+            const subnet1Hosts = Math.pow(2, 32 - newPrefix) - 2;
+            
+            const subnet2Network = incrementIP(subnet1Broadcast);
+            const subnet2Broadcast = calculateBroadcastAddress(subnet2Network, newMask);
+            const subnet2Hosts = subnet1Hosts;
+            
+            const solution = `
+                <h3>Solução:</h3>
+                <p>Rede original: ${network}/${getPrefixFromMask(mask)} (${mask})</p>
+                <p>Nova máscara para sub-redes: ${newMask} (/${newPrefix})</p>
+                
+                <h4>Sub-rede 1:</h4>
+                <p>Endereço de rede: ${subnet1Network}</p>
+                <p>Endereço de broadcast: ${subnet1Broadcast}</p>
+                <p>Número de hosts: ${subnet1Hosts}</p>
+                
+                <h4>Sub-rede 2:</h4>
+                <p>Endereço de rede: ${subnet2Network}</p>
+                <p>Endereço de broadcast: ${subnet2Broadcast}</p>
+                <p>Número de hosts: ${subnet2Hosts}</p>
+            `;
+            
+            document.getElementById("solution4").innerHTML = solution;
+        }
+        
+        function solveQuestion5() {
+            const network = "10.0.0.0";
+            const mask = "255.255.0.0";
+            const hosts = [1000, 500, 250, 250];
+            
+            const solution = divideNetwork(network, mask, hosts);
+            document.getElementById("solution5").innerHTML = solution;
+        }
+        
+        function solveQuestion6() {
+            const network = "192.168.10.0";
+            const mask = "255.255.255.192";
+            const hosts = [14, 10, 6];
+            
+            const solution = divideNetwork(network, mask, hosts);
+            document.getElementById("solution6").innerHTML = solution;
+        }
+        
+        function solveQuestion7() {
+            const network = "10.0.0.0";
+            const prefix = 8;
+            const mask = getMaskFromPrefix(prefix);
+            const filiais = 10;
+            const hostsPorFilial = 1000;
+            
+            // Calcular novo prefixo para cada filial (precisa suportar pelo menos 1000 hosts)
+            // 2^(32-n) - 2 >= 1000 => n <= 22 (1022 hosts)
+            const newPrefix = 22;
+            const newMask = getMaskFromPrefix(newPrefix);
+            
+            let solution = `
+                <h3>Solução:</h3>
+                <p>Rede original: ${network}/${prefix} (${mask})</p>
+                <p>Nova máscara para filiais: ${newMask} (/${newPrefix})</p>
+                <p>Número de hosts por filial: ${Math.pow(2, 32 - newPrefix) - 2} (máximo)</p>
+                
+                <h4>Sub-redes para cada filial:</h4>
+                <table>
+                    <tr>
+                        <th>Filial</th>
+                        <th>Endereço de Rede</th>
+                        <th>Endereço de Broadcast</th>
+                        <th>Número de Hosts</th>
+                    </tr>
+            `;
+            
+            let currentNetwork = network;
+            for (let i = 1; i <= filiais; i++) {
+                const broadcast = calculateBroadcastAddress(currentNetwork, newMask);
+                const hostsCount = Math.pow(2, 32 - newPrefix) - 2;
+                
+                solution += `
+                    <tr>
+                        <td>${i}</td>
+                        <td>${currentNetwork}/${newPrefix}</td>
+                        <td>${broadcast}</td>
+                        <td>${hostsCount}</td>
+                    </tr>
+                `;
+                
+                currentNetwork = incrementIP(broadcast);
+            }
+            
+            solution += `</table>`;
+            document.getElementById("solution7").innerHTML = solution;
+        }
+        
+        function solveCustomProblem() {
+            const ip = document.getElementById("ipAddress").value;
+            const mask = document.getElementById("subnetMask").value;
+            const hostsInput = document.getElementById("hostsRequired").value;
+            
+            if (!ip || !mask || !hostsInput) {
+                alert("Por favor, preencha todos os campos.");
+                return;
+            }
+            
+            const hosts = hostsInput.split(',').map(h => parseInt(h.trim())).sort((a,b) => b-a);
+            
+            const solution = divideNetwork(ip, mask, hosts);
+            document.getElementById("customSolution").innerHTML = solution;
+            document.getElementById("customSolution").style.display = "block";
+        }
+        
+        // Funções auxiliares para cálculos de rede
+        function divideNetwork(network, mask, hostsRequirements) {
+            // Ordenar requisitos em ordem decrescente
+            const hosts = [...hostsRequirements].sort((a, b) => b - a);
+            
+            let solution = `
+                <h3>Solução:</h3>
+                <p>Rede original: ${network}/${getPrefixFromMask(mask)} (${mask})</p>
+                <p>Requisitos de hosts: ${hostsRequirements.join(', ')}</p>
+                
+                <table>
+                    <tr>
+                        <th>Sub-rede</th>
+                        <th>Endereço de Rede</th>
+                        <th>Endereço de Broadcast</th>
+                        <th>Máscara</th>
+                        <th>Número de Hosts</th>
+                    </tr>
+            `;
+            
+            let currentNetwork = network;
+            let remainingNetwork = network;
+            let remainingMask = mask;
+            
+            for (let i = 0; i < hosts.length; i++) {
+                const requiredHosts = hosts[i];
+                const bitsForHosts = Math.ceil(Math.log2(requiredHosts + 2));
+                const newPrefix = 32 - bitsForHosts;
+                const newMask = getMaskFromPrefix(newPrefix);
+                
+                // Verificar se a sub-rede cabe no espaço restante
+                const currentPrefix = getPrefixFromMask(remainingMask);
+                if (newPrefix < currentPrefix) {
+                    solution += `<tr><td colspan="5">Não é possível alocar uma sub-rede com ${requiredHosts} hosts na rede restante.</td></tr>`;
+                    break;
+                }
+                
+                const broadcast = calculateBroadcastAddress(currentNetwork, newMask);
+                const hostsCount = Math.pow(2, 32 - newPrefix) - 2;
+                
+                solution += `
+                    <tr>
+                        <td>${i+1} (${requiredHosts} hosts)</td>
+                        <td>${currentNetwork}/${newPrefix}</td>
+                        <td>${broadcast}</td>
+                        <td>${newMask}</td>
+                        <td>${hostsCount}</td>
+                    </tr>
+                `;
+                
+                currentNetwork = incrementIP(broadcast);
+                
+                // Atualizar rede restante
+                remainingNetwork = currentNetwork;
+                remainingMask = mask; // Poderia ser mais preciso aqui
+            }
+            
+            solution += `</table>`;
+            return solution;
+        }
+        
+        function calculateNetworkAddress(ip, mask) {
+            const ipParts = ip.split('.').map(Number);
+            const maskParts = mask.split('.').map(Number);
+            
+            const networkParts = [];
+            for (let i = 0; i < 4; i++) {
+                networkParts.push(ipParts[i] & maskParts[i]);
+            }
+            
+            return networkParts.join('.');
+        }
+        
+        function calculateBroadcastAddress(network, mask) {
+            const networkParts = network.split('.').map(Number);
+            const maskParts = mask.split('.').map(Number);
+            
+            const broadcastParts = [];
+            for (let i = 0; i < 4; i++) {
+                broadcastParts.push(networkParts[i] | (255 ^ maskParts[i]));
+            }
+            
+            return broadcastParts.join('.');
+        }
+        
+        function getPrefixFromMask(mask) {
+            const maskParts = mask.split('.').map(Number);
+            let prefix = 0;
+            
+            for (const part of maskParts) {
+                const binary = part.toString(2).padStart(8, '0');
+                prefix += (binary.match(/1/g) || []).length;
+            }
+            
+            return prefix;
+        }
+        
+        function getMaskFromPrefix(prefix) {
+            let mask = [];
+            for (let i = 0; i < 4; i++) {
+                const bits = Math.min(8, Math.max(0, prefix - i * 8));
+                mask.push(256 - Math.pow(2, 8 - bits));
+            }
+            return mask.join('.');
+        }
+        
+        function incrementIP(ip) {
+            const parts = ip.split('.').map(Number);
+            
+            for (let i = 3; i >= 0; i--) {
+                if (parts[i] < 255) {
+                    parts[i]++;
+                    break;
+                } else {
+                    parts[i] = 0;
+                }
+            }
+            
+            return parts.join('.');
+        }
+        
+        function decrementIP(ip) {
+            const parts = ip.split('.').map(Number);
+            
+            for (let i = 3; i >= 0; i--) {
+                if (parts[i] > 0) {
+                    parts[i]--;
+                    break;
+                } else {
+                    parts[i] = 255;
+                }
+            }
+            
+            return parts.join('.');
+        }
+        
+        
+     document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && e.key.toLowerCase() === 'u') {
+      e.preventDefault();
+      alert('A visualização do código-fonte foi desativada.');
+    }
+  });
+
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });   
+        
+        
+    </script>
+    <center><iframe width="560" height="315" src="https://www.youtube.com/embed/sBaVWUwewWM?si=yjXmpNhP7hTRHtpA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></center>
+<br>
+    <center><footer>
+        <p>&copy; Ivaldo Fernandes - Todos os direitos reservados.</p>
+  </footer></center>
+
+<script src="/app/script.js"></script>
+
+</body>
+</html>

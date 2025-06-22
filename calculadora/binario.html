@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html lang="pt-br" dir="ltr">
+<head>
+    
+    <title>Calculadora de Conversão de Bases Numéricas</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Calculadora de Conversão de Bases Numéricas",
+      "image": [
+        "/app/imagens/512x512.png"
+       ],
+      "datePublished": "2025-03-02T22:20:00-03:00",
+      "dateModified": "2025-03-02T22:20:00-03:00",
+      "author": [{
+          "@type": "Person",
+          "name": "Ivaldo Fernandes",
+          "url": "https://ivaldofs.com.br/"
+      }]
+    }
+    </script> 
+    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-947PJ1CXF0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-947PJ1CXF0');
+</script>
+
+<link rel="manifest" href="/app/manifest.json">
+<meta name="theme-color" content="#000000">
+
+ <link rel="icon" href="/app/imagens/512x512.png" type="image/x-icon">
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+            box-shadow: 0px 0px 5px rgba(204, 204, 204, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <br> <center>
+<a href="https://ivaldofs.com.br/">Inicio</a> |
+<a href="https://ivaldofs.com.br/sobre/">Sobre</a> |
+<a href="https://ivaldofs.com.br/contato/">Contato</a> | 
+<a href="https://ivaldofs.com.br/calculadora/2-grau/">2º Grau</a> |
+<a href="https://ivaldofs.com.br/calculadora/booleana/">Mapa Karnaugh</a> |
+<a href="https://ivaldofs.com.br/calculadora/cientifica.html">Cientifica</a> |
+<a href="https://ivaldofs.com.br/calculadora-ip">Sub-rede</a> |
+<a href="https://ivaldofs.com.br/matematica-computacional">Matemática Computacional</a> |
+<a href="https://ivaldofs.com.br/calculadora/lei-de-ohm.html">Lei de Ohm</a> |
+<a href="https://ivaldofs.com.br/calculadora/dividir-sub-rede.html">Dividir Sub-Redes</a> |
+<a href="https://ivaldofs.com.br/calculadora/administradores-de-redes.html">Calculadora Avançada para Redes</a>
+</center>
+<br>
+<br>
+        <h1>Conversão de Bases Numéricas</h1>
+         <h3>Converte Binário, Octal, Decimal e Hexadecimal.</h3>
+        <label for="numero">Número:</label>
+        <input type="text" id="numero" placeholder="Digite o número">
+        <br><br>
+        <label for="base">Base:</label>
+        <select id="base">
+            <option value="2">Binário</option>
+            <option value="8">Octal</option>
+            <option value="10">Decimal</option>
+            <option value="16">Hexadecimal</option>
+        </select>
+        <br><br>
+        <button onclick="converter()">Converter</button>
+        <h2 id="resultado"></h2>
+    </div>
+    <script>
+        function converter() {
+            let numero = document.getElementById("numero").value;
+            let base = document.getElementById("base").value;
+            let resultado = parseInt(numero, 10).toString(base);
+            document.getElementById("resultado").innerText = "Resultado: " + resultado.toUpperCase();
+        }
+    </script>
+    
+<script src="/app/script.js"></script>
+</body>
+</html>

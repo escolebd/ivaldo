@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Calculadora de Tabela Verdade Avançada",
+      "image": [
+        "/app/imagens/512x512.png"
+       ],
+      "datePublished": "2025-04-28T17:58:00-03:00",
+      "dateModified": "2025-04-28T17:58:00-03:00",
+      "author": [{
+          "@type": "Person",
+          "name": "Ivaldo Fernandes",
+          "url": "https://ivaldofs.com.br/"
+      }]
+    }
+    </script> 
+    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-947PJ1CXF0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-947PJ1CXF0');
+</script>
+ <link rel="icon" href="/app/imagens/512x512.png" type="image/x-icon">
+
+    <link rel="manifest" href="/app/manifest.json">
+    <meta name="theme-color" content="#000000">
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Tabela Verdade Avançada</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff Ascensor: pointer;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        select, button, input {
+            padding: 8px;
+            margin: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        label {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <br> <center>
+<a href="https://ivaldofs.com.br/">Inicio</a> |
+<a href="https://ivaldofs.com.br/sobre/">Sobre</a> |
+<a href="https://ivaldofs.com.br/contato/">Contato</a> | 
+<a href="https://ivaldofs.com.br/calculadora/2-grau/">2º Grau</a> |
+<a href="https://ivaldofs.com.br/calculadora/binario.html">Binário</a> |
+<a href="https://ivaldofs.com.br/calculadora/booleana/">Mapa Karnaugh</a> |
+<a href="https://ivaldofs.com.br/calculadora/cientifica.html">Cientifica</a> |
+<a href="https://ivaldofs.com.br/calculadora-ip">Sub-rede</a> |
+<a href="https://ivaldofs.com.br/matematica-computacional">Matemática Computacional</a> |
+<a href="https://ivaldofs.com.br/calculadora/lei-de-ohm.html">Lei de Ohm</a>
+<a href="https://ivaldofs.com.br/calculadora/dividir-sub-rede.html">Dividir Sub-Redes</a>
+<a href="https://ivaldofs.com.br/calculadora/administradores-de-redes.html">Calculadora Avançada para Redes</a>
+</center>
+<br>
+        <h1>Calculadora de Tabela Verdade</h1>
+        <div class="input-group">
+            <label for="numVars">Número de Variáveis (1-4):</label>
+            <select id="numVars">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="operation">Operação Lógica:</label>
+            <select id="operation">
+                <option value="AND">AND (E)</option>
+                <option value="NAND">NAND (NÃO E)</option>
+                <option value="OR">OR (OU)</option>
+                <option value="XOR">XOR (OU EXCLUSIVO)</option>
+                <option value="NOR">NOR (NÃO OU)</option>
+            </select>
+        </div>
+        <button onclick="generateTable()">Gerar Tabela Verdade</button>
+        <div id="tableContainer"></div>
+    </div>
+
+    <script>
+        function generateCombinations(numVars) {
+            const combinations = [];
+            const totalRows = Math.pow(2, numVars);
+            for (let i = 0; i < totalRows; i++) {
+                const row = [];
+                for (let j = 0; j < numVars; j++) {
+                    row.push((i >> j) & 1);
+                }
+                combinations.push(row.reverse());
+            }
+            return combinations;
+        }
+
+        function generateTable() {
+            const numVars = parseInt(document.getElementById('numVars').value);
+            const operation = document.getElementById('operation').value;
+            const tableContainer = document.getElementById('tableContainer');
+            tableContainer.innerHTML = '';
+
+            // Gerar combinações
+            const inputs = generateCombinations(numVars);
+
+            // Criar cabeçalho da tabela
+            let table = '<table><tr>';
+            const vars = ['A', 'B', 'C', 'D'].slice(0, numVars);
+            vars.forEach(v => table += `<th>${v}</th>`);
+            table += '<th>Saída</th></tr>';
+
+            // Calcular resultados
+            inputs.forEach(row => {
+                let result;
+                switch (operation) {
+                    case 'AND':
+                        result = row.every(val => val === 1);
+                        break;
+                    case 'NAND':
+                        result = !row.every(val => val === 1);
+                        break;
+                    case 'OR':
+                        result = row.some(val => val === 1);
+                        break;
+                    case 'XOR':
+                        result = row.reduce((acc, val) => acc ^ val, 0);
+                        break;
+                    case 'NOR':
+                        result = !row.some(val => val === 1);
+                        break;
+                }
+                table += '<tr>';
+                row.forEach(val => table += `<td>${val}</td>`);
+                table += `<td>${result ? 1 : 0}</td></tr>`;
+            });
+
+            table += '</table>';
+            tableContainer.innerHTML = table;
+        }
+    </script>
+    <br>
+    <center><footer>
+        <p>&copy; Ivaldo Fernandes - Todos os direitos reservados.</p>
+  </footer></center>
+
+<script src="/app/script.js"></script>
+</body>
+</html>

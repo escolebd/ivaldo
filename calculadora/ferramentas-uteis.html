@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    
+     <title>Ferramentas Úteis</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Ferramentas Úteis",
+      "image": [
+        "/app/imagens/512x512.png"
+       ],
+      "datePublished": "2025-04-26T15:20:00-03:00",
+      "dateModified": "2025-04-26T15:20:00-03:00",
+      "author": [{
+          "@type": "Person",
+          "name": "Ivaldo Fernandes",
+          "url": "https://ivaldofs.com.br/"
+      }]
+    }
+    </script> 
+    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-947PJ1CXF0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-947PJ1CXF0');
+</script>
+ <link rel="icon" href="/app/imagens/512x512.png" type="image/x-icon">
+ 
+ <link rel="manifest" href="/app/manifest.json">
+<meta name="theme-color" content="#000000">
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+        .tool {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            text-align: center;
+            grid-column: 1 / -1;
+        }
+        button, input, select {
+            padding: 8px 12px;
+            margin: 5px 0;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        textarea {
+            width: 100%;
+            min-height: 100px;
+            margin: 10px 0;
+        }
+        .result {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+        .hidden {
+            display: none;
+        }
+        .tab-buttons {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        .tab-btn {
+            padding: 8px 15px;
+            background-color: #eee;
+            border: none;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        .tab-btn.active {
+            background-color: #3498db;
+            color: white;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        #imageCanvas {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+        }
+        .event {
+            margin: 5px 0;
+            padding: 5px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+        }
+        .task-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+        }
+        .task-item.completed {
+            text-decoration: line-through;
+            color: #888;
+        }
+        .color-preview {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #000;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ferramentas Úteis</h1>
+        
+        <!-- Validador de CPF/CNPJ -->
+        <div class="tool">
+            <h2>Validador de CPF/CNPJ</h2>
+            <input type="text" id="cpfCnpjInput" placeholder="Digite CPF ou CNPJ">
+            <button onclick="validarDocumento()">Validar</button>
+            <div id="documentoResultado" class="result"></div>
+        </div>
+        
+        <!-- Conversor de Unidades -->
+        <div class="tool">
+            <h2>Conversor de Unidades</h2>
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="abrirTab(event, 'temperaturaTab')">Temperatura</button>
+                <button class="tab-btn" onclick="abrirTab(event, 'pesoTab')">Peso</button>
+                <button class="tab-btn" onclick="abrirTab(event, 'distanciaTab')">Distância</button>
+                <button class="tab-btn" onclick="abrirTab(event, 'moedaTab')">Moeda</button>
+            </div>
+            
+            <div id="temperaturaTab" class="tab-content active">
+                <input type="number" id="tempInput" placeholder="Valor">
+                <select id="tempFrom">
+                    <option value="c">Celsius (°C)</option>
+                    <option value="f">Fahrenheit (°F)</option>
+                    <option value="k">Kelvin (K)</option>
+                </select>
+                <span>para</span>
+                <select id="tempTo">
+                    <option value="f">Fahrenheit (°F)</option>
+                    <option value="c">Celsius (°C)</option>
+                    <option value="k">Kelvin (K)</option>
+                </select>
+                <button onclick="converterTemperatura()">Converter</button>
+                <div id="tempResult" class="result"></div>
+            </div>
+            
+            <div id="pesoTab" class="tab-content">
+                <input type="number" id="pesoInput" placeholder="Valor">
+                <select id="pesoFrom">
+                    <option value="kg">Quilogramas (kg)</option>
+                    <option value="g">Gramas (g)</option>
+                    <option value="lb">Libras (lb)</option>
+                    <option value="oz">Onças (oz)</option>
+                </select>
+                <span>para</span>
+                <select id="pesoTo">
+                    <option value="g">Gramas (g)</option>
+                    <option value="kg">Quilogramas (kg)</option>
+                    <option value="lb">Libras (lb)</option>
+                    <option value="oz">Onças (oz)</option>
+                </select>
+                <button onclick="converterPeso()">Converter</button>
+                <div id="pesoResult" class="result"></div>
+            </div>
+            
+            <div id="distanciaTab" class="tab-content">
+                <input type="number" id="distInput" placeholder="Valor">
+                <select id="distFrom">
+                    <option value="km">Quilômetros (km)</option>
+                    <option value="m">Metros (m)</option>
+                    <option value="cm">Centímetros (cm)</option>
+                    <option value="mi">Milhas (mi)</option>
+                </select>
+                <span>para</span>
+                <select id="distTo">
+                    <option value="m">Metros (m)</option>
+                    <option value="km">Quilômetros (km)</option>
+                    <option value="cm">Centímetros (cm)</option>
+                    <option value="mi">Milhas (mi)</option>
+                </select>
+                <button onclick="converterDistancia()">Converter</button>
+                <div id="distResult" class="result"></div>
+            </div>
+            
+            <div id="moedaTab" class="tab-content">
+                <input type="number" id="moedaInput" placeholder="Valor">
+                <select id="moedaFrom">
+                    <option value="BRL">Real Brasileiro (R$)</option>
+                    <option value="USD">Dólar Americano (US$)</option>
+                    <option value="EUR">Euro (€)</option>
+                    <option value="GBP">Libra Esterlina (£)</option>
+                </select>
+                <span>para</span>
+                <select id="moedaTo">
+                    <option value="USD">Dólar Americano (US$)</option>
+                    <option value="BRL">Real Brasileiro (R$)</option>
+                    <option value="EUR">Euro (€)</option>
+                    <option value="GBP">Libra Esterlina (£)</option>
+                </select>
+                <button onclick="converterMoeda()">Converter</button>
+                <div id="moedaResult" class="result"></div>
+                <small>*Usando taxas de câmbio aproximadas. Para valores exatos, consulte um serviço atualizado.</small>
+            </div>
+        </div>
+        
+        <!-- Cronômetro e Temporizador -->
+        <div class="tool">
+            <h2>Cronômetro e Temporizador</h2>
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="abrirTab(event, 'cronometroTab')">Cronômetro</button>
+                <button class="tab-btn" onclick="abrirTab(event, 'temporizadorTab')">Temporizador</button>
+            </div>
+            
+            <div id="cronometroTab" class="tab-content active">
+                <div id="cronometroDisplay" style="font-size: 2em; text-align: center;">00:00:00</div>
+                <button onclick="iniciarCronometro()">Iniciar</button>
+                <button onclick="pausarCronometro()">Pausar</button>
+                <button onclick="zerarCronometro()">Zerar</button>
+            </div>
+            
+            <div id="temporizadorTab" class="tab-content">
+                <input type="number" id="tempHoras" min="0" placeholder="Horas" style="width: 60px;">:
+                <input type="number" id="tempMinutos" min="0" max="59" placeholder="Min" style="width: 60px;">:
+                <input type="number" id="tempSegundos" min="0" max="59" placeholder="Seg" style="width: 60px;">
+                <button onclick="iniciarTemporizador()">Iniciar</button>
+                <button onclick="pararTemporizador()">Parar</button>
+                <div id="temporizadorDisplay" style="font-size: 2em; text-align: center; margin-top: 10px;"></div>
+                <audio id="alarme" src="https://www.soundjay.com/buttons/sounds/button-09.mp3" preload="auto"></audio>
+            </div>
+        </div>
+        
+        <!-- To-Do List -->
+        <div class="tool">
+            <h2>Lista de Tarefas</h2>
+            <input type="text" id="novaTarefa" placeholder="Nova tarefa">
+            <button onclick="adicionarTarefa()">Adicionar</button>
+            <div id="listaTarefas" style="margin-top: 15px;"></div>
+        </div>
+        
+        <!-- Gerador de Senhas -->
+        <div class="tool">
+            <h2>Gerador de Senhas Seguras</h2>
+            <div>
+                <label for="tamanhoSenha">Tamanho:</label>
+                <input type="number" id="tamanhoSenha" min="4" max="50" value="12">
+            </div>
+            <div>
+                <input type="checkbox" id="usarMaiusculas" checked>
+                <label for="usarMaiusculas">Letras maiúsculas (A-Z)</label>
+            </div>
+            <div>
+                <input type="checkbox" id="usarMinusculas" checked>
+                <label for="usarMinusculas">Letras minúsculas (a-z)</label>
+            </div>
+            <div>
+                <input type="checkbox" id="usarNumeros" checked>
+                <label for="usarNumeros">Números (0-9)</label>
+            </div>
+            <div>
+                <input type="checkbox" id="usarEspeciais">
+                <label for="usarEspeciais">Caracteres especiais (!@#$%^&*)</label>
+            </div>
+            <button onclick="gerarSenha()">Gerar Senha</button>
+            <div class="result">
+                <input type="text" id="senhaGerada" readonly style="width: 100%;">
+                <button onclick="copiarSenha()">Copiar</button>
+            </div>
+        </div>
+        
+        <!-- Checklist de Viagem/Eventos -->
+        <div class="tool">
+            <h2>Checklist de Viagem/Eventos</h2>
+            <input type="text" id="novoItemChecklist" placeholder="Novo item">
+            <button onclick="adicionarItemChecklist()">Adicionar</button>
+            <button onclick="imprimirChecklist()">Imprimir Checklist</button>
+            <div id="listaChecklist" style="margin-top: 15px;"></div>
+        </div>
+        
+        <!-- Mini Editor de Imagens -->
+        <div class="tool">
+            <h2>Mini Editor de Imagens</h2>
+            <input type="file" id="imagemUpload" accept="image/*">
+            <div>
+                <button onclick="redimensionarImagem()">Redimensionar</button>
+                <input type="number" id="novaLargura" placeholder="Largura" style="width: 80px;">
+                <input type="number" id="novaAltura" placeholder="Altura" style="width: 80px;">
+            </div>
+            <div>
+                <button onclick="girarImagem(90)">Girar 90°</button>
+                <button onclick="girarImagem(-90)">Girar -90°</button>
+                <button onclick="inverterHorizontal()">Inverter Horizontal</button>
+                <button onclick="inverterVertical()">Inverter Vertical</button>
+            </div>
+            <canvas id="imageCanvas"></canvas>
+            <button onclick="baixarImagem()" style="margin-top: 10px;">Baixar Imagem</button>
+        </div>
+        
+        <!-- Contador de Palavras e Caracteres -->
+        <div class="tool">
+            <h2>Contador de Palavras e Caracteres</h2>
+            <textarea id="textoContador" placeholder="Digite seu texto aqui..."></textarea>
+            <div class="result">
+                <p>Palavras: <span id="contadorPalavras">0</span></p>
+                <p>Caracteres (com espaços): <span id="contadorCaracteresComEspacos">0</span></p>
+                <p>Caracteres (sem espaços): <span id="contadorCaracteresSemEspacos">0</span></p>
+            </div>
+        </div>
+        
+        <!-- Gerador de Lorem Ipsum -->
+        <div class="tool">
+            <h2>Gerador de Lorem Ipsum</h2>
+            <div>
+                <label for="quantidadeParagrafos">Parágrafos:</label>
+                <input type="number" id="quantidadeParagrafos" min="1" max="20" value="3">
+            </div>
+            <div>
+                <label for="tipoLorem">Tipo:</label>
+                <select id="tipoLorem">
+                    <option value="padrao">Padrão</option>
+                    <option value="hipster">Hipster</option>
+                    <option value="corporate">Corporate</option>
+                </select>
+            </div>
+            <button onclick="gerarLoremIpsum()">Gerar</button>
+            <textarea id="loremIpsumResultado" readonly style="margin-top: 10px;"></textarea>
+            <button onclick="copiarLorem()">Copiar Texto</button>
+        </div>
+        
+        <!-- Ferramenta de Sorteio -->
+        <div class="tool">
+            <h2>Ferramenta de Sorteio</h2>
+            <div>
+                <label for="tipoSorteio">Tipo de Sorteio:</label>
+                <select id="tipoSorteio" onchange="mudarTipoSorteio()">
+                    <option value="nomes">Nomes</option>
+                    <option value="numeros">Números</option>
+                </select>
+            </div>
+            
+            <div id="sorteioNomes">
+                <textarea id="listaNomes" placeholder="Digite os nomes, um por linha"></textarea>
+                <input type="number" id="quantidadeSorteados" min="1" value="1" placeholder="Quantidade a sortear">
+                <button onclick="sortearNomes()">Sortear</button>
+                <div id="resultadoSorteioNomes" class="result"></div>
+            </div>
+            
+            <div id="sorteioNumeros" class="hidden">
+                <div>
+                    <label for="numeroMinimo">De:</label>
+                    <input type="number" id="numeroMinimo" value="1">
+                    <label for="numeroMaximo">Até:</label>
+                    <input type="number" id="numeroMaximo" value="100">
+                </div>
+                <input type="number" id="quantidadeNumerosSorteados" min="1" value="1" placeholder="Quantidade a sortear">
+                <button onclick="sortearNumeros()">Sortear</button>
+                <div id="resultadoSorteioNumeros" class="result"></div>
+            </div>
+        </div>
+        
+        <!-- Calculadora de IMC -->
+        <div class="tool">
+            <h2>Calculadora de IMC</h2>
+            <div>
+                <label for="pesoIMC">Peso (kg):</label>
+                <input type="number" id="pesoIMC" step="0.1" min="20" max="300">
+            </div>
+            <div>
+                <label for="alturaIMC">Altura (cm):</label>
+                <input type="number" id="alturaIMC" min="100" max="250" value="170">
+            </div>
+            <button onclick="calcularIMC()">Calcular</button>
+            <div id="resultadoIMC" class="result"></div>
+            <div id="tabelaIMC" style="margin-top: 10px;">
+                <h4>Classificação do IMC:</h4>
+                <ul>
+                    <li>Abaixo de 18,5: Magreza</li>
+                    <li>18,5 a 24,9: Normal</li>
+                    <li>25 a 29,9: Sobrepeso</li>
+                    <li>30 a 34,9: Obesidade Grau I</li>
+                    <li>35 a 39,9: Obesidade Grau II</li>
+                    <li>Acima de 40: Obesidade Grau III</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Calendário Interativo -->
+        <div class="tool">
+            <h2>Calendário Interativo</h2>
+            <div id="calendarioHeader" style="display: flex; justify-content: space-between; align-items: center;">
+                <button onclick="mudarMes(-1)">◀</button>
+                <h3 id="mesAnoAtual">Mês/Ano</h3>
+                <button onclick="mudarMes(1)">▶</button>
+            </div>
+            <div id="calendarioDiasSemana" style="display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; font-weight: bold;">
+                <div>Dom</div><div>Seg</div><div>Ter</div><div>Qua</div><div>Qui</div><div>Sex</div><div>Sáb</div>
+            </div>
+            <div id="calendarioDias" style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; margin-top: 10px;"></div>
+            
+            <div style="margin-top: 20px;">
+                <h3>Adicionar Compromisso</h3>
+                <input type="date" id="compromissoData">
+                <input type="text" id="compromissoDescricao" placeholder="Descrição">
+                <button onclick="adicionarCompromisso()">Adicionar</button>
+            </div>
+            
+            <div id="listaCompromissos" style="margin-top: 15px;"></div>
+        </div>
+        
+        <!-- Conversor de Cores -->
+        <div class="tool">
+            <h2>Conversor de Cores</h2>
+            <div class="color-preview" id="colorPreview"></div>
+            <div>
+                <label for="tipoCor">Tipo de Cor:</label>
+                <select id="tipoCor" onchange="mudarTipoCor()">
+                    <option value="hex">Hexadecimal</option>
+                    <option value="rgb">RGB</option>
+                    <option value="hsl">HSL</option>
+                </select>
+            </div>
+            
+            <div id="hexInput">
+                <label for="corHex">Hexadecimal (#RRGGBB):</label>
+                <input type="text" id="corHex" placeholder="#RRGGBB" value="#3498db">
+                <button onclick="atualizarCorHex()">Atualizar</button>
+            </div>
+            
+            <div id="rgbInput" class="hidden">
+                <div>
+                    <label for="corR">Vermelho (0-255):</label>
+                    <input type="number" id="corR" min="0" max="255" value="52">
+                </div>
+                <div>
+                    <label for="corG">Verde (0-255):</label>
+                    <input type="number" id="corG" min="0" max="255" value="152">
+                </div>
+                <div>
+                    <label for="corB">Azul (0-255):</label>
+                    <input type="number" id="corB" min="0" max="255" value="219">
+                </div>
+                <button onclick="atualizarCorRGB()">Atualizar</button>
+            </div>
+            
+            <div id="hslInput" class="hidden">
+                <div>
+                    <label for="corH">Matiz (0-360):</label>
+                    <input type="number" id="corH" min="0" max="360" value="204">
+                </div>
+                <div>
+                    <label for="corS">Saturação (0-100%):</label>
+                    <input type="number" id="corS" min="0" max="100" value="70">
+                </div>
+                <div>
+                    <label for="corL">Luminosidade (0-100%):</label>
+                    <input type="number" id="corL" min="0" max="100" value="53">
+                </div>
+                <button onclick="atualizarCorHSL()">Atualizar</button>
+            </div>
+            
+            <div class="result" style="margin-top: 15px;">
+                <p>Hexadecimal: <span id="hexResult">#3498db</span></p>
+                <p>RGB: <span id="rgbResult">rgb(52, 152, 219)</span></p>
+                <p>HSL: <span id="hslResult">hsl(204, 70%, 53%)</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Validador de CPF/CNPJ
+        function validarDocumento() {
+            const documento = document.getElementById('cpfCnpjInput').value.replace(/\D/g, '');
+            const resultado = document.getElementById('documentoResultado');
+            
+            if (documento.length === 11) {
+                if (validarCPF(documento)) {
+                    resultado.innerHTML = '<span style="color: green;">CPF válido!</span>';
+                } else {
+                    resultado.innerHTML = '<span style="color: red;">CPF inválido!</span>';
+                }
+            } else if (documento.length === 14) {
+                if (validarCNPJ(documento)) {
+                    resultado.innerHTML = '<span style="color: green;">CNPJ válido!</span>';
+                } else {
+                    resultado.innerHTML = '<span style="color: red;">CNPJ inválido!</span>';
+                }
+            } else {
+                resultado.innerHTML = '<span style="color: red;">Documento inválido! CPF deve ter 11 dígitos e CNPJ 14.</span>';
+            }
+        }
+        
+        function validarCPF(cpf) {
+            cpf = cpf.replace(/\D/g, '');
+            if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false;
+            
+            let soma = 0;
+            for (let i = 0; i < 9; i++) {
+                soma += parseInt(cpf.charAt(i)) * (10 - i);
+            }
+            let resto = (soma * 10) % 11;
+            if (resto === 10 || resto === 11) resto = 0;
+            if (resto !== parseInt(cpf.charAt(9))) return false;
+            
+            soma = 0;
+            for (let i = 0; i < 10; i++) {
+                soma += parseInt(cpf.charAt(i)) * (11 - i);
+            }
+            resto = (soma * 10) % 11;
+            if (resto === 10 || resto === 11) resto = 0;
+            if (resto !== parseInt(cpf.charAt(10))) return false;
+            
+            return true;
+        }
+        
+        function validarCNPJ(cnpj) {
+            cnpj = cnpj.replace(/\D/g, '');
+            if (cnpj.length !== 14 || /^(\d)\1{13}$/.test(cnpj)) return false;
+            
+            let tamanho = cnpj.length - 2;
+            let numeros = cnpj.substring(0, tamanho);
+            const digitos = cnpj.substring(tamanho);
+            let soma = 0;
+            let pos = tamanho - 7;
+            
+            for (let i = tamanho; i >= 1; i--) {
+                soma += numeros.charAt(tamanho - i) * pos--;
+                if (pos < 2) pos = 9;
+            }
+            
+            let resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+            if (resultado !== parseInt(digitos.charAt(0))) return false;
+            
+            tamanho += 1;
+            numeros = cnpj.substring(0, tamanho);
+            soma = 0;
+            pos = tamanho - 7;
+            
+            for (let i = tamanho; i >= 1; i--) {
+                soma += numeros.charAt(tamanho - i) * pos--;
+                if (pos < 2) pos = 9;
+            }
+            
+            resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+            if (resultado !== parseInt(digitos.charAt(1))) return false;
+            
+            return true;
+        }
+        
+        // Conversor de Unidades
+        function abrirTab(evt, tabName) {
+            const tabContents = document.getElementsByClassName('tab-content');
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
+            
+            const tabButtons = document.getElementsByClassName('tab-btn');
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove('active');
+            }
+            
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+        
+        function converterTemperatura() {
+            const valor = parseFloat(document.getElementById('tempInput').value);
+            const de = document.getElementById('tempFrom').value;
+            const para = document.getElementById('tempTo').value;
+            let resultado;
+            
+            // Converter para Celsius primeiro
+            let celsius;
+            switch (de) {
+                case 'c': celsius = valor; break;
+                case 'f': celsius = (valor - 32) * 5/9; break;
+                case 'k': celsius = valor - 273.15; break;
+            }
+            
+            // Converter de Celsius para unidade desejada
+            switch (para) {
+                case 'c': resultado = celsius; break;
+                case 'f': resultado = (celsius * 9/5) + 32; break;
+                case 'k': resultado = celsius + 273.15; break;
+            }
+            
+            document.getElementById('tempResult').textContent = `${valor.toFixed(2)} ${getTempSymbol(de)} = ${resultado.toFixed(2)} ${getTempSymbol(para)}`;
+        }
+        
+        function getTempSymbol(unit) {
+            switch (unit) {
+                case 'c': return '°C';
+                case 'f': return '°F';
+                case 'k': return 'K';
+                default: return '';
+            }
+        }
+        
+        function converterPeso() {
+            const valor = parseFloat(document.getElementById('pesoInput').value);
+            const de = document.getElementById('pesoFrom').value;
+            const para = document.getElementById('pesoTo').value;
+            let resultado;
+            
+            // Converter para gramas primeiro
+            let gramas;
+            switch (de) {
+                case 'kg': gramas = valor * 1000; break;
+                case 'g': gramas = valor; break;
+                case 'lb': gramas = valor * 453.592; break;
+                case 'oz': gramas = valor * 28.3495; break;
+            }
+            
+            // Converter de gramas para unidade desejada
+            switch (para) {
+                case 'kg': resultado = gramas / 1000; break;
+                case 'g': resultado = gramas; break;
+                case 'lb': resultado = gramas / 453.592; break;
+                case 'oz': resultado = gramas / 28.3495; break;
+            }
+            
+            document.getElementById('pesoResult').textContent = `${valor.toFixed(2)} ${de} = ${resultado.toFixed(2)} ${para}`;
+        }
+        
+        function converterDistancia() {
+            const valor = parseFloat(document.getElementById('distInput').value);
+            const de = document.getElementById('distFrom').value;
+            const para = document.getElementById('distTo').value;
+            let resultado;
+            
+            // Converter para metros primeiro
+            let metros;
+            switch (de) {
+                case 'km': metros = valor * 1000; break;
+                case 'm': metros = valor; break;
+                case 'cm': metros = valor / 100; break;
+                case 'mi': metros = valor * 1609.34; break;
+            }
+            
+            // Converter de metros para unidade desejada
+            switch (para) {
+                case 'km': resultado = metros / 1000; break;
+                case 'm': resultado = metros; break;
+                case 'cm': resultado = metros * 100; break;
+                case 'mi': resultado = metros / 1609.34; break;
+            }
+            
+            document.getElementById('distResult').textContent = `${valor.toFixed(2)} ${de} = ${resultado.toFixed(2)} ${para}`;
+        }
+        
+        function converterMoeda() {
+            const valor = parseFloat(document.getElementById('moedaInput').value);
+            const de = document.getElementById('moedaFrom').value;
+            const para = document.getElementById('moedaTo').value;
+            let resultado;
+            
+            // Taxas de câmbio aproximadas (atualize conforme necessário)
+            const taxas = {
+                'BRL': { 'USD': 0.19, 'EUR': 0.17, 'GBP': 0.15, 'BRL': 1 },
+                'USD': { 'BRL': 5.20, 'EUR': 0.88, 'GBP': 0.77, 'USD': 1 },
+                'EUR': { 'BRL': 5.90, 'USD': 1.14, 'GBP': 0.87, 'EUR': 1 },
+                'GBP': { 'BRL': 6.80, 'USD': 1.30, 'EUR': 1.15, 'GBP': 1 }
+            };
+            
+            resultado = valor * taxas[de][para];
+            
+            const simbolos = {
+                'BRL': 'R$', 'USD': 'US$', 'EUR': '€', 'GBP': '£'
+            };
+            
+            document.getElementById('moedaResult').textContent = 
+                `${simbolos[de]} ${valor.toFixed(2)} = ${simbolos[para]} ${resultado.toFixed(2)}`;
+        }
+        
+        // Cronômetro e Temporizador
+        let cronometroInterval;
+        let cronometroSegundos = 0;
+        
+        function iniciarCronometro() {
+            if (cronometroInterval) return;
+            
+            cronometroInterval = setInterval(() => {
+                cronometroSegundos++;
+                atualizarCronometroDisplay();
+            }, 1000);
+        }
+        
+        function pausarCronometro() {
+            clearInterval(cronometroInterval);
+            cronometroInterval = null;
+        }
+        
+        function zerarCronometro() {
+            pausarCronometro();
+            cronometroSegundos = 0;
+            atualizarCronometroDisplay();
+        }
+        
+        function atualizarCronometroDisplay() {
+            const horas = Math.floor(cronometroSegundos / 3600);
+            const minutos = Math.floor((cronometroSegundos % 3600) / 60);
+            const segundos = cronometroSegundos % 60;
+            
+            document.getElementById('cronometroDisplay').textContent = 
+                `${String(horas).padStart(2, '0')}:${String(minutos).padStart(2, '0')}:${String(segundos).padStart(2, '0')}`;
+        }
+        
+        let temporizadorInterval;
+        
+        function iniciarTemporizador() {
+            if (temporizadorInterval) return;
+            
+            const horas = parseInt(document.getElementById('tempHoras').value) || 0;
+            const minutos = parseInt(document.getElementById('tempMinutos').value) || 0;
+            const segundos = parseInt(document.getElementById('tempSegundos').value) || 0;
+            
+            let totalSegundos = horas * 3600 + minutos * 60 + segundos;
+            
+            if (totalSegundos <= 0) {
+                alert('Defina um tempo válido!');
+                return;
+            }
+            
+            atualizarTemporizadorDisplay(totalSegundos);
+            
+            temporizadorInterval = setInterval(() => {
+                totalSegundos--;
+                atualizarTemporizadorDisplay(totalSegundos);
+                
+                if (totalSegundos <= 0) {
+                    clearInterval(temporizadorInterval);
+                    temporizadorInterval = null;
+                    document.getElementById('alarme').play();
+                }
+            }, 1000);
+        }
+        
+        function pararTemporizador() {
+            clearInterval(temporizadorInterval);
+            temporizadorInterval = null;
+        }
+        
+        function atualizarTemporizadorDisplay(totalSegundos) {
+            const horas = Math.floor(totalSegundos / 3600);
+            const minutos = Math.floor((totalSegundos % 3600) / 60);
+            const segundos = totalSegundos % 60;
+            
+            document.getElementById('temporizadorDisplay').textContent = 
+                `${String(horas).padStart(2, '0')}:${String(minutos).padStart(2, '0')}:${String(segundos).padStart(2, '0')}`;
+        }
+        
+        // To-Do List
+        function carregarTarefas() {
+            const tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
+            const lista = document.getElementById('listaTarefas');
+            lista.innerHTML = '';
+            
+            tarefas.forEach((tarefa, index) => {
+                const div = document.createElement('div');
+                div.className = `task-item ${tarefa.completa ? 'completed' : ''}`;
+                
+                div.innerHTML = `
+                    <span>${tarefa.texto}</span>
+                    <div>
+                        <button onclick="alternarTarefa(${index})">${tarefa.completa ? 'Desfazer' : 'Concluir'}</button>
+                        <button onclick="removerTarefa(${index})">Remover</button>
+                    </div>
+                `;
+                
+                lista.appendChild(div);
+            });
+        }
+        
+        function adicionarTarefa() {
+            const input = document.getElementById('novaTarefa');
+            const texto = input.value.trim();
+            
+            if (texto) {
+                const tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
+                tarefas.push({ texto, completa: false });
+                localStorage.setItem('tarefas', JSON.stringify(tarefas));
+                input.value = '';
+                carregarTarefas();
+            }
+        }
+        
+        function alternarTarefa(index) {
+            const tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
+            tarefas[index].completa = !tarefas[index].completa;
+            localStorage.setItem('tarefas', JSON.stringify(tarefas));
+            carregarTarefas();
+        }
+        
+        function removerTarefa(index) {
+            const tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
+            tarefas.splice(index, 1);
+            localStorage.setItem('tarefas', JSON.stringify(tarefas));
+            carregarTarefas();
+        }
+        
+        // Gerador de Senhas
+        function gerarSenha() {
+            const tamanho = parseInt(document.getElementById('tamanhoSenha').value);
+            const usarMaiusculas = document.getElementById('usarMaiusculas').checked;
+            const usarMinusculas = document.getElementById('usarMinusculas').checked;
+            const usarNumeros = document.getElementById('usarNumeros').checked;
+            const usarEspeciais = document.getElementById('usarEspeciais').checked;
+            
+            let caracteres = '';
+            if (usarMaiusculas) caracteres += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            if (usarMinusculas) caracteres += 'abcdefghijklmnopqrstuvwxyz';
+            if (usarNumeros) caracteres += '0123456789';
+            if (usarEspeciais) caracteres += '!@#$%^&*()_+-=[]{}|;:,.<>?';
+            
+            if (!caracteres) {
+                alert('Selecione pelo menos um tipo de caractere!');
+                return;
+            }
+            
+            let senha = '';
+            for (let i = 0; i < tamanho; i++) {
+                senha += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+            }
+            
+            document.getElementById('senhaGerada').value = senha;
+        }
+        
+        function copiarSenha() {
+            const senha = document.getElementById('senhaGerada');
+            senha.select();
+            document.execCommand('copy');
+            alert('Senha copiada para a área de transferência!');
+        }
+        
+        // Checklist de Viagem/Eventos
+        function carregarChecklist() {
+            const itens = JSON.parse(localStorage.getItem('checklist')) || [];
+            const lista = document.getElementById('listaChecklist');
+            lista.innerHTML = '';
+            
+            itens.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'task-item';
+                
+                div.innerHTML = `
+                    <span>${item}</span>
+                    <button onclick="removerItemChecklist(${index})">Remover</button>
+                `;
+                
+                lista.appendChild(div);
+            });
+        }
+        
+        function adicionarItemChecklist() {
+            const input = document.getElementById('novoItemChecklist');
+            const texto = input.value.trim();
+            
+            if (texto) {
+                const itens = JSON.parse(localStorage.getItem('checklist')) || [];
+                itens.push(texto);
+                localStorage.setItem('checklist', JSON.stringify(itens));
+                input.value = '';
+                carregarChecklist();
+            }
+        }
+        
+        function removerItemChecklist(index) {
+            const itens = JSON.parse(localStorage.getItem('checklist')) || [];
+            itens.splice(index, 1);
+            localStorage.setItem('checklist', JSON.stringify(itens));
+            carregarChecklist();
+        }
+        
+        function imprimirChecklist() {
+            const itens = JSON.parse(localStorage.getItem('checklist')) || [];
+            const conteudo = `
+                <h1>Checklist de Viagem/Eventos</h1>
+                <ul>
+                    ${itens.map(item => `<li>${item}</li>`).join('')}
+                </ul>
+                <p>Gerado em ${new Date().toLocaleString()}</p>
+            `;
+            
+            const janela = window.open('', '_blank');
+            janela.document.write(conteudo);
+            janela.document.close();
+            janela.print();
+        }
+        
+        // Mini Editor de Imagens
+        let imagemOriginal = null;
+        let canvas = document.getElementById('imageCanvas');
+        let ctx = canvas.getContext('2d');
+        
+        document.getElementById('imagemUpload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = new Image();
+                img.onload = function() {
+                    imagemOriginal = img;
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img, 0, 0);
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+        
+        function redimensionarImagem() {
+            if (!imagemOriginal) {
+                alert('Carregue uma imagem primeiro!');
+                return;
+            }
+            
+            const novaWidth = parseInt(document.getElementById('novaLargura').value);
+            const novaHeight = parseInt(document.getElementById('novaAltura').value);
+            
+            if (!novaWidth || !novaHeight) {
+                alert('Digite largura e altura válidas!');
+                return;
+            }
+            
+            canvas.width = novaWidth;
+            canvas.height = novaHeight;
+            ctx.drawImage(imagemOriginal, 0, 0, novaWidth, novaHeight);
+        }
+        
+        function girarImagem(graus) {
+            if (!imagemOriginal) {
+                alert('Carregue uma imagem primeiro!');
+                return;
+            }
+            
+            const angle = graus * Math.PI / 180;
+            const sin = Math.abs(Math.sin(angle));
+            const cos = Math.abs(Math.cos(angle));
+            
+            const newWidth = Math.floor(imagemOriginal.width * cos + imagemOriginal.height * sin);
+            const newHeight = Math.floor(imagemOriginal.width * sin + imagemOriginal.height * cos);
+            
+            canvas.width = newWidth;
+            canvas.height = newHeight;
+            
+            ctx.translate(newWidth / 2, newHeight / 2);
+            ctx.rotate(angle);
+            ctx.drawImage(imagemOriginal, -imagemOriginal.width / 2, -imagemOriginal.height / 2);
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+        }
+        
+        function inverterHorizontal() {
+            if (!imagemOriginal) {
+                alert('Carregue uma imagem primeiro!');
+                return;
+            }
+            
+            ctx.translate(canvas.width, 0);
+            ctx.scale(-1, 1);
+            ctx.drawImage(imagemOriginal, 0, 0);
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+        }
+        
+        function inverterVertical() {
+            if (!imagemOriginal) {
+                alert('Carregue uma imagem primeiro!');
+                return;
+            }
+            
+            ctx.translate(0, canvas.height);
+            ctx.scale(1, -1);
+            ctx.drawImage(imagemOriginal, 0, 0);
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+        }
+        
+        function baixarImagem() {
+            if (!imagemOriginal) {
+                alert('Carregue uma imagem primeiro!');
+                return;
+            }
+            
+            const link = document.createElement('a');
+            link.download = 'imagem-editada.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+        
+        // Contador de Palavras e Caracteres
+        document.getElementById('textoContador').addEventListener('input', function() {
+            const texto = this.value;
+            const palavras = texto.trim() === '' ? 0 : texto.trim().split(/\s+/).length;
+            const caracteresComEspacos = texto.length;
+            const caracteresSemEspacos = texto.replace(/\s+/g, '').length;
+            
+            document.getElementById('contadorPalavras').textContent = palavras;
+            document.getElementById('contadorCaracteresComEspacos').textContent = caracteresComEspacos;
+            document.getElementById('contadorCaracteresSemEspacos').textContent = caracteresSemEspacos;
+        });
+        
+        // Gerador de Lorem Ipsum
+        function gerarLoremIpsum() {
+            const paragrafos = parseInt(document.getElementById('quantidadeParagrafos').value);
+            const tipo = document.getElementById('tipoLorem').value;
+            
+            const textos = {
+                padrao: [
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                    "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+                    "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.",
+                    "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia."
+                ],
+                hipster: [
+                    "I'm baby woke mlkshk wolf bitters live-edge blue bottle.",
+                    "Hammock franzen authentic brooklyn twee portland.",
+                    "Tattooed narwhal actually, selvage normcore cornhole swag.",
+                    "Sustainable hot chicken skateboard, DIY jean shorts paleo.",
+                    "Pabst four loko listicle, cloud bread vegan tacos."
+                ],
+                corporate: [
+                    "Leverage agile frameworks to provide a robust synopsis for high level overviews.",
+                    "Iterative approaches to corporate strategy foster collaborative thinking.",
+                    "Organically grow the holistic world view of disruptive innovation.",
+                    "Bring to the table win-win survival strategies to ensure proactive domination.",
+                    "Capitalize on low hanging fruit to identify a ballpark value activity."
+                ]
+            };
+            
+            let resultado = '';
+            for (let i = 0; i < paragrafos; i++) {
+                const randomIndex = Math.floor(Math.random() * textos[tipo].length);
+                resultado += textos[tipo][randomIndex] + ' ';
+                if (Math.random() > 0.7) resultado += textos[tipo][(randomIndex + 1) % textos[tipo].length] + ' ';
+                resultado += '\n\n';
+            }
+            
+            document.getElementById('loremIpsumResultado').value = resultado.trim();
+        }
+        
+        function copiarLorem() {
+            const lorem = document.getElementById('loremIpsumResultado');
+            lorem.select();
+            document.execCommand('copy');
+            alert('Texto copiado para a área de transferência!');
+        }
+        
+        // Ferramenta de Sorteio
+        function mudarTipoSorteio() {
+            const tipo = document.getElementById('tipoSorteio').value;
+            
+            document.getElementById('sorteioNomes').classList.toggle('hidden', tipo !== 'nomes');
+            document.getElementById('sorteioNumeros').classList.toggle('hidden', tipo !== 'numeros');
+        }
+        
+        function sortearNomes() {
+            const nomes = document.getElementById('listaNomes').value.split('\n').filter(n => n.trim());
+            const quantidade = parseInt(document.getElementById('quantidadeSorteados').value) || 1;
+            
+            if (nomes.length === 0) {
+                alert('Digite pelo menos um nome!');
+                return;
+            }
+            
+            if (quantidade > nomes.length) {
+                alert(`A quantidade de sorteados não pode ser maior que o número de nomes (${nomes.length})!`);
+                return;
+            }
+            
+            const sorteados = [];
+            const copiaNomes = [...nomes];
+            
+            for (let i = 0; i < quantidade; i++) {
+                const index = Math.floor(Math.random() * copiaNomes.length);
+                sorteados.push(copiaNomes[index]);
+                copiaNomes.splice(index, 1);
+            }
+            
+            document.getElementById('resultadoSorteioNomes').innerHTML = 
+                `<strong>Sorteados:</strong><br>${sorteados.join('<br>')}`;
+        }
+        
+        function sortearNumeros() {
+            const min = parseInt(document.getElementById('numeroMinimo').value) || 0;
+            const max = parseInt(document.getElementById('numeroMaximo').value) || 100;
+            const quantidade = parseInt(document.getElementById('quantidadeNumerosSorteados').value) || 1;
+            
+            if (min >= max) {
+                alert('O número mínimo deve ser menor que o máximo!');
+                return;
+            }
+            
+            const sorteados = [];
+            for (let i = 0; i < quantidade; i++) {
+                sorteados.push(Math.floor(Math.random() * (max - min + 1)) + min);
+            }
+            
+            document.getElementById('resultadoSorteioNumeros').innerHTML = 
+                `<strong>Sorteados:</strong><br>${sorteados.join(', ')}`;
+        }
+        
+        // Calculadora de IMC
+        function calcularIMC() {
+            const peso = parseFloat(document.getElementById('pesoIMC').value);
+            const altura = parseFloat(document.getElementById('alturaIMC').value) / 100; // converter cm para m
+            
+            if (!peso || !altura) {
+                alert('Digite peso e altura válidos!');
+                return;
+            }
+            
+            const imc = peso / (altura * altura);
+            let classificacao;
+            
+            if (imc < 18.5) classificacao = 'Magreza';
+            else if (imc < 25) classificacao = 'Normal';
+            else if (imc < 30) classificacao = 'Sobrepeso';
+            else if (imc < 35) classificacao = 'Obesidade Grau I';
+            else if (imc < 40) classificacao = 'Obesidade Grau II';
+            else classificacao = 'Obesidade Grau III';
+            
+            document.getElementById('resultadoIMC').innerHTML = `
+                <p><strong>IMC:</strong> ${imc.toFixed(1)}</p>
+                <p><strong>Classificação:</strong> ${classificacao}</p>
+            `;
+        }
+        
+        // Calendário Interativo
+        let dataAtual = new Date();
+        
+        function renderizarCalendario() {
+            const mesAno = document.getElementById('mesAnoAtual');
+            const diasContainer = document.getElementById('calendarioDias');
+            
+            const mes = dataAtual.getMonth();
+            const ano = dataAtual.getFullYear();
+            
+            mesAno.textContent = `${getNomeMes(mes)} ${ano}`;
+            diasContainer.innerHTML = '';
+            
+            const primeiroDia = new Date(ano, mes, 1).getDay();
+            const ultimoDia = new Date(ano, mes + 1, 0).getDate();
+            
+            // Dias do mês anterior
+            const ultimoDiaMesAnterior = new Date(ano, mes, 0).getDate();
+            for (let i = 0; i < primeiroDia; i++) {
+                const diaElement = document.createElement('div');
+                diaElement.textContent = ultimoDiaMesAnterior - primeiroDia + i + 1;
+                diaElement.style.color = '#ccc';
+                diasContainer.appendChild(diaElement);
+            }
+            
+            // Dias do mês atual
+            for (let i = 1; i <= ultimoDia; i++) {
+                const diaElement = document.createElement('div');
+                diaElement.textContent = i;
+                
+                const hoje = new Date();
+                if (i === hoje.getDate() && mes === hoje.getMonth() && ano === hoje.getFullYear()) {
+                    diaElement.style.backgroundColor = '#3498db';
+                    diaElement.style.color = 'white';
+                    diaElement.style.borderRadius = '50%';
+                }
+                
+                diaElement.addEventListener('click', () => {
+                    document.getElementById('compromissoData').value = 
+                        `${ano}-${String(mes + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+                });
+                
+                diasContainer.appendChild(diaElement);
+            }
+            
+            // Dias do próximo mês
+            const totalCelulas = Math.ceil((primeiroDia + ultimoDia) / 7) * 7;
+            const diasRestantes = totalCelulas - (primeiroDia + ultimoDia);
+            for (let i = 1; i <= diasRestantes; i++) {
+                const diaElement = document.createElement('div');
+                diaElement.textContent = i;
+                diaElement.style.color = '#ccc';
+                diasContainer.appendChild(diaElement);
+            }
+            
+            carregarCompromissos();
+        }
+        
+        function getNomeMes(mes) {
+            const meses = [
+                'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+                'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+            ];
+            return meses[mes];
+        }
+        
+        function mudarMes(delta) {
+            dataAtual.setMonth(dataAtual.getMonth() + delta);
+            renderizarCalendario();
+        }
+        
+        function carregarCompromissos() {
+            const compromissos = JSON.parse(localStorage.getItem('compromissos')) || [];
+            const lista = document.getElementById('listaCompromissos');
+            lista.innerHTML = '';
+            
+            compromissos.forEach((compromisso, index) => {
+                const [ano, mes, dia] = compromisso.data.split('-');
+                const dataCompromisso = new Date(ano, mes - 1, dia);
+                
+                if (dataCompromisso.getMonth() === dataAtual.getMonth() && 
+                    dataCompromisso.getFullYear() === dataAtual.getFullYear()) {
+                    
+                    const div = document.createElement('div');
+                    div.className = 'event';
+                    div.innerHTML = `
+                        <strong>${dia}/${mes}/${ano}:</strong> ${compromisso.descricao}
+                        <button onclick="removerCompromisso(${index})" style="float: right;">Remover</button>
+                    `;
+                    lista.appendChild(div);
+                }
+            });
+        }
+        
+        function adicionarCompromisso() {
+            const data = document.getElementById('compromissoData').value;
+            const descricao = document.getElementById('compromissoDescricao').value.trim();
+            
+            if (!data || !descricao) {
+                alert('Preencha a data e a descrição!');
+                return;
+            }
+            
+            const compromissos = JSON.parse(localStorage.getItem('compromissos')) || [];
+            compromissos.push({ data, descricao });
+            localStorage.setItem('compromissos', JSON.stringify(compromissos));
+            
+            document.getElementById('compromissoDescricao').value = '';
+            carregarCompromissos();
+        }
+        
+        function removerCompromisso(index) {
+            const compromissos = JSON.parse(localStorage.getItem('compromissos')) || [];
+            compromissos.splice(index, 1);
+            localStorage.setItem('compromissos', JSON.stringify(compromissos));
+            carregarCompromissos();
+        }
+        
+        // Conversor de Cores
+        function mudarTipoCor() {
+            const tipo = document.getElementById('tipoCor').value;
+            
+            document.getElementById('hexInput').classList.toggle('hidden', tipo !== 'hex');
+            document.getElementById('rgbInput').classList.toggle('hidden', tipo !== 'rgb');
+            document.getElementById('hslInput').classList.toggle('hidden', tipo !== 'hsl');
+        }
+        
+        function atualizarCorHex() {
+            const hex = document.getElementById('corHex').value;
+            if (!/^#[0-9A-F]{6}$/i.test(hex)) {
+                alert('Formato hexadecimal inválido! Use #RRGGBB');
+                return;
+            }
+            
+            const r = parseInt(hex.substr(1, 2), 16);
+            const g = parseInt(hex.substr(3, 2), 16);
+            const b = parseInt(hex.substr(5, 2), 16);
+            
+            atualizarCor(r, g, b);
+        }
+        
+        function atualizarCorRGB() {
+            const r = parseInt(document.getElementById('corR').value);
+            const g = parseInt(document.getElementById('corG').value);
+            const b = parseInt(document.getElementById('corB').value);
+            
+            if (isNaN(r) || isNaN(g) || isNaN(b) || r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255) {
+                alert('Valores RGB devem estar entre 0 e 255!');
+                return;
+            }
+            
+            atualizarCor(r, g, b);
+        }
+        
+        function atualizarCorHSL() {
+            const h = parseInt(document.getElementById('corH').value);
+            const s = parseInt(document.getElementById('corS').value);
+            const l = parseInt(document.getElementById('corL').value);
+            
+            if (isNaN(h) || isNaN(s) || isNaN(l) || h < 0 || h > 360 || s < 0 || s > 100 || l < 0 || l > 100) {
+                alert('Valores HSL inválidos! H:0-360, S:0-100, L:0-100');
+                return;
+            }
+            
+            const rgb = hslParaRgb(h, s, l);
+            atualizarCor(rgb.r, rgb.g, rgb.b);
+        }
+        
+        function hslParaRgb(h, s, l) {
+            s /= 100;
+            l /= 100;
+            
+            const c = (1 - Math.abs(2 * l - 1)) * s;
+            const x = c * (1 - Math.abs((h / 60) % 2 - 1));
+            const m = l - c / 2;
+            
+            let r, g, b;
+            
+            if (h >= 0 && h < 60) {
+                [r, g, b] = [c, x, 0];
+            } else if (h >= 60 && h < 120) {
+                [r, g, b] = [x, c, 0];
+            } else if (h >= 120 && h < 180) {
+                [r, g, b] = [0, c, x];
+            } else if (h >= 180 && h < 240) {
+                [r, g, b] = [0, x, c];
+            } else if (h >= 240 && h < 300) {
+                [r, g, b] = [x, 0, c];
+            } else {
+                [r, g, b] = [c, 0, x];
+            }
+            
+            return {
+                r: Math.round((r + m) * 255),
+                g: Math.round((g + m) * 255),
+                b: Math.round((b + m) * 255)
+            };
+        }
+        
+        function atualizarCor(r, g, b) {
+            // Atualizar visualização
+            document.getElementById('colorPreview').style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+            
+            // Atualizar valores HEX
+            const hex = `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
+            document.getElementById('corHex').value = hex;
+            document.getElementById('hexResult').textContent = hex;
+            
+            // Atualizar valores RGB
+            document.getElementById('corR').value = r;
+            document.getElementById('corG').value = g;
+            document.getElementById('corB').value = b;
+            document.getElementById('rgbResult').textContent = `rgb(${r}, ${g}, ${b})`;
+            
+            // Atualizar valores HSL
+            const hsl = rgbParaHsl(r, g, b);
+            document.getElementById('corH').value = hsl.h;
+            document.getElementById('corS').value = hsl.s;
+            document.getElementById('corL').value = hsl.l;
+            document.getElementById('hslResult').textContent = `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
+        }
+        
+        function rgbParaHsl(r, g, b) {
+            r /= 255;
+            g /= 255;
+            b /= 255;
+            
+            const max = Math.max(r, g, b);
+            const min = Math.min(r, g, b);
+            let h, s, l = (max + min) / 2;
+            
+            if (max === min) {
+                h = s = 0; // achromatic
+            } else {
+                const d = max - min;
+                s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+                
+                switch (max) {
+                    case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+                    case g: h = (b - r) / d + 2; break;
+                    case b: h = (r - g) / d + 4; break;
+                }
+                
+                h *= 60;
+            }
+            
+            return {
+                h: Math.round(h),
+                s: Math.round(s * 100),
+                l: Math.round(l * 100)
+            };
+        }
+        
+        // Inicialização
+        window.onload = function() {
+            carregarTarefas();
+            carregarChecklist();
+            renderizarCalendario();
+            
+            // Configurar data atual no input de compromissos
+            const hoje = new Date();
+            document.getElementById('compromissoData').value = 
+                `${hoje.getFullYear()}-${String(hoje.getMonth() + 1).padStart(2, '0')}-${String(hoje.getDate()).padStart(2, '0')}`;
+            
+            // Inicializar conversor de cores
+            atualizarCorHex();
+        };
+    </script>
+    <br> <center>
+<a href="https://ivaldofs.com.br/">Inicio</a> |
+<a href="https://ivaldofs.com.br/sobre/">Sobre</a> |
+<a href="https://ivaldofs.com.br/contato/">Contato</a> | 
+<a href="https://ivaldofs.com.br/calculadora/2-grau/">2º Grau</a> |
+<a href="https://ivaldofs.com.br/calculadora/booleana/">Mapa Karnaugh</a> |
+<a href="https://ivaldofs.com.br/calculadora/cientifica.html">Cientifica</a> |
+<a href="https://ivaldofs.com.br/calculadora-ip">Sub-rede</a> |
+<a href="https://ivaldofs.com.br/matematica-computacional">Matemática Computacional</a> |
+<a href="https://ivaldofs.com.br/calculadora/lei-de-ohm.html">Lei de Ohm</a> |
+<a href="https://ivaldofs.com.br/calculadora/dividir-sub-rede.html">Dividir Sub-Redes</a> |
+<a href="https://ivaldofs.com.br/calculadora/administradores-de-redes.html">Calculadora Avançada para Redes</a>
+</center>
+<br>
+<br>
+    <center><footer>
+        <p>&copy; Ivaldo Fernandes - Todos os direitos reservados.</p>
+  </footer></center>
+
+<script src="/app/script.js"></script>
+    
+</body>
+</html>

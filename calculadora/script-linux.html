@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    
+    
+     <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Biblioteca de scripts Linux",
+      "image": [
+        "/app/imagens/512x512.png"
+       ],
+      "datePublished": "2025-04-29T10:05:00-03:00",
+      "dateModified": "2025-04-29T10:05:00-03:00",
+      "author": [{
+          "@type": "Person",
+          "name": "Ivaldo Fernandes",
+          "url": "https://ivaldofs.com.br/"
+      }]
+    }
+    </script> 
+    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-947PJ1CXF0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-947PJ1CXF0');
+</script>
+ <link rel="icon" href="/app/imagens/512x512.png" type="image/x-icon">
+
+    
+    <link rel="manifest" href="/app/manifest.json">
+    <meta name="theme-color" content="#000000">
+    
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca de scripts Linux</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        a {
+            color: blue !important;
+            }
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .script-card {
+            transition: transform 0.2s;
+        }
+        .script-card:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="container mx-auto p-4">
+        <br> <center>
+<a href="https://ivaldofs.com.br/">Inicio</a> |
+<a href="https://ivaldofs.com.br/sobre/">Sobre</a> |
+<a href="https://ivaldofs.com.br/contato/">Contato</a> | 
+<a href="https://ivaldofs.com.br/calculadora/2-grau/">2º Grau</a> |
+<a href="https://ivaldofs.com.br/calculadora/binario.html">Binário</a> |
+<a href="https://ivaldofs.com.br/calculadora/booleana/">Mapa Karnaugh</a> |
+<a href="https://ivaldofs.com.br/calculadora/cientifica.html">Cientifica</a> |
+<a href="https://ivaldofs.com.br/calculadora-ip">Sub-rede</a> |
+<a href="https://ivaldofs.com.br/matematica-computacional">Matemática Computacional</a> |
+<a href="https://ivaldofs.com.br/calculadora/lei-de-ohm.html">Lei de Ohm</a>
+<a href="https://ivaldofs.com.br/calculadora/dividir-sub-rede.html">Dividir Sub-Redes</a>
+<a href="https://ivaldofs.com.br/calculadora/administradores-de-redes.html">Calculadora Avançada para Redes</a>
+</center>
+<br>
+        <h1 class="text-3xl font-bold text-center mb-6 text-gray-800">Biblioteca de scripts Linux</h1>
+        <p class="text-center text-gray-600 mb-8">Uma coleção de scripts Bash úteis para administração, desenvolvimento e automação de sistemas Linux.</p>
+
+        <div id="scripts-container">
+            <!-- Script categories and scripts will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <script>
+        const scriptsData = {
+            "Instalação de Programas e Repositórios": {
+                "Instalar Google Chrome": "#!/bin/bash\nwget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb\nsudo dpkg -i google-chrome-stable_current_amd64.deb\nsudo apt --fix-broken install -y",
+                "Instalar Visual Studio Code": "#!/bin/bash\nsudo apt update\nsudo apt install -y wget gpg\nwget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg\nsudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/\nsudo sh -c 'echo \"deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main\" > /etc/apt/sources.list.d/vscode.list'\nsudo apt update\nsudo apt install -y code",
+                "Instalar Docker": "#!/bin/bash\nsudo apt update\nsudo apt install -y apt-transport-https ca-certificates curl software-properties-common\ncurl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg\necho \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null\nsudo apt update\nsudo apt install -y docker-ce docker-ce-cli containerd.io\nsudo usermod -aG docker $USER\nnewgrp docker",
+                "Instalar Node.js + npm": "#!/bin/bash\ncurl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -\nsudo apt install -y nodejs",
+                "Instalar Python 3 + pip": "#!/bin/bash\nsudo apt update\nsudo apt install -y python3 python3-pip",
+                "Instalar Git": "#!/bin/bash\nsudo apt update\nsudo apt install -y git",
+                "Instalar PostgreSQL": "#!/bin/bash\nsudo apt update\nsudo apt install -y postgresql postgresql-contrib\nsudo systemctl start postgresql.service",
+                "Instalar MySQL/MariaDB": "#!/bin/bash\nsudo apt update\nsudo apt install -y mariadb-server\nsudo mysql_secure_installation",
+                "Instalar Apache2": "#!/bin/bash\nsudo apt update\nsudo apt install -y apache2\nsudo systemctl enable apache2",
+                "Instalar Nginx": "#!/bin/bash\nsudo apt update\nsudo apt install -y nginx\nsudo systemctl enable nginx",
+                "Instalar PHP + módulos": "#!/bin/bash\nsudo apt update\nsudo apt install -y php libapache2-mod-php php-mysql php-cli php-curl php-gd php-mbstring php-xml php-zip",
+                "Instalar Laravel": "#!/bin/bash\ncomposer global require laravel/installer\nexport PATH=$PATH:$HOME/.composer/vendor/bin",
+                "Instalar Composer": "#!/bin/bash\nsudo apt update\nsudo apt install -y php-cli unzip\ncurl -sS https://getcomposer.org/installer -o composer-setup.php\nsudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer",
+                "Instalar Java (OpenJDK)": "#!/bin/bash\nsudo apt update\nsudo apt install -y default-jdk",
+                "Instalar Android Studio": "#!/bin/bash\nsudo apt update\nsudo apt install -y snapd\nsudo snap install android-studio --classic",
+                "Instalar GIMP": "#!/bin/bash\nsudo apt update\nsudo apt install -y gimp",
+                "Instalar VLC": "#!/bin/bash\nsudo apt update\nsudo apt install -y vlc",
+                "Instalar Spotify via snap": "#!/bin/bash\nsudo apt update\nsudo apt install -y snapd\nsudo snap install spotify",
+                "Instalar Slack via snap": "#!/bin/bash\nsudo apt update\nsudo apt install -y snapd\nsudo snap install slack --classic",
+                "Instalar Discord": "#!/bin/bash\nsudo apt update\nsudo apt install -y snapd\nsudo snap install discord"
+            },
+            "Atualização e Limpeza": {
+                "Atualizar sistema completo": "#!/bin/bash\nsudo apt update\nsudo apt upgrade -y\nsudo apt dist-upgrade -y\nsudo apt autoremove -y",
+                "Remover pacotes desnecessários": "#!/bin/bash\nsudo apt autoremove -y",
+                "Limpar cache do apt": "#!/bin/bash\nsudo apt clean",
+                "Atualizar todos os snaps": "#!/bin/bash\nsudo snap refresh",
+                "Atualizar Flatpak": "#!/bin/bash\nflatpak update -y",
+                "Verificar atualizações pendentes": "#!/bin/bash\napt list --upgradable",
+                "Reinstalar pacotes quebrados": "#!/bin/bash\nsudo apt --fix-broken install",
+                "Forçar upgrade de release": "#!/bin/bash\ndo-release-upgrade -f DistUpgradeViewNonInteractive",
+                "Automatizar atualizações semanais": "#!/bin/bash\n(crontab -l 2>/dev/null; echo \"0 0 * * 0 sudo apt update && sudo apt upgrade -y\") | crontab -",
+                "Script de rollback de pacote": "#!/bin/bash\nsudo apt install aptitude\nsudo aptitude install <pacote>=<versão>"
+            },
+            "Gerenciamento de Pacotes": {
+                "Verificar versão de pacotes": "#!/bin/bash\ndpkg -l | grep <nome-do-pacote>",
+                "Comparar pacotes instalados com outro sistema": "#!/bin/bash\nssh usuario@outro-sistema \"dpkg --get-selections\" > pacotes_outro_sistema.txt\ndpkg --get-selections | diff - pacotes_outro_sistema.txt",
+                "Instalar múltiplos pacotes com um clique": "#!/bin/bash\nsudo apt update\nsudo apt install -y pacote1 pacote2 pacote3",
+                "Script de backup do dpkg": "#!/bin/bash\ndpkg --get-selections > lista_pacotes_instalados.txt",
+                "Listar todos os snaps": "#!/bin/bash\nsnap list",
+                "Instalar todos os .deb em uma pasta": "#!/bin/bash\nsudo dpkg -i *.deb\nsudo apt --fix-broken install -y",
+                "Script para baixar pacotes offline": "#!/bin/bash\napt-get download $(apt-rdepends <pacote> | grep -v \"^ \" | sed 's/debconf-2.0/debconf/g')",
+                "Criar repositório local": "#!/bin/bash\nsudo apt install -y dpkg-dev\nmkdir -p ~/repo/debs\ncp *.deb ~/repo/debs\ncd ~/repo\nsudo dpkg-scanpackages debs /dev/null | gzip -9c > debs/Packages.gz",
+                "Clonar repositório do GitHub e compilar": "#!/bin/bash\ngit clone https://github.com/usuario/repositorio.git\ncd repositorio\n./configure\nmake\nsudo make install",
+                "Instalar pacotes Flatpak automaticamente": "#!/bin/bash\nflatpak install flathub org.pacote1 org.pacote2 -y"
+            },
+            "Manutenção e Utilitários": {
+                "Limpeza de arquivos temporários": "#!/bin/bash\nsudo rm -rf /tmp/*\nsudo rm -rf ~/.cache/*",
+                "Remoção de arquivos duplicados": "#!/bin/bash\nfdupes -rdn ~/ | grep -v '^$'",
+                "Resetar configurações de rede": "#!/bin/bash\nsudo systemctl restart NetworkManager",
+                "Monitorar temperatura da CPU": "#!/bin/bash\nwatch -n 1 sensors",
+                "Verificar uso do disco": "#!/bin/bash\ndf -h",
+                "Gerar relatório do sistema": "#!/bin/bash\ninxi -Fxz",
+                "Script para shutdown automático": "#!/bin/bash\nshutdown -h 22:00",
+                "Script de inicialização customizada": "#!/bin/bash\necho \"[Desktop Entry]\nName=Meus Programas\nExec=/caminho/para/script.sh\nType=Application\" > ~/.config/autostart/meus_programas.desktop",
+                "Script de backup para USB": "#!/bin/bash\nrsync -avz ~/documentos /media/usb/backup",
+                "Atualizar firmware do sistema": "#!/bin/bash\nsudo fwupdmgr refresh\nsudo fwupdmgr update"
+            },
+            "Backup e Restauração": {
+                "Backup de diretórios específicos": "#!/bin/bash\ntar -czvf backup_$(date +%Y%m%d).tar.gz ~/documentos ~/imagens",
+                "Backup completo do sistema com tar": "#!/bin/bash\nsudo tar -cvpzf backup_sistema_$(date +%Y%m%d).tar.gz --exclude=/backup_sistema_*.tar.gz --one-file-system /",
+                "Sincronizar arquivos com rsync": "#!/bin/bash\nrsync -avz --delete ~/documentos usuario@servidor:/backup/",
+                "Backup automático para Google Drive": "#!/bin/bash\nrclone sync ~/documentos gdrive:backup -P",
+                "Backup de banco de dados MySQL": "#!/bin/bash\nmysqldump -u usuario -p senha --all-databases > backup_mysql_$(date +%Y%m%d).sql",
+                "Backup de banco de dados PostgreSQL": "#!/bin/bash\npg_dumpall -U postgres > backup_postgres_$(date +%Y%m%d).sql",
+                "Backup criptografado com GPG": "#!/bin/bash\ntar -czvf - ~/documentos | gpg -c > backup_$(date +%Y%m%d).tar.gz.gpg",
+                "Backup com versionamento": "#!/bin/bash\nrsync -avz --delete --backup --backup-dir=backup_$(date +%Y%m%d) ~/documentos /backup/",
+                "Restaurar backup": "#!/bin/bash\ntar -xzvf backup.tar.gz -C ~/",
+                "Backup para HD externo": "#!/bin/bash\nsudo rsync -aAXv --delete --exclude={\"/dev/*\",\"/proc/*\",\"/sys/*\",\"/tmp/*\",\"/run/*\",\"/mnt/*\",\"/media/*\",\"/lost+found\"} / /mnt/hdexterno/"
+            },
+            "Rede e Internet": {
+                "Verificar IP público": "#!/bin/bash\ncurl ifconfig.me",
+                "Ping contínuo com log": "#!/bin/bash\nping google.com | tee ping_log.txt",
+                "Testar velocidade de internet": "#!/bin/bash\nspeedtest-cli",
+                "Renovar IP com DHCP": "#!/bin/bash\nsudo dhclient -r\nsudo dhclient",
+                "Script para fixar IP": "#!/bin/bash\nsudo nmcli con mod \"Nome da Conexão\" ipv4.addresses \"192.168.1.100/24\"\nsudo nmcli con mod \"Nome da Conexão\" ipv4.gateway \"192.168.1.1\"\nsudo nmcli con mod \"Nome da Conexão\" ipv4.dns \"8.8.8.8\"\nsudo nmcli con mod \"Nome da Conexão\" ipv4.method manual\nsudo nmcli con down \"Nome da Conexão\"\nsudo nmcli con up \"Nome da Conexão\"",
+                "Monitorar queda de conexão": "#!/bin/bash\nwhile true; do if ! ping -c 1 google.com &> /dev/null; then echo \"$(date): Conexão perdida\" >> conexao.log; fi; sleep 60; done",
+                "Instalar e configurar WireGuard": "#!/bin/bash\nsudo apt update\nsudo apt install -y wireguard\nwg genkey | sudo tee /etc/wireguard/privatekey | wg pubkey | sudo tee /etc/wireguard/publickey",
+                "Configurar proxy": "#!/bin/bash\nexport http_proxy=\"http://proxy:porta\"\nexport https_proxy=\"http://proxy:porta\"",
+                "Monitorar consumo de banda": "#!/bin/bash\nnload",
+                "Bloquear sites com iptables": "#!/bin/bash\nsudo iptables -A OUTPUT -p tcp -d site.com -j DROP"
+            },
+            "Segurança": {
+                "Instalar Fail2ban": "#!/bin/bash\nsudo apt update\nsudo apt install -y fail2ban\nsudo systemctl enable fail2ban",
+                "Monitorar tentativas de login": "#!/bin/bash\nsudo grep \"Failed password\" /var/log/auth.log",
+                "Script de hardening básico": "#!/bin/bash\nsudo apt install -y unattended-upgrades\nsudo dpkg-reconfigure -plow unattended-upgrades\nsudo sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config\nsudo systemctl restart sshd",
+                "Verificar portas abertas": "#!/bin/bash\nsudo netstat -tulnp",
+                "Instalar ClamAV e escanear sistema": "#!/bin/bash\nsudo apt update\nsudo apt install -y clamav clamav-daemon\nsudo freshclam\nsudo clamscan -r /",
+                "Bloquear IPs com iptables": "#!/bin/bash\nsudo iptables -A INPUT -s IP_MALICIOSO -j DROP",
+                "Gerar SSH key": "#!/bin/bash\nssh-keygen -t rsa -b 4096",
+                "Copiar chave SSH para servidor": "#!/bin/bash\nssh-copy-id usuario@servidor",
+                "Script de backup de chaves SSH": "#!/bin/bash\ntar -czvf ssh_keys_backup_$(date +%Y%m%d).tar.gz ~/.ssh",
+                "Verificar usuários com acesso root": "#!/bin/bash\ngrep -Po '^sudo.+:\\K.*$' /etc/group"
+            },
+            "Servidores e Deploy": {
+                "Instalar e configurar Apache": "#!/bin/bash\nsudo apt update\nsudo apt install -y apache2\nsudo a2enmod rewrite\nsudo systemctl restart apache2",
+                "Instalar e configurar Nginx": "#!/bin/bash\nsudo apt update\nsudo apt install -y nginx\nsudo systemctl enable nginx",
+                "Instalar e configurar Certbot SSL": "#!/bin/bash\nsudo apt update\nsudo apt install -y certbot python3-certbot-nginx\nsudo certbot --nginx -d exemplo.com",
+                "Deploy automático com Git": "#!/bin/bash\ncd /var/www/site\ngit pull origin master\nnpm install\nnpm2 restart all",
+                "Deploy automático Laravel": "#!/bin/bash\ncd /var/www/laravel\ngit pull origin master\ncomposer install --no-dev\nphp artisan migrate\nphp artisan cache:clear",
+                "Script para build React/Vue": "#!/bin/bash\ncd frontend\nnpm install\nnpm run build\nrm -rf /var/www/html/*\ncp -a dist/* /var/www/html/",
+                "Subir Docker + docker-compose": "#!/bin/bash\ncd /path/to/project\ndocker-compose up -d --build",
+                "Script para CI/CD simples": "#!/bin/bash\nssh usuario@servidor \"cd /var/www/projeto && git pull && npm install && pm2 restart app\"",
+                "Monitoramento de uptime": "#!/bin/bash\nuptime",
+                "Gerenciar múltiplos hosts com SSH": "#!/bin/bash\nfor host in host1 host2 host3; do ssh usuario@$host \"comando\"; done"
+            },
+            "Ambiente de Desenvolvimento": {
+                "Criar ambiente Python virtual": "#!/bin/bash\npython3 -m venv venv\nsource venv/bin/activate",
+                "Script para rodar Jupyter Notebook": "#!/bin/bash\njupyter notebook --ip=0.0.0.0 --port=8888 --no-browser",
+                "Script para iniciar projeto Flask": "#!/bin/bash\nflask run --host=0.0.0.0",
+                "Script para iniciar projeto Node": "#!/bin/bash\nnpm start",
+                "Instalar dependências de projeto": "#!/bin/bash\nnpm install\ncomposer install",
+                "Clonar repositórios de trabalho": "#!/bin/bash\ngit clone git@github.com:empresa/repositorio.git\ncd repositorio",
+                "Script de limpeza de logs de projeto": "#!/bin/bash\nrm -rf logs/*.log",
+                "Script de build para C/C++": "#!/bin/bash\ngcc -o programa main.c\n./programa",
+                "Script para rodar testes automatizados": "#!/bin/bash\npytest tests/",
+                "Script para compilar LaTeX": "#!/bin/bash\npdflatex documento.tex"
+            },
+            "Produtividade": {
+                "Script para iniciar apps do dia": "#!/bin/bash\ncode &\ngoogle-chrome &\nslack &",
+                "Script de foco (desativa redes sociais)": "#!/bin/bash\nsudo sed -i '/www.facebook.com/d' /etc/hosts\nsudo sed -i '/www.twitter.com/d' /etc/hosts",
+                "Script para abrir favoritos do navegador": "#!/bin/bash\ngoogle-chrome \"https://github.com\" \"https://stackoverflow.com\"",
+                "Script para capturar print da tela": "#!/bin/bash\nimport -window root screenshot_$(date +%Y%m%d).png",
+                "Script para abrir arquivos PDF": "#!/bin/bash\nevilvince documento.pdf",
+                "Script para mudar papel de parede": "#!/bin/bash\ngsettings set org.gnome.desktop.background picture-uri \"file:///caminho/para/imagem.jpg\"",
+                "Script de lembrete por terminal": "#!/bin/bash\nnotify-send \"Lembrete\" \"Hora da reunião!\" -t 5000",
+                "Agendador de tarefas com cron": "#!/bin/bash\n(crontab -l; echo \"0 9 * * * /caminho/para/script.sh\") | crontab -",
+                "Script de \"modo noturno\"": "#!/bin/bash\nredshift -O 3000",
+                "Script de lock automático do sistema": "#!/bin/bash\ngnome-screensaver-command -l"
+            },
+            "Áudio e Vídeo": {
+                "Converter arquivos de áudio com ffmpeg": "#!/bin/bash\nffmpeg -i entrada.mp3 -acodec libmp3lame saida.ogg",
+                "Gravar áudio do microfone": "#!/bin/bash\narecord -d 10 -f cd gravacao.wav",
+                "Gravar tela com ffmpeg": "#!/bin/bash\nffmpeg -f x11grab -s 1920x1080 -i :0.0 -f alsa -i default saida.mkv",
+                "Baixar vídeos do YouTube (yt-dlp)": "#!/bin/bash\nyt-dlp https://www.youtube.com/watch?v=VIDEO_ID",
+                "Extrair áudio de vídeo": "#!/bin/bash\nffmpeg -i video.mp4 -vn -acodec copy audio.m4a",
+                "Reduzir tamanho de vídeo": "#!/bin/bash\nffmpeg -i entrada.mp4 -vcodec libx264 -crf 28 saida.mp4",
+                "Mesclar vídeos": "#!/bin/bash\nffmpeg -f concat -i lista.txt -c copy saida.mp4",
+                "Cortar trecho de vídeo": "#!/bin/bash\nffmpeg -i entrada.mp4 -ss 00:01:00 -to 00:02:00 -c copy saida.mp4",
+                "Script para baixar podcast": "#!/bin/bash\nwget -c URL_DO_PODCAST.mp3",
+                "Script para detectar microfone ativo": "#!/bin/bash\npactl list sources | grep -A 10 \"State: RUNNING\""
+            },
+            "Automação e Agendamento": {
+                "Script para rodar ao iniciar": "#!/bin/bash\necho \"[Desktop Entry]\nName=Meu Script\nExec=/caminho/para/script.sh\nType=Application\" > ~/.config/autostart/meuscript.desktop",
+                "Script para desligar às 22h": "#!/bin/bash\nsudo shutdown -h 22:00",
+                "Script para checar e-mail novo": "#!/bin/bash\nmbsync -a\nnotmuch new",
+                "Script para sincronizar arquivos": "#!/bin/bash\nrsync -avz --delete ~/documentos usuario@servidor:/backup/",
+                "Script de log de produtividade": "#!/bin/bash\necho \"$(date): Trabalhando no projeto X\" >> ~/produtividade.log",
+                "Script de lembrete com notify-send": "#!/bin/bash\nnotify-send \"Lembrete\" \"Hora do intervalo!\" -t 5000",
+                "Script de alarme sonoro": "#!/bin/bash\npaplay /usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga",
+                "Script de backup automático semanal": "#!/bin/bash\n(crontab -l; echo \"0 3 * * 0 /caminho/para/backup.sh\") | crontab -",
+                "Script de envio automático por e-mail": "#!/bin/bash\necho \"Corpo do e-mail\" | mail -s \"Assunto\" destinatario@email.com",
+                "Script para mover arquivos por data": "#!/bin/bash\nfind ~/Downloads -type f -mtime +30 -exec mv {} ~/ArquivosAntigos \\;"
+            },
+            "Rotinas de Teste": {
+                "Teste de disco com smartctl": "#!/bin/bash\nsudo smartctl -H /dev/sda",
+                "Teste de RAM com memtester": "#!/bin/bash\nsudo apt install -y memtester\nsudo memtester 1G 1",
+                "Stress test da CPU": "#!/bin/bash\nstress --cpu 4 --timeout 60s",
+                "Teste de I/O com dd": "#!/bin/bash\ndd if=/dev/zero of=testfile bs=1G count=1 oflag=direct",
+                "Teste de conexão com porta específica": "#!/bin/bash\nnc -zv host.com 443",
+                "Script para benchmark": "#!/bin/bash\nsysbench cpu --cpu-max-prime=20000 run",
+                "Script para validação de certificados": "#!/bin/bash\nopenssl s_client -connect site.com:443 -servername site.com | openssl x509 -noout -dates",
+                "Testar cron jobs": "#!/bin/bash\necho \"Teste de cron\" >> /tmp/cron_test.log",
+                "Testar permissões de arquivos": "#!/bin/bash\nnamei -l /caminho/para/arquivo",
+                "Testar ping em vários IPs": "#!/bin/bash\nfor ip in 192.168.1.{1..10}; do ping -c 1 $ip > /dev/null && echo \"$ip está ativo\"; done"
+            },
+            "Mobile e IoT": {
+                "Conectar Android via ADB": "#!/bin/bash\nadb devices\nadb shell",
+                "Script para reiniciar dispositivos IoT": "#!/bin/bash\nssh pi@raspberrypi \"sudo reboot\"",
+                "Sincronizar com Nextcloud": "#!/bin/bash\nnextcloudcmd --user usuario --password senha ~/Documentos https://nextcloud.meuservidor.com/remote.php/webdav/Documentos",
+                "Automatizar envio para Telegram": "#!/bin/bash\ncurl -s -X POST \"https://api.telegram.org/botTOKEN/sendMessage\" -d chat_id=ID -d text=\"Mensagem\"",
+                "Script para enviar SMS com modem": "#!/bin/bash\necho \"AT+CMGF=1\" > /dev/ttyUSB0\necho \"AT+CMGS=\\\"NUMERO\\\"\" > /dev/ttyUSB0\necho \"TEXTO DA MENSAGEM\" > /dev/ttyUSB0\necho -e \"\\x1A\" > /dev/ttyUSB0",
+                "Gerar QR Code com qrencode": "#!/bin/bash\nqrencode -o qrcode.png \"Texto ou URL\"",
+                "Receber comandos remotos": "#!/bin/bash\nwhile true; do COMANDO=$(nc -l 1234); eval \"$COMANDO\"; done",
+                "Sincronizar fotos do celular": "#!/bin/bash\nadb pull /sdcard/DCIM/Camera ~/Fotos/Android",
+                "Backup do WhatsApp": "#!/bin/bash\nadb backup -f whatsapp_backup.ab -noapk com.whatsapp",
+                "Script para atualizar firmware ESP8266": "#!/bin/bash\nesptool.py --port /dev/ttyUSB0 write_flash 0x00000 firmware.bin"
+            },
+            "Outros Scripts Técnicos": {
+                "Verificar permissões de arquivos": "#!/bin/bash\nls -la /caminho/",
+                "Corrigir erros de partição": "#!/bin/bash\nsudo fsck -y /dev/sda1",
+                "Monitorar logs em tempo real": "#!/bin/bash\ntail -f /var/log/syslog",
+                "Script de logs com cor": "#!/bin/bash\njournalctl -f | ccze -A",
+                "Montar automaticamente dispositivos USB": "#!/bin/bash\necho \"LABEL=USBDRIVE /media/usb auto nosuid,nodev,nofail 0 0\" | sudo tee -a /etc/fstab",
+                "Listar todos os arquivos modificados hoje": "#!/bin/bash\nfind ~ -type f -mtime 0",
+                "Script para renomear arquivos em massa": "#!/bin/bash\nfor file in *.jpg; do mv \"$file\" \"foto_${file}\"; done",
+                "Script para verificar hash de arquivos": "#!/bin/bash\nsha256sum arquivo.iso",
+                "Script para split de arquivos grandes": "#!/bin/bash\nsplit -b 100M arquivo_grande.zip \"arquivo_grande.zip.part\"",
+                "Script para gerar arquivos de teste": "#!/bin/bash\ndd if=/dev/zero of=arquivo_teste.bin bs=1M count=100"
+            },
+            "Educacional e Tutoriais": {
+                "Script com comandos básicos Linux": "#!/bin/bash\necho \"Comandos Básicos:\nls - Listar arquivos\ncd - Mudar diretório\ncp - Copiar arquivos\nmv - Mover/renomear\nrm - Remover\" > comandos.txt",
+                "Script com exemplos de uso do sed": "#!/bin/bash\necho \"Exemplos sed:\nsed 's/foo/bar/g' arquivo.txt - Substitui foo por bar\" > sed_exemplos.txt",
+                "Script com exemplos de uso do awk": "#!/bin/bash\necho \"Exemplos awk:\nawk '{print $1}' arquivo.txt - Imprime primeira coluna\" > awk_exemplos.txt",
+                "Script de instalação de ambiente educacional (ex: Moodle)": "#!/bin/bash\nsudo apt install -y moodle",
+                "Script de configuração para laboratório de redes": "#!/bin/bash\nsudo apt install -y dnsmasq iptables",
+                "Script para ensinar Git passo a passo": "#!/bin/bash\necho \"1. git init\n2. git add .\n3. git commit -m 'mensagem'\" > git_tutorial.txt",
+                "Script para ensinar Bash": "#!/bin/bash\necho \"#!/bin/bash\necho 'Olá Mundo'\" > primeiro_script.sh",
+                "Script para simular rede local": "#!/bin/bash\nsudo ip netns add rede-teste",
+                "Script de prática de shell interativo": "#!/bin/bash\nwhile read -p \"Comando: \" cmd; do eval \"$cmd\"; done",
+                "Script para manipular arquivos .csv": "#!/bin/bash\ncsvcut -n dados.csv | head -5"
+            },
+            "Imagens e PDF": {
+                "Converter imagens com imagemagick": "#!/bin/bash\nconvert entrada.jpg saida.png",
+                "Compactar imagens": "#!/bin/bash\nmogrify -quality 60 *.jpg",
+                "Gerar PDFs a partir de imagens": "#!/bin/bash\nconvert *.jpg documento.pdf",
+                "Unir PDFs": "#!/bin/bash\npdfunite entrada1.pdf entrada2.pdf saida.pdf",
+                "Dividir PDFs": "#!/bin/bash\npdfseparate documento.pdf pagina-%d.pdf",
+                "Reduzir tamanho de PDF": "#!/bin/bash\ngs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dBATCH -dQUIET -sOutputFile=saida.pdf entrada.pdf",
+                "OCR em PDFs": "#!/bin/bash\nocrmypdf -l por entrada.pdf saida.pdf",
+                "Script para renomear imagens": "#!/bin/bash\nfor file in *.jpg; do mv \"$file\" \"foto_$(date +%Y%m%d)_${file}\"; done",
+                "Organizar fotos por data": "#!/bin/bash\nexiftool \"-Directory<DateTimeOriginal\" -d \"%Y/%m/%d\" *.jpg",
+                "Script para colocar marca d'água": "#!/bin/bash\nconvert entrada.jpg -gravity southeast -annotate 0 \"Texto\" saida.jpg"
+            },
+            "Avançado/Administração": {
+                "Script para criar novo usuário": "#!/bin/bash\nsudo adduser novo_usuario\nsudo usermod -aG sudo novo_usuario",
+                "Script para bloquear usuário": "#!/bin/bash\nsudo usermod -L usuario",
+                "Script para alterar senha de root": "#!/bin/bash\nsudo passwd root",
+                "Script para logar todas execuções sudo": "#!/bin/bash\necho \"Defaults logfile=/var/log/sudo.log\" | sudo tee -a /etc/sudoers",
+                "Monitorar processos": "#!/bin/bash\ntop",
+                "Reiniciar serviços automaticamente": "#!/bin/bash\nsudo systemctl enable --now servico",
+                "Instalar sistema básico em servidor novo": "#!/bin/bash\nsudo apt update\nsudo apt install -y openssh-server fail2ban ufw nginx",
+                "Script de restauração via PXE": "#!/bin/bash\necho \"Configuração complexa - consulte documentação do PXE\"",
+                "Gerar imagens ISO personalizadas": "#!/bin/bash\nsudo apt install -y cubic",
+                "Instalar Ubuntu minimal com pacotes": "#!/bin/bash\nsudo apt install --no-install-recommends ubuntu-minimal"
+            },
+            "Extras e Diversos": {
+                "Script para gerenciar arquivos torrent": "#!/bin/bash\ntransmission-remote -l",
+                "Script para baixar legendas": "#!/bin/bash\nsubliminal download -l pt-BR filme.mp4",
+                "Script de humor (mensagens engraçadas no terminal)": "#!/bin/bash\nfortune | cowsay",
+                "Script de boas-vindas personalizado": "#!/bin/bash\necho \"Bem-vindo, $USER! Hoje é $(date)\"",
+                "Script para mostrar calendário": "#!/bin/bash\ncal",
+                "Script para prever o tempo com curl": "#!/bin/bash\ncurl wttr.in",
+                "Script para buscar notícias": "#!/bin/bash\ncurl https://newsapi.org/v2/top-headlines?country=br",
+                "Script de doação automática (bitcoin, etc.)": "#!/bin/bash\necho \"Envie para o endereço: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa\"",
+                "Script para desinstalar apps inúteis": "#!/bin/bash\nsudo apt purge -y $(deborphan)",
+                "Script para criar uma ISO bootável": "#!/bin/bash\nsudo dd if=imagem.iso of=/dev/sdX bs=4M status=progress"
+            }
+        };
+        function renderScripts() {
+            const container = document.getElementById('scripts-container');
+            Object.keys(scriptsData).forEach(category => {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'mb-6';
+                categoryDiv.innerHTML = `
+                    <h2 class="text-2xl font-semibold text-gray-700 mb-4 cursor-pointer flex items-center" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180');">
+                        ${category}
+                        <svg class="w-5 h-5 ml-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 hidden">
+                        ${Object.keys(scriptsData[category]).map(scriptName => `
+                            <div class="script-card bg-white rounded-lg shadow-md p-4">
+                                <h3 class="text-lg font-medium text-gray-800 mb-2">${scriptName}</h3>
+                                <pre class="bg-gray-800 text-white p-3 rounded text-sm overflow-x-auto">${scriptsData[category][scriptName]}</pre>
+                                <button onclick="copyToClipboard(\`${scriptsData[category][scriptName].replace(/`/g, '\\`')}\`)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">Copy</button>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(categoryDiv);
+            });
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Script copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                alert('Failed to copy script.');
+            });
+        }
+
+        renderScripts();
+    </script>
+    <br><h2><b><a href="https://ivaldofs.com.br/unix/">Caixa de Ferramentas Unix: Todos os Comandos em um Só Lugar</a></b></h2><br>
+    <br>
+    <center><footer>
+        <p>&copy; Ivaldo Fernandes - Todos os direitos reservados.</p>
+  </footer></center>
+ <br> <br>
+<script src="/app/script.js"></script>
+</body>
+</html>
