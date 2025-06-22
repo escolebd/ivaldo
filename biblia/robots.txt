@@ -1,0 +1,6 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://ivaldofs.com.br/biblia/sitemap.xml
+Sitemap: https://ivaldofs.com.br/sitemap_index.xml
+Sitemap: https://ivaldofs.com.br/calculadora/sitemap.xml
