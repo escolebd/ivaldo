@@ -1,0 +1,42 @@
+     .blogger-box {
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #fdfdfd;
+      max-width: 800px;
+      margin: 20px auto;
+      line-height: 1.6;
+      font-family: Arial, sans-serif;
+      font-weight: normal !important;
+    }
+    
+    .blogger-box b {
+      font-weight: bold !important; /* Mantém apenas os <b> */
+    }
+
+    .blogger-box center {
+      display: block;
+      text-align: center;
+    }
+
+    .blogger-box img {
+      max-width: 100%;
+      height: auto;
+    }
+    
+     .share-button {
+            display: flex;
+            gap: 10px;
+        }
+        .share-button a {
+            text-decoration: none;
+            padding: 10px 10px;
+            color: white;
+            border-radius: 5px;
+            font-size: 10px;
+        }
+        .whatsapp { background: #25D366; }
+        .facebook { background: #1877F2; }
+        .twitter { background: #1DA1F2; }
+        
+        
