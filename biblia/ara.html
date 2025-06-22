@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Bíblia Almeida Revista e Atualizada</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Bíblia Almeida Revista e Atualizada",
+      "image": [
+        "/app/imagens/512x512.png"
+       ],
+      "datePublished": "2025-01-20T08:00:00-03:00",
+      "dateModified": "2025-01-20T08:00:00-03:00",
+      "author": [{
+          "@type": "Person",
+         "name": "Ivaldo fernandes",
+          "url": "https://ivaldofs.com.br/"
+      }]
+    }
+    </script>
+    
+    
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-947PJ1CXF0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-947PJ1CXF0');
+</script>
+
+<link rel="manifest" href="/app/manifest.json">
+<meta name="theme-color" content="#000000">
+
+<meta name="description" content="Versão revisada e atualizada da Almeida, mantendo sua essência, com melhorias para maior precisão e clareza.">
+<meta property="og:image" content="/app/imagens/512x512.png">
+<link rel="icon" href="/app/imagens/512x512.png" type="image/x-icon">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+    h1, h2 {
+        text-align: center;
+    }
+    button {
+        margin: 5px;
+        padding: 8px 12px;
+        font-size: 14px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+    #verses-container {
+        margin: 20px;
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-title {
+        margin-top: 30px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<br>
+    <br>
+    <center>
+<a href="https://ivaldofs.com.br/">Inicio</a> |
+<a href="https://ivaldofs.com.br/sobre/">Sobre</a> |
+<a href="https://ivaldofs.com.br/contato/">Contato</a> | 
+<a href="https://ivaldofs.com.br/termos-de-uso/">Termos de Uso</a> |
+<a href="https://ivaldofs.com.br/privacy-policy/">Politica de Privacidade</a> |
+<a href="/biblia/outros-idiomas.html">Outros Idiomas</a> |
+<a href="/biblia/estudos.html">Estudos</a> |
+<a href="/biblia/quis.html">Quiz</a>
+</center>
+<br>
+<center>
+  <form action="https://www.google.com/search" method="get" class="search-form">
+    <input type="text" name="q" placeholder="Pesquise aqui..." required>
+    <input type="hidden" name="sitesearch" value="ivaldofs.com.br"> <!-- Define o site a ser pesquisado -->
+    <button type="submit">Buscar</button>
+</form>
+</center>
+
+  <h1>Bíblia Almeida Revista e Atualizada</h1>
+  <p>A <strong>Almeida Revista e Atualizada (ARA)</strong> é uma versão modernizada da tradução de João Ferreira de Almeida. Publicada pela Sociedade Bíblica do Brasil em 1959, busca equilíbrio entre fidelidade ao texto original e linguagem acessível. Mantém o estilo clássico de Almeida, com melhorias gramaticais e maior clareza para os leitores contemporâneos.</p>
+  <div class="section-title">Capítulos</div>
+  <div id="chapter-grid" class="grid"></div>
+
+  <div id="verses-container" style="display: none;">
+      <div id="verses-list"></div>
+  </div>
+
+  <div class="section-title">Velho Testamento</div>
+  <div id="old-testament" class="grid"></div>
+
+  <div class="section-title">Novo Testamento</div>
+  <div id="new-testament" class="grid"></div>
+
+  <script>
+    let versionData = [];
+    let currentBookIndex = 0;
+    let currentChapterIndex = 0;
+
+    fetch("https://raw.githubusercontent.com/ivaldof/ebd/main/ara.json")
+      .then(response => response.json())
+      .then(data => {
+        versionData = data;
+        renderBookButtons();
+        renderChapterButtons(0); // Gênesis
+        displayVerses();
+      })
+      .catch(error => {
+        console.error("Erro ao carregar a Bíblia:", error);
+        alert("Erro ao carregar a Bíblia.");
+      });
+
+    function renderBookButtons() {
+        const oldTestamentDiv = document.getElementById('old-testament');
+        const newTestamentDiv = document.getElementById('new-testament');
+
+        versionData.forEach((book, index) => {
+            const button = document.createElement('button');
+            button.textContent = book.name;
+            button.onclick = () => {
+                currentBookIndex = index;
+                currentChapterIndex = 0;
+                renderChapterButtons(index);
+                displayVerses();
+            };
+
+            if (book.name === "Mateus") {
+                newTestamentDiv.appendChild(button);
+            } else if (newTestamentDiv.childElementCount > 0) {
+                newTestamentDiv.appendChild(button);
+            } else {
+                oldTestamentDiv.appendChild(button);
+            }
+        });
+    }
+
+    function renderChapterButtons(bookIndex) {
+        const chapterGrid = document.getElementById('chapter-grid');
+        chapterGrid.innerHTML = '';
+        const book = versionData[bookIndex];
+
+        book.chapters.forEach((_, i) => {
+            const button = document.createElement('button');
+            button.textContent = i + 1;
+            button.onclick = () => {
+                currentChapterIndex = i;
+                displayVerses();
+            };
+            chapterGrid.appendChild(button);
+        });
+    }
+
+    function displayVerses() {
+        const versesList = document.getElementById('verses-list');
+        const book = versionData[currentBookIndex];
+        const chapter = book.chapters[currentChapterIndex];
+
+        versesList.innerHTML = `<h2>${book.name} - Capítulo ${currentChapterIndex + 1}</h2>`;
+        chapter.forEach((verse, index) => {
+            const p = document.createElement('p');
+            p.textContent = `${index + 1}: ${verse}`;
+            versesList.appendChild(p);
+        });
+
+        document.getElementById('verses-container').style.display = "block";
+    }
+
+    // Bloqueia Ctrl+U
+    document.addEventListener('keydown', (event) => {
+        if (event.ctrlKey && (event.key === 'u' || event.key === 'U')) {
+            event.preventDefault();
+            alert('A visualização do código-fonte foi desativada.');
+        }
+    });
+  </script>
+<br>
+    <center>
+<a href="https://ivaldofs.com.br/">Inicio</a> |
+<a href="https://ivaldofs.com.br/sobre/">Sobre</a> |
+<a href="https://ivaldofs.com.br/contato/">Contato</a> | 
+<a href="https://ivaldofs.com.br/termos-de-uso/">Termos de Uso</a> |
+<a href="https://ivaldofs.com.br/privacy-policy/">Politica de Privacidade</a> |
+<a href="/biblia/outros-idiomas.html">Outros Idiomas</a> |
+<a href="/biblia/estudos.html">Estudos</a> |
+<a href="/biblia/quis.html">Quiz</a>
+</center>
+<br>
+ <center><footer>
+        <p>&copy; Ivaldo Fernandes - Todos os direitos reservados.</p>
+  </footer></center>
+
+<script src="/app/script.js"></script>
+</body>
+</html>
