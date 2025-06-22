@@ -1,0 +1,103 @@
+/* GLOBAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ffffff; /* Fundo branco */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  color: #333; /* Cor do texto principal */
+}
+
+@media (max-width: 425px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+/* CONTAINER */
+.container {
+  background-color: #f9f9f9; /* Fundo mais claro para o container */
+  padding: 50px;
+  margin: 0 10px;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.container .eq-second-grau {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.container .eq-second-grau .input label {
+  font-size: 1.7rem;
+  color: #333; /* Cor do texto dos labels */
+  margin-right: 5px;
+}
+
+.container .eq-second-grau .input input {
+  font-size: 1.7rem;
+  padding: 6px;
+  border: 1px solid #ccc; /* Borda mais suave */
+  border-radius: 5px;
+  outline: 0;
+  background-color: #fff; /* Fundo branco para os inputs */
+  color: #333; /* Cor do texto dos inputs */
+}
+
+.container .eq-second-grau .reply-content span {
+  font-size: 2rem;
+  color: #333; /* Cor do texto do resultado */
+}
+
+.container .eq-second-grau .submit {
+  background-color: #04aa6d;
+  border-radius: 5px;
+  width: 150px;
+  transition: all 0.3s ease;
+}
+
+.container .eq-second-grau .submit:hover {
+  background-color: #02945e;
+}
+
+.container .eq-second-grau .submit input {
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #fff;
+  background: none;
+  padding: 10px;
+  border-style: none;
+  outline: 0;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* Estilo para o gráfico */
+#grafico {
+  margin-top: 20px;
+  background-color: #fff; /* Fundo branco para o gráfico */
+  border-radius: 5px;
+  border: 1px solid #ccc; /* Borda suave */
+}
+
+@media (max-width: 425px) {
+  .container {
+    padding: 30px;
+  }
+}
