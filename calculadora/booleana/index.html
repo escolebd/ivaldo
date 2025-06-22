@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<title>Calculadora Mapa Karnaugh com Tabela Verdade</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Calculadora Mapa Karnaugh com Tabela Verdade",
+      "image": [
+        "/app/imagens/512x512.png"
+       ],
+      "datePublished": "2025-03-02T22:20:00-03:00",
+      "dateModified": "2025-03-06T15:20:00-03:00",
+      "author": [{
+          "@type": "Person",
+          "name": "Ivaldo Fernandes",
+          "url": "https://ivaldofs.com.br/"
+      }]
+    }
+    </script> 
+    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-947PJ1CXF0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-947PJ1CXF0');
+</script>
+
+<link rel="manifest" href="/app/manifest.json">
+<meta name="theme-color" content="#000000">
+
+
+ <link rel="icon" href="/app/imagens/512x512.png" type="image/x-icon">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="Header"></div>
+    <table width="640">
+        <tr>
+            <center><h1>Calculadora Mapa de Karnaugh com Tabela Verdade</h1></center>
+        </tr>
+        <tr>
+            <td>
+                <div id="Toggles">
+                    <form name="UI" onsubmit="return false">
+                        <table>
+                            <tr>
+                                <td width="25%"><input onclick="ChangeVariableNumber(2);" id="TwoVariableRB" type="radio"> 02 Variáveis</td>
+                                <td width="25%"><input onclick="ChangeVariableNumber(3);" id="ThreeVariableRB" type="radio"> 03 Variáveis</td>
+                            </tr>
+                            <tr>
+                                <td width="25%"><input checked="checked" onclick="ChangeVariableNumber(4);" id="FourVariableRB" type="radio"> 04 Variáveis</td>
+                                <td width="25%"><input checked="checked" onclick="ToggleDontCare();" id="AllowDontCareCB" type="checkbox"> Permitir Indiferentes</td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table cellpadding="10">
+                    <tr>
+                        <td>
+                            <div id="TruthTableDiv"></div>
+                        </td>
+                        <td>
+                            <div id="KarnoMapDiv"></div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="EquationDiv"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="Instructions">
+                    
+                </div>
+            </td>
+        </tr>
+    </table>
+    <script src="script.js"></script>
+    <br>
+    <center><p>&nbsp;<b><span style="color: red; font-size: medium;">Esta calculadora do Mapa de Karnaugh opera seguindo esse modelo.</span></b></p></center>
+    <br><center><img height="180" src="https://ivaldofs.com.br/calculadora/booleana/imagens/karnauhg.webp" alt="MAPA DE KARNAUGH" width="400"></center><br>
+    <br> <center>
+<a href="https://ivaldofs.com.br/">Inicio</a> |
+<a href="https://ivaldofs.com.br/sobre/">Sobre</a> |
+<a href="https://ivaldofs.com.br/contato/">Contato</a> | 
+<a href="https://ivaldofs.com.br/calculadora/2-grau/">2º Grau</a> |
+<a href="https://ivaldofs.com.br/calculadora/binario.html">Binário</a> |
+<a href="https://ivaldofs.com.br/calculadora/cientifica.html">Cientifica</a> |
+<a href="https://ivaldofs.com.br/calculadora-ip">Sub-rede</a> |
+<a href="https://ivaldofs.com.br/matematica-computacional">Matemática Computacional</a> |
+<a href="https://ivaldofs.com.br/calculadora/lei-de-ohm.html">Lei de Ohm</a>
+<a href="https://ivaldofs.com.br/calculadora/dividir-sub-rede.html">Dividir Sub-Redes</a>
+<a href="https://ivaldofs.com.br/calculadora/administradores-de-redes.html">Calculadora Avançada para Redes</a>
+</center>
+<br>
+<br>
+<br><br>
+<br>
+    <center><footer>
+        <p>&copy; Ivaldo Fernandes - Todos os direitos reservados.</p>
+  </footer></center>
+
+<script src="/app/script.js"></script>
+</body>
+</html>
