@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+   <title>Jogo de Memória com Cartas</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Jogo de Memória com Cartas",
+      "image": [
+        "https://ivaldofs.com.br/wp-content/uploads/2024/03/cropped-ivaldo-512x512-1.png"
+       ],
+      "datePublished": "2025-03-05T15:20:00-03:00",
+      "dateModified": "2025-03-05T15:20:00-03:00",
+      "author": [{
+          "@type": "Person",
+          "name": "Ivaldo Fernandes",
+          "url": "https://ivaldofs.com.br/"
+      }]
+    }
+    </script> 
+    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-947PJ1CXF0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-947PJ1CXF0');
+</script>
+ <link rel="icon" href="https://ivaldofs.com.br/wp-content/uploads/2024/03/cropped-ivaldo-512x512-1.png" type="image/x-icon">
+    
+    
+    <meta charset="UTF-8">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      background: #fefbe9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #5d3a00;
+    }
+
+    .game-board {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+      gap: 10px;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+
+    .card {
+      background: #fff;
+      border: 2px solid #ccc;
+      height: 100px;
+      line-height: 100px;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 10px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+      transition: transform 0.3s, background 0.3s;
+      position: relative;
+      user-select: none;
+    }
+
+    .card.flipped {
+      background: #ffedc2;
+      color: #5d3a00;
+    }
+
+    .card.matched {
+      background: #c5e3bf;
+      color: #2f4f2f;
+      cursor: default;
+    }
+  </style>
+</head>
+<body>
+  <h1>Jogo da Memória – Frutos do Espírito</h1>
+  <div class="game-board" id="gameBoard"></div>
+
+  <script>
+    const fruits = [
+      "Amor", "Alegria", "Paz", "Paciência",
+      "Amabilidade", "Bondade", "Fidelidade", "Mansidão", "Domínio próprio"
+    ];
+
+    let firstCard = null;
+    let secondCard = null;
+    let lockBoard = false;
+    let matchedPairs = 0;
+
+    function startGame() {
+      const gameBoard = document.getElementById('gameBoard');
+      gameBoard.innerHTML = ""; // limpa tabuleiro
+
+      // Duplicar e embaralhar cartas
+      let cards = [...fruits, ...fruits].sort(() => 0.5 - Math.random());
+      matchedPairs = 0;
+
+      cards.forEach((fruit) => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.dataset.fruit = fruit;
+        card.innerText = fruit;
+        card.classList.add('flipped'); // mostra no início
+
+        gameBoard.appendChild(card);
+      });
+
+      // Após 3 segundos, esconder as cartas
+      setTimeout(() => {
+        document.querySelectorAll('.card').forEach(card => {
+          card.innerText = "";
+          card.classList.remove('flipped');
+
+          card.addEventListener('click', handleCardClick);
+        });
+      }, 3000);
+    }
+
+    function handleCardClick(e) {
+      const card = e.currentTarget;
+
+      if (lockBoard || card.classList.contains('flipped') || card.classList.contains('matched')) return;
+
+      card.innerText = card.dataset.fruit;
+      card.classList.add('flipped');
+
+      if (!firstCard) {
+        firstCard = card;
+        return;
+      }
+
+      secondCard = card;
+      lockBoard = true;
+
+      if (firstCard.dataset.fruit === secondCard.dataset.fruit) {
+        firstCard.classList.add('matched');
+        secondCard.classList.add('matched');
+        matchedPairs++;
+        resetTurn();
+
+        if (matchedPairs === fruits.length) {
+          setTimeout(() => {
+            alert("Parabéns! Você encontrou todos os Frutos do Espírito! 🎉");
+            startGame(); // reinicia
+          }, 800);
+        }
+
+      } else {
+        setTimeout(() => {
+          firstCard.innerText = "";
+          secondCard.innerText = "";
+          firstCard.classList.remove('flipped');
+          secondCard.classList.remove('flipped');
+          resetTurn();
+        }, 1000);
+      }
+    }
+
+    function resetTurn() {
+      [firstCard, secondCard] = [null, null];
+      lockBoard = false;
+    }
+
+    // Iniciar o jogo
+    startGame();
+  </script>
+</body>
+</html>

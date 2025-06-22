@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    
+    
+    <title>Bem-vindo ao Meu Jogo!</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Bem-vindo ao Meu Jogo!",
+      "image": [
+        "https://ivaldofs.com.br/wp-content/uploads/2024/03/cropped-ivaldo-512x512-1.png"
+       ],
+      "datePublished": "2025-03-05T15:20:00-03:00",
+      "dateModified": "2025-03-05T15:20:00-03:00",
+      "author": [{
+          "@type": "Person",
+          "name": "Ivaldo Fernandes",
+          "url": "https://ivaldofs.com.br/"
+      }]
+    }
+    </script> 
+    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-947PJ1CXF0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-947PJ1CXF0');
+</script>
+ <link rel="icon" href="https://ivaldofs.com.br/wp-content/uploads/2024/03/cropped-ivaldo-512x512-1.png" type="image/x-icon">
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #333;
+        }
+        .game-container {
+            width: 90%;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        canvas {
+            width: 100%;
+            height: auto;
+            background-color: #000;
+            display: block;
+        }
+        a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #0095DD;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        a:hover {
+            background-color: #0077BB;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bem-vindo ao Meu Jogo!</h1>
+    <div class="game-container">
+        <canvas id="gameCanvas"></canvas>
+        <script>
+            const canvas = document.getElementById('gameCanvas');
+            const ctx = canvas.getContext('2d');
+
+            function resizeCanvas() {
+                canvas.width = Math.min(window.innerWidth * 0.9, 600);
+                canvas.height = canvas.width * (2 / 3);
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            let x = canvas.width / 2;
+            let y = canvas.height - 30;
+            let dx = 2;
+            let dy = -2;
+            const ballRadius = 10;
+
+            function drawBall() {
+                ctx.beginPath();
+                ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+                ctx.fillStyle = '#0095DD';
+                ctx.fill();
+                ctx.closePath();
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                drawBall();
+
+                if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
+                    dx = -dx;
+                }
+                if (y + dy > canvas.height - ballRadius || y + dy < ballRadius) {
+                    dy = -dy;
+                }
+
+                x += dx;
+                y += dy;
+            }
+
+            setInterval(draw, 10);
+        </script>
+        <h2>Veja a Lista de Jogos</h2>
+        <a href="coleta-de-moedas/index.html">Jogo de Coleta de Moedas</a>
+        <a href="nave-espacial.html">Jogo da Nave Espacial</a>
+        <a href="memoria.html">Jogo de Memoria com Cartas | Frutos do Espírito</a>
+    </div>
+    <p>Divirta-se jogando!</p>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    
+    
+     <title>Jogo da Nave Espacial</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Jogo da Nave Espacial",
+      "image": [
+        "https://ivaldofs.com.br/wp-content/uploads/2024/03/cropped-ivaldo-512x512-1.png"
+       ],
+      "datePublished": "2025-03-05T15:20:00-03:00",
+      "dateModified": "2025-03-05T15:20:00-03:00",
+      "author": [{
+          "@type": "Person",
+          "name": "Ivaldo Fernandes",
+          "url": "https://ivaldofs.com.br/"
+      }]
+    }
+    </script> 
+    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-947PJ1CXF0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-947PJ1CXF0');
+</script>
+ <link rel="icon" href="https://ivaldofs.com.br/wp-content/uploads/2024/03/cropped-ivaldo-512x512-1.png" type="image/x-icon">
+    
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Nave Espacial</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: black; text-align: center; color: white; font-family: Arial, sans-serif; }
+        canvas { background: #000; display: block; margin: auto; }
+        .controles { display: flex; justify-content: center; margin-top: 10px; }
+        .btn { 
+            background: gray; 
+            color: white; 
+            font-size: 20px; 
+            padding: 15px; 
+            margin: 40px; /* Aumentei o margin para 20px */
+            border: none; 
+            cursor: pointer; 
+        }
+        .btn:active { background: darkgray; }
+        #gameOver { 
+            display: none; 
+            position: absolute; 
+            top: 40%; 
+            left: 50%; 
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8); 
+            padding: 20px; 
+            border-radius: 10px; 
+        }
+    </style>
+</head>
+<body>
+    <h1>🚀 Jogo da Nave Espacial</h1>
+    <canvas id="gameCanvas"></canvas>
+    <div class="controles">
+        <button class="btn" id="esquerda">⬅️</button>
+        <button class="btn" id="atirar">🔫 Atirar</button>
+        <button class="btn" id="direita">➡️</button>
+        
+    </div>
+    
+    <div id="gameOver">
+        <h2>💥 Você perdeu!</h2>
+        <button class="btn" onclick="reiniciarJogo()">🔄 Tentar Novamente</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth * 0.9;
+        canvas.height = window.innerHeight * 0.7;
+        const gameOverDiv = document.getElementById("gameOver");
+
+        let nave = { x: canvas.width / 2 - 25, y: canvas.height - 60, width: 50, height: 50 };
+        let asteroides = [];
+        let estrelas = [];
+        let projeteis = [];
+        let velocidadeAsteroides = 3;
+        let jogoRodando = true;
+
+        // Criação das estrelas
+        function criarEstrelas() {
+            for (let i = 0; i < 100; i++) {
+                estrelas.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 1.5,
+                    brilho: Math.random() * 0.5 + 0.5,
+                    piscar: Math.random() * 0.05
+                });
+            }
+        }
+
+        // Desenhar estrelas
+        function desenharEstrelas() {
+            ctx.fillStyle = "black";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            for (let i = 0; i < estrelas.length; i++) {
+                let estrela = estrelas[i];
+                ctx.beginPath();
+                ctx.arc(estrela.x, estrela.y, estrela.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${estrela.brilho + Math.sin(Date.now() * estrela.piscar) * 0.5})`;
+                ctx.fill();
+            }
+        }
+
+        // Redimensionamento do canvas
+        window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth * 0.9;
+            canvas.height = window.innerHeight * 0.7;
+            nave.x = canvas.width / 2 - 25;
+            criarEstrelas(); // Recria as estrelas ao redimensionar
+        });
+
+        // Controles da nave
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "ArrowLeft") moverNave(-20);
+            if (event.key === "ArrowRight") moverNave(20);
+            if (event.key === " ") atirar(); // Barra de espaço para atirar
+        });
+
+        document.getElementById("esquerda").addEventListener("click", () => moverNave(-20));
+        document.getElementById("direita").addEventListener("click", () => moverNave(20));
+        document.getElementById("atirar").addEventListener("click", atirar);
+
+        function moverNave(delta) {
+            if (nave.x + delta >= 0 && nave.x + delta <= canvas.width - nave.width) {
+                nave.x += delta;
+            }
+        }
+
+        // Criação de asteroides
+        function criarAsteroide() {
+            if (!jogoRodando) return;
+            let x = Math.random() * (canvas.width - 40);
+            asteroides.push({ x, y: -40, width: 40, height: 40 });
+        }
+        setInterval(criarAsteroide, 1000);
+
+        // Desenhar a nave
+        function desenharNave() {
+            ctx.fillStyle = "white";
+            ctx.beginPath();
+            ctx.moveTo(nave.x, nave.y);
+            ctx.lineTo(nave.x + nave.width / 2, nave.y - 30);
+            ctx.lineTo(nave.x + nave.width, nave.y);
+            ctx.lineTo(nave.x + nave.width * 0.7, nave.y + nave.height / 2);
+            ctx.lineTo(nave.x + nave.width * 0.3, nave.y + nave.height / 2);
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        // Atirar projéteis
+        function atirar() {
+            if (!jogoRodando) return;
+            projeteis.push({ x: nave.x + nave.width / 2 - 5, y: nave.y, width: 10, height: 10 });
+        }
+
+        // Desenhar projéteis
+        function desenharProjeteis() {
+            ctx.fillStyle = "yellow";
+            for (let i = projeteis.length - 1; i >= 0; i--) {
+                let proj = projeteis[i];
+                proj.y -= 5; // Velocidade do projétil
+                ctx.fillRect(proj.x, proj.y, proj.width, proj.height);
+
+                // Verifica se o projétil saiu da tela
+                if (proj.y + proj.height < 0) {
+                    projeteis.splice(i, 1);
+                }
+            }
+        }
+
+        // Verificar colisão entre projéteis e asteroides
+        function verificarColisao() {
+            for (let i = asteroides.length - 1; i >= 0; i--) {
+                let ast = asteroides[i];
+                for (let j = projeteis.length - 1; j >= 0; j--) {
+                    let proj = projeteis[j];
+                    if (proj.x < ast.x + ast.width &&
+                        proj.x + proj.width > ast.x &&
+                        proj.y < ast.y + ast.height &&
+                        proj.y + proj.height > ast.y) {
+                        // Colisão detectada
+                        asteroides.splice(i, 1);
+                        projeteis.splice(j, 1);
+                        break;
+                    }
+                }
+            }
+        }
+
+        // Atualizar o jogo
+        function atualizar() {
+            if (!jogoRodando) return;
+
+            desenharEstrelas(); // Desenha as estrelas primeiro
+            desenharNave();
+            desenharProjeteis();
+            verificarColisao();
+
+            ctx.fillStyle = "red";
+            for (let i = asteroides.length - 1; i >= 0; i--) {
+                let ast = asteroides[i];
+                ast.y += velocidadeAsteroides;
+                ctx.fillRect(ast.x, ast.y, ast.width, ast.height);
+
+                // Verifica colisão com a nave
+                if (ast.y + ast.height >= nave.y && ast.x < nave.x + nave.width && ast.x + ast.width > nave.x) {
+                    fimDeJogo();
+                }
+
+                // Remove asteroides que saíram da tela
+                if (ast.y > canvas.height) {
+                    asteroides.splice(i, 1);
+                }
+            }
+
+            requestAnimationFrame(atualizar);
+        }
+
+        // Fim de jogo
+        function fimDeJogo() {
+            jogoRodando = false;
+            gameOverDiv.style.display = "block";
+        }
+
+        // Reiniciar o jogo
+        function reiniciarJogo() {
+            nave.x = canvas.width / 2 - 25;
+            asteroides = [];
+            projeteis = [];
+            jogoRodando = true;
+            gameOverDiv.style.display = "none";
+            atualizar();
+        }
+
+        // Inicialização
+        criarEstrelas();
+        atualizar();
+    </script>
+</body>
+</html>
