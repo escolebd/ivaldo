@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    
+    <title>Jogo de Coleta de Moedas</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Jogo de Coleta de Moedas",
+      "image": [
+        "https://ivaldofs.com.br/wp-content/uploads/2024/03/cropped-ivaldo-512x512-1.png"
+       ],
+      "datePublished": "2025-03-05T15:20:00-03:00",
+      "dateModified": "2025-03-05T15:20:00-03:00",
+      "author": [{
+          "@type": "Person",
+          "name": "Ivaldo Fernandes",
+          "url": "https://ivaldofs.com.br/"
+      }]
+    }
+    </script> 
+    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-947PJ1CXF0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-947PJ1CXF0');
+</script>
+ <link rel="icon" href="https://ivaldofs.com.br/wp-content/uploads/2024/03/cropped-ivaldo-512x512-1.png" type="image/x-icon">
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background-color: #222;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        canvas {
+            display: block;
+            background-color: #333;
+            max-width: 100%;
+            height: auto;
+        }
+        .controls {
+            display: grid;
+            grid-template-areas:
+                ". up ."
+                "left . right"
+                ". down .";
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .controls button {
+            padding: 20px;
+            font-size: 24px;
+            background-color: #444;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .controls button:active {
+            background-color: #666;
+        }
+        #up { grid-area: up; }
+        #left { grid-area: left; }
+        #down { grid-area: down; }
+        #right { grid-area: right; }
+    </style>
+</head>
+<body>
+    <h1>Jogo de Coleta de Moedas</h1>
+    <p>Use os botões ou as setas para mover e coletar as moedas!</p>
+    <canvas id="gameCanvas" width="600" height="400"></canvas>
+    <div class="controls">
+        <button id="up">↑</button>
+        <button id="left">←</button>
+        <button id="down">↓</button>
+        <button id="right">→</button>
+    </div><br><br><br><br><br>
+    <script src="game.js"></script>
+</body>
+</html>
