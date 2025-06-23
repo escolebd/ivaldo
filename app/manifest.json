@@ -1,7 +1,7 @@
 {
   "name": "app-Ivaldo",
   "short_name": "app-Ivaldo",
-  "start_url": "/app/",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
