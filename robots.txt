@@ -1,3 +1,3 @@
 User-agent: *
 Disallow: 
-Sitemap: https://ivaldofs.com.br/sitemap.xml
+Sitemap: https://ivaldofs.com.br/sitemap_index.xml
